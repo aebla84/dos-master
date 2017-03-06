@@ -1,0 +1,65 @@
+page-catalog {
+  .navbarDosilet {
+  text-align: center;
+}
+.div-logo-header {
+  display: inline;
+}
+.div-logo-header:hover {
+  cursor: pointer;
+}
+a:hover, a:active, a:focus, a:visited{
+  text-decoration: none;
+}
+.input-wrapper{
+  background-color: #313131;
+  font-size:20px;
+}
+.catalog-button, .catalog-button>.item-inner{
+  padding:0 !important;
+}
+.button-inner{
+  justify-content:flex-start;
+}
+.sub-cat{
+  margin-left:2% !important;
+}
+.catalog-icon{
+  padding-right:3px !important;
+}
+.list .item.item-accordion {
+line-height: 38px;
+padding-top: 0;
+padding-bottom: 0;
+transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+display: block !important;
+}
+ion-label.label.label-md, ion-label.label {
+  padding-left: 10%;
+  text-align: left;
+}
+.item-md, .item{
+ padding-left: 0px !important;
+}
+.item-md.item-block .item-inner, .item.item-block .item-inner {
+   padding-right: 0px !important;
+   padding-left: 0px !important;
+}
+  .footer{
+    background-color:#EB0628;
+    width:100%;
+    height:40px;
+  }
+  .btn-footer{
+    color:white;
+    font-size:18px;
+    background-color:transparent;
+    margin:10px;
+  }
+}

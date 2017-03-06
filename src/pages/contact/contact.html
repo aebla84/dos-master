@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar class="navbarDosilet" hideBackButton="true">
+    <div (click)="openHome()" class="div-logo-header">
+      <img style="width:90px; height:auto;" src="assets/img/logo.png" />
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <script src="cordova.js"></script>
+
+  <div class="container-fluid header-contact">
+    <span class="header-contact-text">Contacto</span>
+  </div>
+
+  <form id="contactForm" (ngSubmit)="send()">
+    <div class="row-fluid" style="margin:10px;">
+        <div class="col-xs-12 col-sd-6 col-md-6">
+          <div class="form-group">
+            <label>Nombre</label><br/>
+            <input class="form-control formCnt" type="text" [(ngModel)]="subject" name="subject" required/>
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label><br/>
+            <input class="form-control formCnt" type="tel" [(ngModel)]="phone" name="phone" required/>
+          </div>
+          <div class="form-group">
+            <label>Email</label><br/>
+            <input class="form-control formCnt" type="email" [(ngModel)]="mailfrom" name="mailfrom" required/>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sd-6 col-md-6">
+          <div class="form-group">
+            <label>Mensaje</label><br/>
+            <textarea class="form-control formTxt" [(ngModel)]="message" name="message" required></textarea>
+            <div class="termsnconditions">
+              <input type="checkbox" name="condiciones" required/> <label for="condiciones">He leído y acepto los <a href="#">terminos y condiciones.</a></label>
+            </div>
+          </div>
+          <button id="sendBtn" type="submit" class="btn formBtn" block>ENVIAR <i class="ion-ios-arrow-forward"></i></button>
+        </div>
+    </div>
+  </form>
+  <script src="cordova.js"></script>
+</ion-content>
+
+<ion-footer>
+  <div class="footer">
+    <button (click)="goBack()" class="btn-footer" style="float:left; margin-left:30px;">VOLVER</button>
+    <button (click)="goCatalog()" class="btn-footer" style="float:right; margin-right:30px;">CATÁLOGO</button>
+  </div>
+</ion-footer>

@@ -1,0 +1,34 @@
+page-home {
+  ion-content{
+   background-image: url('../assets/background/DosiletApp_bg.jpg');
+   background-repeat:no-repeat;
+   background-size: cover;
+   background-position: right;
+ }
+ .title_home{
+   color: white;
+   font-family: inherit;
+   font-size: x-large;
+   padding-top: 15%;
+   padding-left: 5%;
+   text-align: center;
+ }
+.toolbar-title-md, .toolbar-title {
+ padding: 5% 12px;
+ font-size: 2rem;
+ font-weight: 500;
+ color: #424242 ;
+ text-align: center;
+}
+.footer{
+  background-color:#EB0628;
+  width:100%;
+  height:40px;
+}
+.btn-footer{
+  color:white;
+  font-size:18px;
+  background-color:transparent;
+  margin:10px;
+}
+}

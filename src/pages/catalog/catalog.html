@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar class="navbarDosilet" hideBackButton="true">
+    <div (click)="openHome()" class="div-logo-header">
+      <img style="width:90px; height:auto;" src="assets/img/logo.png" />
+    </div>
+  </ion-navbar>
+</ion-header>
+  <ion-content>
+    <ion-list>
+      <div *ngFor="let c of categories">
+        <ion-item class="item-stable"
+                   (click)="toggleDetails(c)"
+                   [ngClass]="{active: c.showDetails}">
+          {{c.title}}
+        </ion-item>
+        <ion-item class="item-accordion"
+                   *ngFor="let item of c.items"
+                   [hidden]="c.showDetails"
+                   (click)="openProduct(item.id,item.title)">
+          <ion-icon color="primary" ios="ios-add" md="md-add"></ion-icon>
+          {{item.title}}
+        </ion-item>
+      </div>
+    </ion-list>
+  </ion-content>
+
+<ion-footer>
+  <div class="footer">
+    <button (click)="goBack()" class="btn-footer" style="float:left; margin-left:30px;">VOLVER</button>
+    <button (click)="goContact()" class="btn-footer" style="float:right; margin-right:30px;">CONTACTO</button>
+  </div>
+</ion-footer>
