@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar class="navbarDosilet" hideBackButton="true">
+    <button ion-button menuToggle>
+     <ion-icon name="menu"></ion-icon>
+   </button>
+    <div (click)="openHome()" class="div-logo-header">
+      <img style="width:90px; height:auto;" src="assets/img/logo.png" />
+    </div>
+  </ion-navbar>
+</ion-header>
+<ion-navbar>
+  <ion-title>Ofertas</ion-title>
+</ion-navbar>
+
+
+<ion-content padding>
+    <ion-list *ngFor="let p of products">
+      <button type="submit" (click)="openProduct(p.id)" id="{{p.name}}"><ion-img  width="300" height="300" src="{{p.image}}"></ion-img></button>
+    </ion-list>
+</ion-content>

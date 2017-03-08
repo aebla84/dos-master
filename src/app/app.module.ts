@@ -8,6 +8,8 @@ import { ProductPage } from '../pages/product/product';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+import { CategoryPage } from '../pages/category/category';
+import { HighlightPage } from '../pages/highlight/highlight';
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -34,6 +36,8 @@ const cloudSettings: CloudSettings = {
     CatalogPage,
     ContactPage,
     ProductPage,
+    CategoryPage,
+    HighlightPage,
     HomePage,
     TabsPage
   ],
@@ -48,6 +52,8 @@ const cloudSettings: CloudSettings = {
     CatalogPage,
     ContactPage,
     ProductPage,
+    CategoryPage,
+    HighlightPage,
     HomePage,
     TabsPage
   ],
