@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Platform } from 'ionic-angular';
-import {Http} from '@angular/http';
+import {Http, Response} from '@angular/http';
 import { LoadingController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { ContactPage } from '../contact/contact';
@@ -37,10 +37,21 @@ export class ProductPage {
   pPrice: string;
   pDetails: string;
 
-  pExtras = [];
+  //Form product
+  fTitle: string;
+  fSubject: string;
+  fName: string;
+  fCompany: string;
+  fMailfrom: string;
+  fPhone: string;
+  fMessage: string;
+  url: string;
+  loading: boolean;
+
+  /*pExtras = [];
   pELabel: string;
   pEReference: string;
-  pEPrice: string;
+  pEPrice: string;*/
 
   constructor(public navCtrl: NavController, private http: Http, public params: NavParams, public loadingCtrl: LoadingController, public platform: Platform) {
     let loader = this.loadingCtrl.create({
@@ -49,6 +60,7 @@ export class ProductPage {
     });
 
     this.info = "Características técnicas y PVP";
+    this.fTitle = "Solicitar presupuesto";
     loader.present();
     this.dataTaxonomyUrl = 'http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/get_taxonomy_data_bycategory?idcategory=' + params.get("idCategory");
     this.dataProductUrl = 'http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/get_products_bycategory?idcategory=' + params.get("idCategory");
@@ -104,6 +116,32 @@ export class ProductPage {
         }
         console.log(this.products);
       });
+  }
+
+  send(): void {
+    this.fName = this.fName;
+    this.fCompany = this.fCompany;
+    this.fMailfrom = this.fMailfrom;
+    this.fPhone = this.fPhone;
+    this.fMessage = this.fMessage;
+    this.url = 'http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/sendmail';
+    var data = new FormData();
+    data.append('fName', 'Nuevo mensaje de ' + this.fName);
+    data.append('fMessage', this.fMessage);
+    data.append('fMailto', 'ocoll@deideasmarketing.com');
+    data.append('fMailfrom', this.fMailfrom);
+    data.append('fPhone', this.fPhone);
+    data.append('fName', this.fName);
+    this.loading = true;
+    this.http.post(this.url, data)
+      .subscribe((res: Response) => {
+        data = res.json();
+        this.loading = false;
+      });
+
+    this.platform.ready().then(() => {
+      window.plugins.toast.show("Tu mensaje ha sido enviado. Gracias.", "short", "center");
+    });
   }
 
   openCatalogPDF() {

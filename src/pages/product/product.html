@@ -25,69 +25,87 @@
               <div class="desc" [innerHtml]="description"></div>
               <div class="desc2">
                 <h2>{{info}}</h2>
-                <ion-list>
-                     <ion-item-group *ngFor="let p of products" class="ionItems">
-                      <ion-item>
-                        <ion-label class="name">Referencia</ion-label>
-                        <ion-label class="data">{{p.pReference}}</ion-label>
-                      </ion-item>
-                      <ion-item>
-                        <ion-label class="name">Eléc/Gas</ion-label>
-                        <ion-label class="dataType">{{p.pType}}</ion-label>
-                      </ion-item>
-                      <ion-item>
-                        <ion-label class="name">mm</ion-label>
-                        <ion-label class="data">{{p.pDimensions}}</ion-label>
-                      </ion-item>
-                      <ion-item>
-                        <ion-label class="name">Ancho Banda</ion-label>
-                        <ion-label class="data">{{p.pConveyorWidth}}</ion-label>
-                      </ion-item>
-                      <ion-item>
-                        <ion-label class="name">Largo Banda</ion-label>
-                        <ion-label class="data">{{p.pConveyorLenght}}</ion-label>
-                      </ion-item>
-                      <ion-item>
-                        <ion-label class="name">h Boca Entrada</ion-label>
-                        <ion-label class="data">{{p.pConveyorEntry}}</ion-label>
-                      </ion-item>
-                      <ion-item>
-                        <ion-label class="name">m&#179;</ion-label>
-                        <ion-label class="data">{{p.pVolume}}</ion-label>
-                      </ion-item>
-                      <ion-item>
-                        <ion-label class="name">Kg</ion-label>
-                        <ion-label class="data">{{p.pWeight}}</ion-label>
-                      </ion-item>
-                      <ion-item>
-                        <ion-label class="name">kW</ion-label>
-                        <ion-label class="data">{{p.pPower}}</ion-label>
-                      </ion-item>
-                      <ion-item>
-                        <ion-label class="name">V*</ion-label>
-                        <ion-label class="data">{{p.pVoltage}}</ion-label>
-                      </ion-item>
-                      <ion-item>
-                        <ion-label class="name">Hz</ion-label>
-                        <ion-label class="data">{{p.pFrequency}}</ion-label>
-                      </ion-item>
-                      <ion-item>
-                        <ion-label class="name">PVP</ion-label>
-                        <ion-label class="data">{{p.pPrice}}</ion-label>
-                      </ion-item>
-                      <ion-item>
-                        <ion-label class="name">Observaciones</ion-label>
-                        <ion-label class="data">{{p.pDetails}}</ion-label>
-                      </ion-item>
-                      <ion-item detail-push>
-                        <ion-label class="nameExtra">
-                          Extras
-                        </ion-label>
-                      </ion-item>
-                   </ion-item-group>
+                <ion-list *ngFor="let p of products" class="colorHover">
+                  <ion-item>
+                    <ion-label class="name">Referencia</ion-label>
+                    <ion-label class="data">{{p.pReference}}</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label class="name">Eléc/Gas</ion-label>
+                    <ion-label class="dataType">{{p.pType}}</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label class="name">mm</ion-label>
+                    <ion-label class="data">{{p.pDimensions}}</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label class="name">Ancho Banda</ion-label>
+                    <ion-label class="data">{{p.pConveyorWidth}}</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label class="name">Largo Banda</ion-label>
+                    <ion-label class="data">{{p.pConveyorLenght}}</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label class="name">h Boca Entrada</ion-label>
+                    <ion-label class="data">{{p.pConveyorEntry}}</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label class="name">m&#179;</ion-label>
+                    <ion-label class="data">{{p.pVolume}}</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label class="name">Kg</ion-label>
+                    <ion-label class="data">{{p.pWeight}}</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label class="name">kW</ion-label>
+                    <ion-label class="data">{{p.pPower}}</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label class="name">V*</ion-label>
+                    <ion-label class="data">{{p.pVoltage}}</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label class="name">Hz</ion-label>
+                    <ion-label class="data">{{p.pFrequency}}</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label class="name">PVP</ion-label>
+                    <ion-label class="data">{{p.pPrice}}</ion-label>
+                  </ion-item>
+                  <ion-item class="nameDetails">
+                    <ion-label class="name">Observaciones</ion-label>
+                    <ion-label class="data">{{p.pDetails}}</ion-label>
+                  </ion-item>
+                  <!--ion-item detail-push>
+                    <ion-label class="nameExtra">
+                      Extras
+                    </ion-label>
+                  </ion-item-->
                 </ion-list>
                 </div>
-                <!-- <div class="desc2" [innerHtml]="description"></div> -->
+                <div class="formProductDiv">
+                  <h2>{{fTitle}}</h2>
+                  <form (ngSubmit)="send()">
+                    <ion-item>
+                      <ion-input type="text" [(ngModel)]="fName" name="fName" placeholder="Nombre"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-input type="text" [(ngModel)]="fCompany" name="fCompany" placeholder="Empresa"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-input type="phone" [(ngModel)]="fPhone" name="fPhone" placeholder="Teléfono"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-input type="email" [(ngModel)]="fMailfrom" name="fMailfrom" placeholder="Email"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-input type="text" [(ngModel)]="fMessage" name="fMessage" placeholder="Mensaje"></ion-input>
+                    </ion-item>
+                    <button ion-button type="submit" block>Enviar</button>
+                  </form>
+                </div>
   </div>
 </ion-content>
 <ion-footer>

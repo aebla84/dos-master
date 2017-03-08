@@ -36,6 +36,8 @@ page-product {
    //font-family: "avenir-light";
    }
 
+
+   //Product description
    .desc2{
    //  font-family: "sans-serif";//"avenir-light";
      font-weight: 400;
@@ -49,16 +51,22 @@ page-product {
      opacity: 0.8;
    }
 
-   .ion-label.label.label-md{
-     //TODO -> Per defecte està text-align: initial, per això no agafa els següents!
-   }
-
    .item{
-     background: white;
+     background-color: transparent;
    }
 
-   .ionItems{
-      //border: 1px solid black;
+   .colorHover{
+     margin: 0px;
+     padding-top: 0px;
+     padding-bottom: 0px;
+   }
+   .colorHover:hover, {
+      background-color: #EB0628 !important;
+
+      .name, .data, .dataType, .nameDetails{
+        color: white;
+        border: none;
+      }
    }
 
    .name {
@@ -66,22 +74,58 @@ page-product {
      color: #EB0628;
    }
 
-   .nameExtra{
+   .nameDetails{
      text-align: left;
      color: #EB0628;
      border-bottom: 1px solid black;
    }
 
    .data{
-     text-align: right;
+     text-align: right !important;
      color: black;
    }
 
    .dataType{
-     text-align: right;
+     text-align: right !important;
      color: black;
      text-transform: uppercase;
    }
+
+   //Form product
+   .formProductDiv{
+     font-weight: 400;
+     color: white;
+     padding: 10px;
+     margin: 3%;
+     font-size: 1em;
+     line-height: 1.6em;
+     background: black;
+     opacity: 0.8;
+
+     h2{
+       font-size: 1.6em;
+       margin-bottom: 10px;
+       text-align: center;
+    }
+
+    ion-item{
+      color: white;
+    }
+
+    ion-input{
+      background-color: #242528;
+      margin-top: 1%;
+    }
+
+    button{
+      margin-top: 2%;
+    }
+
+    div.item-inner{
+      box-shadow: none !important;
+      border-bottom-color: none !important;
+    }
+  }
 
    .sliders{
      //width: 480px;
@@ -91,13 +135,15 @@ page-product {
      //width: 478px;
      //height: 460px;
    }
+
  .background-cover{
-     background-size: cover;
+   background-size: cover;
    background-position: center;
    background-repeat: no-repeat;
    display: block;
    padding-top: 26%;
  }
+
  .background-contain{
   //background-size: contain;
   //background-position: center;
@@ -106,6 +152,7 @@ page-product {
   //padding-top: 26%;
          //padding-bottom: 5%;
  }
+
  .product-reference {
    position: absolute;
    left: 0;
