@@ -36,9 +36,9 @@ export class Product {
     this.details = data.details;
     this.extras = [];
 
-    Object.keys(data).forEach(name => {
-      if(name != "name"){
-        this.extras.push( new Extras(data[name]));
+    Object.keys(data).forEach(reference => {
+      if(reference != "reference"){
+        this.extras.push( new Extras(data[reference]));
       }
     });
   }

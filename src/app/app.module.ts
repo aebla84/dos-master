@@ -10,6 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { CategoryPage } from '../pages/category/category';
 import { HighlightPage } from '../pages/highlight/highlight';
+import { SettingsPage } from '../pages/settings/settings';
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -39,7 +40,8 @@ const cloudSettings: CloudSettings = {
     CategoryPage,
     HighlightPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    SettingsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -55,7 +57,8 @@ const cloudSettings: CloudSettings = {
     CategoryPage,
     HighlightPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    SettingsPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

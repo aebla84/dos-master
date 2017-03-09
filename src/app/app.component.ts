@@ -4,10 +4,12 @@ import { StatusBar } from 'ionic-native';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { HomePage } from '../pages/home/home';
+import { SettingsPage } from '../pages/settings/settings';
 import { Push, PushToken } from '@ionic/cloud-angular';
 import { LoadingController } from 'ionic-angular';
 import { ProductPage } from '../pages/product/product';
 import { ContactPage } from '../pages/contact/contact';
+declare var window;
 
 @Component({
   templateUrl: 'app.html'
@@ -29,7 +31,7 @@ export class MyApp {
   categoriesUrl: string;
   isCat: boolean;
 
-  constructor(platform: Platform, private http: Http, public push: Push, public loadingCtrl: LoadingController, public menuCtrl: MenuController ) {
+  constructor(platform: Platform, private http: Http, public push: Push, public loadingCtrl: LoadingController, public menuCtrl: MenuController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -101,19 +103,25 @@ export class MyApp {
         c.showDetails = true;
     }
   }
-    openHome() {
-      this.nav.setRoot(HomePage);
-    }
-    goBack(){
-      this.nav.pop();
-    }
-    goContact() {
-      this.nav.push(ContactPage);
-    }
-    openMenu() {
-      this.menuCtrl.open();
-    };
-
+  openHome() {
+    this.nav.setRoot(HomePage);
+  }
+  goBack() {
+    this.nav.pop();
+  }
+  goContact() {
+    this.nav.push(ContactPage);
+  }
+  openMenu() {
+    this.menuCtrl.open();
+  };
+  }
+  goSettings() {
+    this.nav.setRoot(SettingsPage);
+  }
+  call(number){
+    window.location = number;
+  }
     closeMenu() {
       this.menuCtrl.close();
     };
