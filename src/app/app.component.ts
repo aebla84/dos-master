@@ -5,7 +5,6 @@ import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { HomePage } from '../pages/home/home';
 import { Push, PushToken } from '@ionic/cloud-angular';
-import { CatalogPage } from '../pages/catalog/catalog';
 import { LoadingController } from 'ionic-angular';
 import { ProductPage } from '../pages/product/product';
 import { ContactPage } from '../pages/contact/contact';

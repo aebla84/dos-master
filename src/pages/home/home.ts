@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 import { CatalogPage } from '../catalog/catalog';
-import { ContactPage } from '../contact/contact';
-
+import { HighlightPage } from '../highlight/highlight';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -15,6 +14,6 @@ export class HomePage {
     this.navCtrl.push(CatalogPage);
   }
   goContact() {
-    this.navCtrl.push(ContactPage);
+    this.navCtrl.push(HighlightPage);
   }
 }

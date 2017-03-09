@@ -7,14 +7,17 @@
       <img style="width:90px; height:auto;" src="assets/img/logo.png" />
     </div>
   </ion-navbar>
+  <ion-navbar class="subnavbar">
+    <ion-title>Ofertas</ion-title>
+  </ion-navbar>
 </ion-header>
-<ion-navbar>
-  <ion-title>Ofertas</ion-title>
-</ion-navbar>
+
 
 
 <ion-content padding>
     <ion-list *ngFor="let p of products">
-      <button type="submit" (click)="openProduct(p.id)" id="{{p.name}}"><ion-img  width="300" height="300" src="{{p.image}}"></ion-img></button>
+      <div class="single-product">
+        <button type="submit" (click)="openProduct(p.id)" id="{{p.name}}"><div  [ngStyle]="{'background-image': 'url(' + p.image + ')'}"></div></button>
+    </div>
     </ion-list>
 </ion-content>
