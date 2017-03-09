@@ -1,3 +1,14 @@
+<ion-header>
+  <ion-navbar class="navbarDosilet">
+    <button ion-button menuToggle>
+<ion-icon name="menu"></ion-icon>
+</button>
+    <div (click)="openHome()" class="div-logo-header">
+      <img style="width:90px; height:auto;" src="assets/img/logo.png" />
+    </div>
+  </ion-navbar>
+</ion-header>
+
 <ion-menu [content]="content" (ionOpen)="openMenu()" (ionClose)="closeMenu()">
   <ion-content>
     <ion-navbar>
@@ -25,4 +36,20 @@
   </ion-content>
 </ion-menu>
 
+<ion-footer>
+  <div class="tabs">
+    <button ion-button icon-only class="tab" (click)="openHome()">
+    <ion-icon name="home"></ion-icon>
+  </button>
+    <button ion-button icon-only class="tab" (click)="goHighlight()">
+    <ion-icon name="alert"></ion-icon>
+  </button>
+    <button ion-button icon-only class="tab" (click)="goContact()">
+    <ion-icon name="mail"></ion-icon>
+  </button>
+  <button ion-button icon-only class="tab" (click)="call('tel:+34699138977')">
+  <ion-icon name="call"></ion-icon>
+</button>
+  </div>
+</ion-footer>
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
