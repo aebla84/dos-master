@@ -8,8 +8,9 @@ export class Extras {
   subextras: Array<Subextras>
 
   constructor(data: { label: string }) {
-    this.label = data.label;
+    this.label = (data.label != null ) ? data.label :"";
     this.subextras = [];
+
 
     Object.keys(data).forEach(label => {
       if(label != "label"){

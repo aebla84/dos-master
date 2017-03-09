@@ -17,9 +17,13 @@ export class Product {
   frequency: string;
   price: string;
   details: string;
+  count_extras: number;
   extras: Array<Extras>
-
-  constructor(data: { idproduct: number } & {reference: string} & {type: string} & {dimensions: string} & { conveyor_width: string } & {conveyor_length: string} & {conveyor_entry: string} & {volume: string} & {weight: string} & {power: string} & {voltage: string} & {frequency: string} & {price: string} & {details: string}) {
+  contador = 0;
+  constructor(data: { idproduct: number } & {reference: string} & {type: string} & {dimensions: string} & { conveyor_width: string } & {conveyor_length: string} &
+                    { conveyor_entry: string} & {volume: string} & {weight: string} & {power: string} &
+                    { voltage: string} & {frequency: string} & {price: string} & {details: string} & {count_extras: number})
+    {
     this.idproduct = data.idproduct;
     this.reference = data.reference;
     this.type = data.type;
@@ -34,12 +38,25 @@ export class Product {
     this.frequency = data.frequency;
     this.price = data.price;
     this.details = data.details;
+    this.count_extras = data.count_extras;
     this.extras = [];
 
-    Object.keys(data).forEach(reference => {
-      if(reference != "reference"){
-        this.extras.push( new Extras(data[reference]));
-      }
-    });
+
+    //console.log(data.extras.length );
+    if(  this.count_extras  > 0)
+    {
+      console.log( this.count_extras );
+      Object.keys(data).forEach(reference => {
+        if(reference != "reference"){
+          this.extras.push( new Extras(data[reference]));
+        }
+      });
+    }
+    else
+    {
+      this.contador++;
+      console.log(this.contador);
+    }
+
   }
 }

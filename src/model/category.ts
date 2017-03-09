@@ -34,19 +34,25 @@ export class Category {
 
     this.products = [];
 
-        Object.keys(data).forEach(name => {
-          if(name != "name"){
-            this.products.push( new Product(data[name]));
-          }
-        });
+    if(data.count > 0)
+    {
+      Object.keys(data).forEach(name => {
+        if(name != "name"){
+          this.products.push( new Product(data[name]));
+        }
+      });
+    }
 
     this.subcategories = [];
     this.showSubcategories = true;
 
-    Object.keys(data).forEach(name => {
-      if(name != "name"){
-        this.subcategories.push( new Subcategory(data[name]));
-      }
-    });
+    if(data.parent != 0)
+    {
+      Object.keys(data).forEach(name => {
+        if(name != "name"){
+          this.subcategories.push( new Subcategory(data[name]));
+        }
+      });
+    }
   }
 }
