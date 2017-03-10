@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../model/product';
-// import { Subcategory } from '../model/subcategory';
+import { Subcategory } from '../model/subcategory';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class Category {
@@ -14,8 +15,8 @@ export class Category {
   term_id: number;
   products: Array<Product>
 
-  // subcategories: Array<Subcategory>
-  // showSubcategories: Boolean;
+  subcategories: Array<Subcategory>
+  showSubcategories: Boolean;
 
   constructor(data: {count_products: number } & {description: string } & { name: string } & { parent: number } & { parent_name: string } & { slug: string } & { subtitle: string } & { term_id: number }
     & { showSubcategories: Boolean } &   {products: Array<Product>} ) {
@@ -32,46 +33,21 @@ export class Category {
     this.products = [];
 
     if (data.count_products > 0) {
-      let t = data.products;
-      Object.keys(t).forEach(prod => {
-        //if (name != "name") {
-         //console.log(t);
-          this.products.push(new Product(t[prod]));
-        //}
+      let product = data.products;
+      Object.keys(product).forEach(prod => {
+          this.products.push(new Product(product[prod]));
       });
-      // for(var i = 1; i <= data.products.length; i++){
-      // {
-      //     console.log(i.products);
-      // }
     }
 
-     console.log(this.products);
+    this.subcategories = [];
+    this.showSubcategories = true;
 
-    // this.subcategories = [];
-    // this.showSubcategories = true;
-    //
-    // if (data.parent != 0) {
+    // if (data.parent == 0) {
     //   Object.keys(data).forEach(name => {
     //     if (name != "name") {
     //       this.subcategories.push(new Subcategory(data[name]));
     //     }
     //   });
     // }
-    // Object.keys(data).forEach(name => {
-    //   if (name != "name") {
-    //     if (this.count_products > 0) {
-    //       this.products.push(new Product(data[name]));
-    //     }
-    //   }
-    // });
-
-    // this.subcategories = [];
-    // this.showSubcategories = true;
-
-    // Object.keys(data).forEach(name => {
-    //   if (name != "name") {
-    //     this.subcategories.push(new Subcategory(data[name]));
-    //   }
-    // });
   }
 }
