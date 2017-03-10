@@ -1,3 +1,28 @@
 page-settings {
+  .sel-lang {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    display: inline-block !important;
+    float: right !important;
+  }
 
+  .centered-toggle {margin-left:50%;margin-right:50%;}
+
+  .toggle-icon .toggle-checked,
+  .toggle-md .toggle-checked .toggle-inner {
+    background-color: #32db64;
+  }
+
+  div {
+    display: inherit;
+  }
+
+  .information {
+    text-align: center;
+  }
+
+  ion-content {
+    color: white !important;
+  }
 }

@@ -1,33 +1,23 @@
 <ion-header>
-  <ion-navbar class="navbarDosilet">
-    <button ion-button menuToggle>
+  <ion-navbar color="primary" class="navbarDosilet">
+    <button class="menu-toggle-button" ion-button menuToggle>
 <ion-icon name="menu"></ion-icon>
 </button>
-    <div (click)="openHome()" class="div-logo-header">
-      <img style="width:90px; height:auto;" src="assets/img/logo.png" />
-    </div>
+    <img (click)="openHome()" class="logo-navbar" src="assets/img/logo.png" />
+    <button class="settings-button" ion-button (click)="goSettings()">
+<ion-icon name="settings"></ion-icon>
+</button>
   </ion-navbar>
 </ion-header>
 
 <ion-menu [content]="content" (ionOpen)="openMenu()" (ionClose)="closeMenu()">
   <ion-content>
-    <ion-navbar>
-      <button ion-button menuToggle>
-       <ion-icon name="menu"></ion-icon>
-     </button>
-      <ion-title>Catálogo</ion-title>
-    </ion-navbar>
     <ion-list>
       <div *ngFor="let c of categories">
-        <ion-item class="item-stable"
-                   (click)="toggleDetails(c)"
-                   [ngClass]="{active: c.showDetails}">
+        <ion-item class="item-stable" (click)="toggleDetails(c)" [ngClass]="{active: c.showDetails}">
           {{c.title}}
         </ion-item>
-        <ion-item class="item-accordion"
-                   *ngFor="let item of c.items"
-                   [hidden]="c.showDetails"
-                   (click)="openProduct(item.id,item.title)">
+        <ion-item class="item-accordion" *ngFor="let item of c.items" [hidden]="c.showDetails" (click)="openProduct(item.id,item.title)">
           <ion-icon color="primary" name="ios-arrow-forward"></ion-icon>
           {{item.title}}
         </ion-item>
@@ -47,7 +37,7 @@
     <button ion-button icon-only class="tab" (click)="goContact()">
     <ion-icon name="mail"></ion-icon>
   </button>
-  <button ion-button icon-only class="tab" (click)="call('tel:+34699138977')">
+    <button ion-button icon-only class="tab" (click)="call('tel:+34699138977')">
   <ion-icon name="call"></ion-icon>
 </button>
   </div>

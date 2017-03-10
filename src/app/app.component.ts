@@ -1,14 +1,16 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform,MenuController } from 'ionic-angular';
+import { Nav, Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { HomePage } from '../pages/home/home';
 import { Push, PushToken } from '@ionic/cloud-angular';
-import { CatalogPage } from '../pages/catalog/catalog';
 import { LoadingController } from 'ionic-angular';
 import { ProductPage } from '../pages/product/product';
+import { SettingsPage } from '../pages/settings/settings';
+import { HighlightPage } from '../pages/highlight/highlight';
 import { ContactPage } from '../pages/contact/contact';
+declare var window;
 
 @Component({
   templateUrl: 'app.html'
@@ -30,7 +32,7 @@ export class MyApp {
   categoriesUrl: string;
   isCat: boolean;
 
-  constructor(platform: Platform, private http: Http, public push: Push, public loadingCtrl: LoadingController, public menuCtrl: MenuController ) {
+  constructor(platform: Platform, private http: Http, public push: Push, public loadingCtrl: LoadingController, public menuCtrl: MenuController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -46,15 +48,15 @@ export class MyApp {
 
     this.push.rx.notification()
       .subscribe((msg) => {
-      // para navegar a cierta página al clicar en la notificación.
-      // this.nav.push(CatalogPage);
+        // para navegar a cierta página al clicar en la notificación.
+        // this.nav.push(CatalogPage);
         alert(msg.title + ': ' + msg.text);
       });
 
 
   }
   ionViewDidLoad() {
-  // GET al Wordpress para obtener y guardar las categorías.
+    // GET al Wordpress para obtener y guardar las categorías.
     let loader = this.loadingCtrl.create({
       content: "Cargando...",
       duration: 1500
@@ -68,19 +70,18 @@ export class MyApp {
         for (var i = 0; i < data.length; i++) {
           this.allCategories[i] = data[i];
           if (data[i].parent == 0) {
-            this.categories.push({ id: data[i].term_id, title: data[i].name, slug: data[i].slug,  items: [] , showDetails: Boolean});
+            this.categories.push({ id: data[i].term_id, title: data[i].name, slug: data[i].slug, items: [], showDetails: Boolean });
           }
         }
         for (var i = 0; i < data.length; i++) {
-              for (var j = 0; j < this.categories.length; j++) {
-                  if(data[i].parent == this.categories[j].id)
-                  {
-                    this.categories[j].items.push({id: data[i].term_id, title: data[i].name, slug: data[i].slug });
-                  }
-              }
+          for (var j = 0; j < this.categories.length; j++) {
+            if (data[i].parent == this.categories[j].id) {
+              this.categories[j].items.push({ id: data[i].term_id, title: data[i].name, slug: data[i].slug });
+            }
+          }
         }
       });
-      //console.log(this.categories);
+    //console.log(this.categories);
   }
   openProduct(id, name) {
     this.nav.push(ProductPage, {
@@ -97,25 +98,34 @@ export class MyApp {
   // }
   toggleDetails(c) {
     if (c.showDetails) {
-        c.showDetails = false;
+      c.showDetails = false;
     } else {
-        c.showDetails = true;
+      c.showDetails = true;
     }
   }
-    openHome() {
-      this.nav.setRoot(HomePage);
-    }
-    goBack(){
-      this.nav.pop();
-    }
-    goContact() {
-      this.nav.push(ContactPage);
-    }
-    openMenu() {
-      this.menuCtrl.open();
-    }
 
-    closeMenu() {
-      this.menuCtrl.close();
-    }
+  openHome() {
+    this.nav.setRoot(HomePage);
+  }
+  goBack() {
+    this.nav.pop();
+  }
+  goContact() {
+    this.nav.push(ContactPage);
+  }
+  openMenu() {
+    this.menuCtrl.open();
+  };
+  goHighlight() {
+    this.nav.setRoot(HighlightPage);
+  }
+  goSettings() {
+    this.nav.push(SettingsPage);
+  }
+  call(number) {
+    window.location = number;
+  }
+  closeMenu() {
+    this.menuCtrl.close();
+  }
 }

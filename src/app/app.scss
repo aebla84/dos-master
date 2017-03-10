@@ -54,15 +54,12 @@ ion-label.label.label-md {
 .navbarDosilet {
   text-align: center;
 }
-
-.div-logo-header {
-  display: inline;
+.logo-navbar{
+  width:90px; height:auto;
 }
-
-.div-logo-header:hover {
-  cursor: pointer;
+.logo-navbar:hover{
+  cursor:pointer
 }
-
 //tabs bar
 .tabs{
   background-color: #0F1013;
@@ -85,4 +82,24 @@ ion-label.label.label-md {
   height:100%;
   padding:14px;
   background: none;
+}
+
+.menu-toggle-button{
+  color:white;
+}
+.settings-button{
+  position:absolute;
+  right:0;
+  background:none;
+  box-shadow:none;
+  font-size:20px;
+}
+
+.menu-toggle-button:hover{
+  color:white !important;
+}
+.settings-button:hover{
+  background:none !important;
+  color:white !important;
+  box-shadow: none !important;
 }

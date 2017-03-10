@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Extras } from '../model/extras';
+// import { Extras } from '../model/extras';
 
 @Injectable()
 export class Product {
@@ -18,12 +18,11 @@ export class Product {
   price: string;
   details: string;
   count_extras: number;
-  extras: Array<Extras>
+  // extras: Array<Extras>
   contador = 0;
-  constructor(data: { idproduct: number } & {reference: string} & {type: string} & {dimensions: string} & { conveyor_width: string } & {conveyor_length: string} &
-                    { conveyor_entry: string} & {volume: string} & {weight: string} & {power: string} &
-                    { voltage: string} & {frequency: string} & {price: string} & {details: string} & {count_extras: number})
-    {
+  constructor(data: { idproduct: number } & { reference: string } & { type: string } & { dimensions: string } &  { conveyor_width: string } & { conveyor_length: string } &
+    { conveyor_entry: string } & { volume: string } & { weight: string } & { power: string } &
+    { voltage: string } & { frequency: string } & { price: string } & { details: string } & { count_extras: number }) {
     this.idproduct = data.idproduct;
     this.reference = data.reference;
     this.type = data.type;
@@ -39,24 +38,21 @@ export class Product {
     this.price = data.price;
     this.details = data.details;
     this.count_extras = data.count_extras;
-    this.extras = [];
+    // this.extras = [];
 
 
     //console.log(data.extras.length );
-    if(  this.count_extras  > 0)
-    {
-      console.log( this.count_extras );
-      Object.keys(data).forEach(reference => {
-        if(reference != "reference"){
-          this.extras.push( new Extras(data[reference]));
-        }
-      });
-    }
-    else
-    {
-      this.contador++;
-      console.log(this.contador);
-    }
-
+    // if (this.count_extras > 0) {
+    //   console.log(this.count_extras);
+    //   Object.keys(data).forEach(reference => {
+    //     if (reference != "reference") {
+    //       this.extras.push(new Extras(data[reference]));
+    //     }
+    //   });
+    // }
+    // else {
+    //   this.contador++;
+    //   console.log(this.contador);
+    // }
   }
 }

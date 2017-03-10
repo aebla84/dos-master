@@ -1,21 +1,20 @@
-import { Injectable } from '@angular/core';
-import { Subextras } from '../model/subextras';
-
-@Injectable()
-export class Extras {
-
-  label: string;
-  subextras: Array<Subextras>
-
-  constructor(data: { label: string }) {
-    this.label = (data.label != null ) ? data.label :"";
-    this.subextras = [];
-
-
-    Object.keys(data).forEach(label => {
-      if(label != "label"){
-        this.subextras.push( new Subextras(data[label]));
-      }
-    });
-  }
-}
+// import { Injectable } from '@angular/core';
+// import { ExtraID } from '../model/extra_id';
+//
+// @Injectable()
+// export class Extras {
+//
+//   id: number;
+//   extra_id: Array<ExtraID>;
+//
+//   constructor(data: { id: number }) {
+//     this.id = data.id;
+//     this.extra_id = [];
+//
+//     Object.keys(data).forEach(id => {
+//       if(id != "id"){
+//         this.extra_id.push( new ExtraID(data[id]));
+//       }
+//     });
+//   }
+// }
