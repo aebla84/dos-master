@@ -29,11 +29,11 @@ export class Subcategory {
     this.products = [];
     this.showProducts = true;
 
-    // if (data.count_products > 0) {
-    //   let product = data.products;
-    //   Object.keys(product).forEach(prod => {
-    //       this.products.push(new Product(product[prod]));
-    //   });
-    // }
+    if (data.count_products > 0) {
+      let product = data.products;
+      Object.keys(product).forEach(prod => {
+          this.products.push(new Product(product[prod]));
+      });
+    }
   }
 }

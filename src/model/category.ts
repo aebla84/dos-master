@@ -30,24 +30,7 @@ export class Category {
     this.subtitle = data.subtitle;
     this.term_id = data.term_id;
 
-    this.products = [];
-
-    if (data.count_products > 0) {
-      let product = data.products;
-      Object.keys(product).forEach(prod => {
-          this.products.push(new Product(product[prod]));
-      });
-    }
-
     this.subcategories = [];
     this.showSubcategories = true;
-
-    // if (data.parent == 0) {
-    //   Object.keys(data).forEach(name => {
-    //     if (name != "name") {
-    //       this.subcategories.push(new Subcategory(data[name]));
-    //     }
-    //   });
-    // }
   }
 }
