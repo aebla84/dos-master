@@ -17,7 +17,8 @@ export class Category {
   // subcategories: Array<Subcategory>
   // showSubcategories: Boolean;
 
-  constructor(data: {count_products: number } & {description: string } & { name: string } & { parent: number } & { parent_name: string } & { slug: string } & { subtitle: string } & { term_id: number } & { showSubcategories: Boolean }) {
+  constructor(data: {count_products: number } & {description: string } & { name: string } & { parent: number } & { parent_name: string } & { slug: string } & { subtitle: string } & { term_id: number }
+    & { showSubcategories: Boolean } &   {products: Array<Product>} ) {
 
     this.count_products = data.count_products;
     this.description = data.description;
@@ -31,12 +32,20 @@ export class Category {
     this.products = [];
 
     if (data.count_products > 0) {
-      Object.keys(data).forEach(name => {
-        if (name != "name") {
-          this.products.push(new Product(data[name]));
-        }
+      let t = data.products;
+      Object.keys(t).forEach(prod => {
+        //if (name != "name") {
+         //console.log(t);
+          this.products.push(new Product(t[prod]));
+        //}
       });
+      // for(var i = 1; i <= data.products.length; i++){
+      // {
+      //     console.log(i.products);
+      // }
     }
+
+     console.log(this.products);
 
     // this.subcategories = [];
     // this.showSubcategories = true;
