@@ -3,22 +3,23 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class Product {
+  conveyor_entry: string;
+  conveyor_length: string;
+  conveyor_width: string;
+  count_extras: number;
+  details: string;
+  dimensions: string;
+  frequency: string;
   idproduct: number;
   reference: string;
   type: string;
-  dimensions: string;
-  conveyor_width: string;
-  conveyor_length: string;
-  conveyor_entry: string;
   volume: string;
   weight: string;
   power: string;
-  voltage: string;
-  frequency: string;
   price: string;
-  details: string;
-  count_extras: number;
+  voltage: string;
   // extras: Array<Extras>
+
   contador = 0;
   constructor(data: { idproduct: number } & { reference: string } & { type: string } & { dimensions: string } &  { conveyor_width: string } & { conveyor_length: string } &
     { conveyor_entry: string } & { volume: string } & { weight: string } & { power: string } &

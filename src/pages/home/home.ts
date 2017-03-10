@@ -20,7 +20,7 @@ import { Category } from '../../model/category';
 //   [id: number]: ExtraID;
 // }
 
-interface Product{
+interface Product {
   idproduct: number;
   reference: string;
   type: string;
@@ -40,7 +40,7 @@ interface Product{
 }
 
 type ServerResponse = {
-  [reference: string]: { [reference: string]: Product; } & { reference: string };
+  [name: string]: { [name: string]: Product; } & { name: string };
 }
 
 @Component({
@@ -58,7 +58,7 @@ export class HomePage {
     this.globals.getCatalog().subscribe(
       data => {
         console.log(data);
-        
+
         this.categories = new Array<Category>();
         Object.keys(data).forEach(name => {
           this.categories.push(new Category(data[name]));
