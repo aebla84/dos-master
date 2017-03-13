@@ -10,14 +10,14 @@
   </ion-navbar>
 </ion-header>
 
-<ion-menu [content]="content" (ionOpen)="openMenu()" (ionClose)="closeMenu()">
+<ion-menu [content]="content">
   <ion-content>
     <ion-list>
       <div *ngFor="let c of category">
         <ion-item class="item-stable" (click)="toggleDetails(c)" [ngClass]="{active: c.showDetails}">
           {{c.name}}
         </ion-item>
-        <ion-item class="item-accordion" *ngFor="let sc of c.subcategories" [hidden]="c.showDetails" (click)="openProduct(sc.term_id,sc.name)">
+        <ion-item menuClose class="item-accordion" *ngFor="let sc of c.subcategories" [hidden]="c.showDetails" (click)="openProduct(sc.term_id,sc.name)">
           <ion-icon color="primary" name="ios-arrow-forward"></ion-icon>
           {{sc.name}}
         </ion-item>
@@ -29,16 +29,16 @@
 <ion-footer>
   <div class="tabs">
     <button ion-button icon-only class="tab" (click)="openHome()">
-    <ion-icon name="home"></ion-icon>
+        <img class="tab-icon" src="assets/icon/icono_1.png" />
   </button>
     <button ion-button icon-only class="tab" (click)="goHighlight()">
-    <ion-icon name="alert"></ion-icon>
+      <img class="tab-icon" src="assets/icon/icono_2.png" />
   </button>
     <button ion-button icon-only class="tab" (click)="goContact()">
-    <ion-icon name="mail"></ion-icon>
+      <img class="tab-icon" src="assets/icon/icono_3.png" />
   </button>
-    <button ion-button icon-only class="tab" (click)="call('tel:+34699138977')">
-  <ion-icon name="call"></ion-icon>
+    <button ion-button icon-only class="tab" (click)="confirmCall('tel:+34699138977')">
+      <img class="tab-icon" src="assets/icon/icono_4.png" />
 </button>
   </div>
 </ion-footer>

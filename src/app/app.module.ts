@@ -1,20 +1,18 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
-import { CatalogPage } from '../pages/catalog/catalog';
 import { ContactPage } from '../pages/contact/contact';
 import { ProductPage } from '../pages/product/product';
 import { HomePage } from '../pages/home/home';
+import { CategoryPage } from '../pages/category/category';
 import { TabsPage } from '../pages/tabs/tabs';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
-import { CategoryPage } from '../pages/category/category';
 import { HighlightPage } from '../pages/highlight/highlight';
 import { SettingsPage } from '../pages/settings/settings';
 
 const cloudSettings: CloudSettings = {
   'core': {
-    'app_id': '28c07576'
+    'app_id': 'f7269dff'
   },
   'push': {
     'sender_id': '523148085242',
@@ -33,15 +31,13 @@ const cloudSettings: CloudSettings = {
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    CatalogPage,
     ContactPage,
     ProductPage,
-    CategoryPage,
     HighlightPage,
     HomePage,
     TabsPage,
-    SettingsPage
+    SettingsPage,
+    CategoryPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -50,15 +46,13 @@ const cloudSettings: CloudSettings = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    CatalogPage,
     ContactPage,
     ProductPage,
-    CategoryPage,
     HighlightPage,
     HomePage,
     TabsPage,
-    SettingsPage
+    SettingsPage,
+    CategoryPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

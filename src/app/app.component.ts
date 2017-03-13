@@ -5,13 +5,14 @@ import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { HomePage } from '../pages/home/home';
 import { Push, PushToken } from '@ionic/cloud-angular';
-import { ProductPage } from '../pages/product/product';
+import { CategoryPage } from '../pages/category/category';
 import { SettingsPage } from '../pages/settings/settings';
 import { HighlightPage } from '../pages/highlight/highlight';
 import { ContactPage } from '../pages/contact/contact';
 import { Subcategory } from '../model/subcategory';
 import { Category } from '../model/category';
 import { Globals } from '../providers/globals';
+import { AlertController } from 'ionic-angular';
 
 declare var window;
 
@@ -38,7 +39,7 @@ export class MyApp {
   categoriesUrl: string;
   isCat: boolean;
 
-  constructor(platform: Platform, private http: Http, public push: Push, public menuCtrl: MenuController, public globals: Globals) {
+  constructor(platform: Platform, private http: Http, public push: Push, public menuCtrl: MenuController, public globals: Globals, private alertCtrl: AlertController) {
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -62,7 +63,7 @@ export class MyApp {
   }
 
   openProduct(id, name) {
-    this.nav.push(ProductPage, {
+    this.nav.push(CategoryPage, {
       idCategory: id,
       nameCategory: name
     });
@@ -108,6 +109,30 @@ export class MyApp {
     );
   }
 
+  confirmCall(number) {
+    let alert = this.alertCtrl.create({
+      title: 'Confirmar llamada',
+      message: '¿Estás seguro de llamar por teléfono a Dosilet?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Llamar',
+          handler: () => {
+            window.location = number;
+            console.log('Call clicked');
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
   openHome() {
     this.nav.setRoot(HomePage);
   }
@@ -125,9 +150,6 @@ export class MyApp {
   }
   goSettings() {
     this.nav.push(SettingsPage);
-  }
-  call(number) {
-    window.location = number;
   }
   closeMenu() {
     this.menuCtrl.close();
