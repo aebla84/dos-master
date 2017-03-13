@@ -14,12 +14,11 @@ export class Category {
   subtitle: string;
   term_id: number;
   products: Array<Product>
-
+  showDetails: Boolean;
   subcategories: Array<Subcategory>
-  showSubcategories: Boolean;
 
   constructor(data: {count_products: number } & {description: string } & { name: string } & { parent: number } & { parent_name: string } & { slug: string } & { subtitle: string } & { term_id: number }
-    & { showSubcategories: Boolean } &   {products: Array<Product>} ) {
+    & {products: Array<Product>} & {showDetails: Boolean} ) {
 
     this.count_products = data.count_products;
     this.description = data.description;
@@ -29,8 +28,7 @@ export class Category {
     this.slug = data.slug;
     this.subtitle = data.subtitle;
     this.term_id = data.term_id;
-
+    this.showDetails = true;
     this.subcategories = [];
-    this.showSubcategories = true;
   }
 }

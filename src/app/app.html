@@ -13,13 +13,13 @@
 <ion-menu [content]="content" (ionOpen)="openMenu()" (ionClose)="closeMenu()">
   <ion-content>
     <ion-list>
-      <div *ngFor="let c of categories">
+      <div *ngFor="let c of category">
         <ion-item class="item-stable" (click)="toggleDetails(c)" [ngClass]="{active: c.showDetails}">
-          {{c.title}}
+          {{c.name}}
         </ion-item>
-        <ion-item class="item-accordion" *ngFor="let item of c.items" [hidden]="c.showDetails" (click)="openProduct(item.id,item.title)">
+        <ion-item class="item-accordion" *ngFor="let sc of c.subcategories" [hidden]="c.showDetails" (click)="openProduct(sc.term_id,sc.name)">
           <ion-icon color="primary" name="ios-arrow-forward"></ion-icon>
-          {{item.title}}
+          {{sc.name}}
         </ion-item>
       </div>
     </ion-list>

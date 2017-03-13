@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {Http, Response} from "@angular/http";
-import { NavController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 import { Push, PushToken } from '@ionic/cloud-angular';
 import { Toast } from 'ionic-native';
@@ -9,7 +8,7 @@ import { Toast } from 'ionic-native';
 export class Globals {
   notification: Boolean;
 
-  constructor(public push: Push, public navCtrl: NavController, private http: Http) {
+  constructor(public push: Push, private http: Http) {
     this.http = http;
   }
 

@@ -12,10 +12,9 @@ export class Subcategory {
   subtitle: string;
   term_id: number;
   products: Array<Product>
-  showProducts: Boolean;
 
   constructor(data: {count_products: number } & {description: string } & { name: string } & { parent: number } & { parent_name: string } & { slug: string } & { subtitle: string } & { term_id: number }
-    & { showProducts: Boolean } &   {products: Array<Product>} ) {
+    & {products: Array<Product>} ) {
 
     this.count_products = data.count_products;
     this.description = data.description;
@@ -27,7 +26,6 @@ export class Subcategory {
     this.term_id = data.term_id;
 
     this.products = [];
-    this.showProducts = true;
 
     if (data.count_products > 0) {
       let product = data.products;
