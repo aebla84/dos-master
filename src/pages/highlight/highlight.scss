@@ -15,4 +15,50 @@ page-highlight {
   width: 100%;
   margin-right: 0;
   }
+  .divImage{
+    height: 100%;
+    width: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .btnImage{
+    border: 1px solid #EB0628;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    background-color: #EB0628;
+  }
+  .dms-template-products .products-container .single-product {
+    width: calc( 100% / 3 - 20px);
+    border: 1px solid #EB0628;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    background-color: #EB0628;
+    -webkit-transition: all 0.15s ease-out 0s;
+    -moz-transition: all 0.15s ease-out 0s;
+    transition: all 0.15s ease-out 0s;
+}
+
+  @media (max-width: 767px){
+    .dms-template-products .products-container .single-product {
+        width: 100%;
+        margin-right: 0;
+    }
+  }
+
+
+  .dms-template-products .products-container .single-product .product-title {
+    padding: 20px;
+    color: #fff;
+    border-top: 1px solid #EB0628;
+    text-align: center;
+    font-size: 1em;
+    line-height: 1.2em;
+    -webkit-transition: all 0.15s ease-out 0s;
+    -moz-transition: all 0.15s ease-out 0s;
+    transition: all 0.15s ease-out 0s;
+}
 }

@@ -66,9 +66,14 @@ export class MyApp {
   }
 
   openProduct(id, name) {
+    console.log(this.subcategory);
+    console.log(id);
+    this.subCategories = this.subcategory.find(cat => cat.term_id === id);
+    console.log(this.subCategories);
     this.nav.push(CategoryPage, {
       idCategory: id,
-      nameCategory: name
+      nameCategory: name,
+      categories:this.subCategories
     });
   }
 

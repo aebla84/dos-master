@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {Http} from '@angular/http';
-import { ProductPage } from '../product/product';
+import { Product2Page } from '../product2/product2';
 import { Globals } from '../../providers/globals';
 import { LoadingController } from 'ionic-angular';
 
@@ -62,7 +62,10 @@ export class HighlightPage {
           && data[i].image.sizes.medium != "undefined") ? data[i].image.sizes.medium : "";
 
         this.products.push({
-          id: data[i].idproduct, image: this.image, name: data[i].product['post_title'], description: data[i].description, reference: data[i].reference,
+          id: data[i].idproduct,
+          image: this.image,
+          name: data[i].product['post_title'],
+          description: data[i].description, reference: data[i].reference,
           type: data[i].type, dimensions: data[i].dimensions, conveyor_width: data[i].conveyor_width, conveyor_length: data[i].conveyor_length,
           conveyor_entry: data[i].conveyor_entry, volume: data[i].volume, weight: data[i].weight, power: data[i].power, voltage: data[i].voltage,
           frequency: data[i].frequency, price: data[i].price, details: data[i].details, extras: data[i].extras
@@ -76,7 +79,7 @@ export class HighlightPage {
   }
 
   openProduct(idselected) {
-    this.navCtrl.push(ProductPage, {
+    this.navCtrl.push(Product2Page, {
       product: this.products.filter((item => { return (item.id == idselected); }))
     });
   }
