@@ -1,11 +1,9 @@
 <ion-content padding>
-  <div class="information">
-     <h1>{{ status }}</h1>
-     <h4>{{ description }}</h4>
+  <div class="info-toggle">
+    <h1>{{ status }}</h1>
+    <h4>{{ description }}</h4>
   </div>
-  <div class="centered-toggle">
-  <div class="toggle-icon toggle-checked">
+  <div class="notification-toggle">
     <ion-toggle [(ngModel)]="globals.notification" (ionChange)="toggleNotification($event)"></ion-toggle>
   </div>
-</div>
 </ion-content>

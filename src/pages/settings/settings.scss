@@ -7,7 +7,10 @@ page-settings {
     float: right !important;
   }
 
-  .centered-toggle {margin-left:50%;margin-right:50%;}
+  .centered-toggle {
+    margin-left: 50%;
+    margin-right: 50%;
+  }
 
   .toggle-icon .toggle-checked,
   .toggle-md .toggle-checked .toggle-inner {
@@ -24,5 +27,15 @@ page-settings {
 
   ion-content {
     color: white !important;
+  }
+
+  .info-toggle{
+    margin-top:180px;
+    text-align:center;
+  }
+  .notification-toggle {
+      position: fixed;
+      top: 45%;
+      left: 50%;
   }
 }

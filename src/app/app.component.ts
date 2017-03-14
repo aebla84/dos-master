@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, MenuController } from 'ionic-angular';
-import { StatusBar } from 'ionic-native';
+import { StatusBar, Splashscreen } from 'ionic-native';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { HomePage } from '../pages/home/home';
@@ -42,10 +42,12 @@ export class MyApp {
   constructor(platform: Platform, private http: Http, public push: Push, public menuCtrl: MenuController, public globals: Globals, private alertCtrl: AlertController) {
 
     platform.ready().then(() => {
+      Splashscreen.show();
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.getCatalog();
       StatusBar.styleDefault();
+      this.getCatalog();
+      this.globals.notification = true;
     });
 
     this.push.register().then((t: PushToken) => {
@@ -103,6 +105,7 @@ export class MyApp {
             }
           }
         }
+        Splashscreen.hide();
         console.log(this.category);
       },
       err => { console.log(err) }

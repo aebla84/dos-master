@@ -6,7 +6,7 @@ import { Toast } from 'ionic-native';
 
 @Injectable()
 export class Globals {
-  notification: Boolean;
+notification: Boolean;
 
   constructor(public push: Push, private http: Http) {
     this.http = http;
@@ -50,7 +50,6 @@ export class Globals {
 
   //Activar notificaciones.
   registerNotifications() {
-    this.notification = true;
     this.push.register().then((t: PushToken) => {
       return this.push.saveToken(t);
     }).then((t: PushToken) => {
@@ -66,7 +65,6 @@ export class Globals {
 
   //Desactivar notificaciones.
   unregisterNotifications() {
-    this.notification = false;
     this.push.unregister();
     Toast.show('Notificaciones desactivadas', '5000', 'center').subscribe(
       toast => {
