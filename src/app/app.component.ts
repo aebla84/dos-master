@@ -47,8 +47,9 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       this.getCatalog();
-      this.globals.notification = true;
     });
+
+    console.log();
 
     this.push.register().then((t: PushToken) => {
       return this.push.saveToken(t);

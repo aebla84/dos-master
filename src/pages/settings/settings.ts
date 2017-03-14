@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Globals } from '../../providers/globals';
 
-
 @Component({
   selector: 'page-settings',
   providers: [Globals],
@@ -13,27 +12,37 @@ export class SettingsPage {
   description: string;
 
   constructor(public globals: Globals, public navCtrl: NavController, public navParams: NavParams) {
-    this.notificationStatus();
+    this.checkStatus();
   }
-  notificationStatus(){
-    if(this.globals.notification){
+
+  checkStatus(){
+    console.log(this.globals.notification);
+    if (this.globals.notification == undefined || this.globals.notification == true) {
+      //this.globals.registerNotifications();
+      this.globals.notification = true;
       this.status = "ACTIVADO";
       this.description = "Recibirá todas las notificaciones de las promociones.";
-    } else {
+    }
+    else {
+      //this.globals.unregisterNotifications();
+      this.globals.notification = false;
       this.status = "DESACTIVADAS";
       this.description = "No recibirá ninguna notificación de las promociones.";
     }
   }
+
   toggleNotification(e) {
     if (e.checked) {
+      //this.globals.registerNotifications();
       this.globals.notification = true;
-      this.globals.registerNotifications();
-      this.notificationStatus();
+      this.status = "ACTIVADO";
+      this.description = "Recibirá todas las notificaciones de las promociones.";
     }
     else {
+      //this.globals.unregisterNotifications();
       this.globals.notification = false;
-      this.globals.unregisterNotifications();
-      this.notificationStatus();
+      this.status = "DESACTIVADAS";
+      this.description = "No recibirá ninguna notificación de las promociones.";
     }
   }
 }
