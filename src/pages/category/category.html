@@ -74,8 +74,8 @@
                       <ion-list *ngFor="let e of p.extras ; let idx2 = index;" >
                         <ion-item>
                               <ion-label >{{e.label}}</ion-label>
-                              <ion-label >{{e.extras[idx2].reference}}</ion-label>
-                              <ion-label >{{e.extras[idx2].price}}</ion-label>
+                              <ion-label >{{e.extras[0].reference}}</ion-label>
+                              <ion-label >{{e.extras[0].price}}</ion-label>
                         </ion-item>
                       </ion-list>
                     </div>
