@@ -39,6 +39,12 @@ export class ProductPage {
   pPrice: string;
   pDetails: string;
 
+  //Extras product
+  pELabel: string;
+  pEReference: string;
+  //Dimensions: string;
+  pEPrice: string;
+
   //Form product
   fTitle: string;
   fSubject: string;
@@ -88,6 +94,7 @@ export class ProductPage {
            && data[i].image.sizes!= "null"
            && data[i].image.sizes!= "undefined"
            && data[i].image.sizes.medium != "undefined") ? data[i].image.sizes.medium : "";
+
            this.products.push({ id: data[i].idproduct,
                                 image: this.image,
                                 name: data[i].product.post_title,
@@ -118,6 +125,9 @@ export class ProductPage {
            this.pFrequency = data[i].frequency;
            this.pPrice = data[i].price;
            this.pDetails = data[i].details;
+           this.pELabel = data[i].extras.label;
+           this.pEReference = data[i].extras.extras.reference;
+           this.pEPrice = data[i].extras.extras.price;
       }
     });
   }
@@ -139,6 +149,7 @@ export class ProductPage {
     this.loading = true;
     this.http.post(this.url, data)
       .subscribe((res: Response) => {
+        console.log(res.json);
         data = res.json();
         this.loading = false;
       });

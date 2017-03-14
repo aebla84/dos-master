@@ -29,7 +29,7 @@ export class ContactPage {
     var data = new FormData();
     data.append('subject', 'Nuevo mensaje de ' + this.subject);
     data.append('message', this.message);
-    data.append('mailto', 'jbono@deideasmarketing.com');
+    data.append('mailto', 'ocoll@deideasmarketing.com');
     data.append('mailfrom', this.mailfrom);
     data.append('phone', this.phone);
     data.append('name', this.name);
@@ -40,9 +40,9 @@ export class ContactPage {
         this.loading = false;
       });
     //document.getElementById("contactForm").reset();
-    this.platform.ready().then(() => {
+    /*this.platform.ready().then(() => {
       window.plugins.toast.show("Tu mensaje ha sido enviado. Gracias.", "short", "center");
-    });
+    });*/
   }
 
   openHome() { this.navCtrl.setRoot(HomePage); }

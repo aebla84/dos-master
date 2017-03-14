@@ -1,5 +1,6 @@
 <ion-content padding>
   <div class="dms-block-description">
+
   						<h1>{{parent_name}}</h1>
   						<h2>{{this.name}}</h2>
   						<h3>{{subtitle}}</h3>
@@ -69,13 +70,14 @@
                     <ion-label class="name">Observaciones</ion-label>
                     <ion-label class="data">{{p.details}}</ion-label>
                   </ion-item>
-                    <ion-label class="name">Extras </ion-label>
-                    <div >
+                    <ion-label class="name">Extras</ion-label>
+                    <div>
                       <ion-list *ngFor="let e of p.extras ; let idx2 = index;" >
                         <ion-item>
-                              <ion-label >{{e.label}}</ion-label>
-                              <ion-label >{{e.extras[0].reference}}</ion-label>
-                              <ion-label >{{e.extras[0].price}}</ion-label>
+                              <ion-label class="name">{{e.label}}</ion-label>
+                              <ion-label class="data">{{e.extras[0].reference}}</ion-label>
+                              <ion-label class="data">{{e.extras[0].dimensions}}</ion-label>
+                              <ion-label class="data">{{e.extras[0].price}}</ion-label>
                         </ion-item>
                       </ion-list>
                     </div>
