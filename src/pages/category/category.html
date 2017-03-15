@@ -10,14 +10,14 @@
                     <div class="product-name">
                       {{p.name}}
                     </div>
-                      <!-- <div class="product-reference"> {{p.name}}</div> -->
                   </ion-slide>
                 </ion-slides>
               </div>
               <div class="desc" [innerHtml]="description"></div>
               <div class="desc2">
                 <h2>{{info}}</h2>
-                <ion-list *ngFor="let p of products; let idx = index;" class="colorHover">
+                <ion-list *ngFor="let p of products" class="colorHover">
+ 				<ion-list-header>Características Técnicas y PVP</ion-list-header>
                   <ion-item>
                     <ion-label class="name">Referencia</ion-label>
                     <ion-label class="data">{{p.reference}}</ion-label>

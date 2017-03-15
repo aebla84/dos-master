@@ -24,151 +24,57 @@ export class ProductPage {
   subtitle: string;
   description: HTMLElement;
   image: string;
-  info: string;
-  pReference:string;
-  pType : string;
-  pDimensions: string;
-  pConveyorWidth: string;
-  pConveyorLenght: string;
-  pConveyorEntry: string;
-  pVolume: string;
-  pWeight: string;
-  pPower: string;
-  pVoltage: string;
-  pFrequency: string;
-  pPrice: string;
-  pDetails: string;
+  productShow =  this.params.get('product');
+  test2:string;
 
-  //Extras product
-  pELabel: string;
-  pEReference: string;
-  //Dimensions: string;
-  pEPrice: string;
+  reference : string;
+  type :string;
+  dimensions : string;
+  conveyor_width :string;
+  conveyor_length : string;
+  conveyor_entry :string;
+  volume : string;
+  weight :string;
+  power : string;
+  voltage : string;
+  frequency :string;
+  price : string;
+  details : string;
+  extras = [];
 
-  //Form product
-  fTitle: string;
-  fSubject: string;
-  fName: string;
-  fCompany: string;
-  fMailfrom: string;
-  fPhone: string;
-  fMessage: string;
-  url: string;
-  loading: boolean;
-  loader: any;
-  idCategory: string;
+   aux =[];
+   productextra = [];
 
-
-  constructor(public navCtrl: NavController, public globals: Globals, private http: Http, public params: NavParams, public loadingCtrl: LoadingController, public platform: Platform) {
-    this.loader = this.loadingCtrl.create({
-      spinner: 'bubbles',
-      content: "Cargando..."
-    });
-    this.loader.present();
-
-    this.info = "Características técnicas y PVP";
-    this.fTitle = "Solicitar presupuesto";
-    this.idCategory = params.get("idCategory");
-
-    this.getTaxonomyDataByCategory();
-    this.getProductByCategory();
+   extra_id : string;
+   extra_reference : string;
+   extra_price:string;
+  constructor(public navCtrl: NavController, private http: Http, public params: NavParams, public loadingCtrl: LoadingController, public platform: Platform) {
+    this.products = this.productShow;
+    this.aux = this.products[0].extras;
+    this.addextras(this.aux);
+    this.products[0].extras.extras = this.productextra;
   }
 
-  getTaxonomyDataByCategory(){
-    this.globals.getTaxonomyDataByCategory(this.idCategory).subscribe(data => {
-      this.taxonomies[0] = data[0];
-      this.parent_name = (this.taxonomies[0].parent_name != null) ? this.taxonomies[0].parent_name : "";
-      this.name = (this.taxonomies[0].name != null) ? this.taxonomies[0].name : "";
-      this.subtitle = (this.taxonomies[0].subtitle != null) ? this.taxonomies[0].subtitle : "";
-      this.description = (this.taxonomies[0].description != null) ? this.taxonomies[0].description : "";
-    });
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad Product2Page');
   }
 
-  getProductByCategory(){
-    this.globals.getProductByCategory(this.idCategory).subscribe(data => {
-      this.loader.dismiss();
-      for (var i = 0; i < data.length; i++) {
-        console.log(data[i].image);
-        this.image = (data[i].image != false    && data[i].image != null
-          && data[i].image.sizes!= null
-           && data[i].image.sizes!= "null"
-           && data[i].image.sizes!= "undefined"
-           && data[i].image.sizes.medium != "undefined") ? data[i].image.sizes.medium : "";
+    openHome() {
+      this.navCtrl.setRoot(HomePage);
+    }
+    goBack() {
+      this.navCtrl.pop();
+    }
+    goContact() {
+      this.navCtrl.push(ContactPage);
+    }
 
-           this.products.push({ id: data[i].idproduct,
-                                image: this.image,
-                                name: data[i].product.post_title,
-                                pReference : data[i].reference,
-                                pType: data[i].type,
-                                pDimensions: data[i].dimensions,
-                                pConveyorWidth: data[i].conveyor_width,
-                                pConveyorLenght: data[i].conveyor_length,
-                                pConveyorEntry: data[i].conveyor_entry,
-                                pVolume: data[i].volume,
-                                pWeight: data[i].weight,
-                                pPower: data[i].power,
-                                pVoltage: data[i].voltage,
-                                pFrequency: data[i].frequency,
-                                pPrice: data[i].price,
-                                pDetails: data[i].details})
-
-           this.pReference = data[i].reference;
-           this.pType = data[i].type;
-           this.pDimensions = data[i].dimensions;
-           this.pConveyorWidth = data[i].conveyor_width;
-           this.pConveyorLenght = data[i].conveyor_length;
-           this.pConveyorEntry = data[i].conveyor_entry;
-           this.pVolume = data[i].volume;
-           this.pWeight = data[i].weight;
-           this.pPower = data[i].power;
-           this.pVoltage = data[i].voltage;
-           this.pFrequency = data[i].frequency;
-           this.pPrice = data[i].price;
-           this.pDetails = data[i].details;
-           this.pELabel = data[i].extras.label;
-           this.pEReference = data[i].extras.extras.reference;
-           this.pEPrice = data[i].extras.extras.price;
+    addextras(aux){
+      for(var i=0; i<aux.length; i++) {
+        let t = aux[i];
+        this.productextra.push({extra_id :t.extras.id, extra_reference :t.extras.reference, extra_price :t.extras.price });
       }
-    });
-  }
+    }
 
-  send(): void {
-    this.fName = this.fName;
-    this.fCompany = this.fCompany;
-    this.fMailfrom = this.fMailfrom;
-    this.fPhone = this.fPhone;
-    this.fMessage = this.fMessage;
-    this.url = 'http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/sendmail';
-    var data = new FormData();
-    data.append('fName', 'Nuevo mensaje de ' + this.fName);
-    data.append('fMessage', this.fMessage);
-    data.append('fMailto', 'ocoll@deideasmarketing.com');
-    data.append('fMailfrom', this.fMailfrom);
-    data.append('fPhone', this.fPhone);
-    data.append('fName', this.fName);
-    this.loading = true;
-    this.http.post(this.url, data)
-      .subscribe((res: Response) => {
-        console.log(res.json);
-        data = res.json();
-        this.loading = false;
-      });
 
-    this.platform.ready().then(() => {
-      window.plugins.toast.show("Tu mensaje ha sido enviado. Gracias.", "short", "center");
-    });
-  }
-
-  openCatalogPDF() {
-    window.location.href = "http://dosilet.deideasmarketing.solutions/wp-content/uploads/2017/01/Diagrama-2-1.pdf";
-  }
-  openHome() {
-    this.navCtrl.setRoot(HomePage);
-  }
-  goBack() {
-    this.navCtrl.pop();
-  }
-  goContact() {
-    this.navCtrl.push(ContactPage);
-  }
 }

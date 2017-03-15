@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {Http} from '@angular/http';
-import { Product2Page } from '../product2/product2';
+import { ProductPage } from '../product/product';
 import { Globals } from '../../providers/globals';
 import { LoadingController } from 'ionic-angular';
 
@@ -79,7 +79,7 @@ export class HighlightPage {
   }
 
   openProduct(idselected) {
-    this.navCtrl.push(Product2Page, {
+    this.navCtrl.push(ProductPage, {
       product: this.products.filter((item => { return (item.id == idselected); }))
     });
   }
