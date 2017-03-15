@@ -20,6 +20,7 @@ export class Product {
   price: string;
   voltage: string;
   extras: Array<Extra>
+  showExtras: Boolean;
 
 
   constructor(data: { extras: Array<Extra> } & { idproduct: number } & { reference: string } & { type: string } & { dimensions: string } & { conveyor_width: string } & { conveyor_length: string } &
@@ -40,6 +41,7 @@ export class Product {
     this.price = data.price;
     this.details = data.details;
     this.count_extras = data.count_extras;
+    this.showExtras = true;
     this.extras = [];
 
     if (data.count_extras > 0) {

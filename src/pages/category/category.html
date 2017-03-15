@@ -1,9 +1,12 @@
 <ion-content padding>
+  <!-- <ion-navbar class="subnavbar">
+    <ion-title>{{parent_name}}</ion-title>
+  </ion-navbar> -->
+  <h1>{{parent_name}}</h1>
+  <h2>{{this.name}}</h2>
+  <h3>{{subtitle}}</h3>
   <div class="dms-block-description">
 
-  						<h1>{{parent_name}}</h1>
-  						<h2>{{this.name}}</h2>
-  						<h3>{{subtitle}}</h3>
               <div class="sliders">
                 <ion-slides pager="true">
                   <ion-slide zoom="true" *ngFor="let p of products" class="background-contain" [ngStyle]="{'background-image': 'url(' + p.image + ')'}" >
@@ -15,70 +18,74 @@
               </div>
               <div class="desc" [innerHtml]="description"></div>
               <div class="desc2">
-                <h2>{{info}}</h2>
+                <h4>{{info}}</h4>
                 <ion-list *ngFor="let p of products" class="colorHover">
- 				<ion-list-header>Características Técnicas y PVP</ion-list-header>
-                  <ion-item>
+ 				               <!-- <ion-list-header>Características Técnicas y PVP</ion-list-header> -->
+                  <ion-item *ngIf="p.reference != undefined ">
                     <ion-label class="name">Referencia</ion-label>
                     <ion-label class="data">{{p.reference}}</ion-label>
                   </ion-item>
-                  <ion-item>
+                  <ion-item *ngIf="p.type != undefined ">
                     <ion-label class="name">Eléc/Gas</ion-label>
                     <ion-label class="dataType">{{p.type}}</ion-label>
                   </ion-item>
-                  <ion-item>
+                  <ion-item *ngIf="p.dimensions != undefined ">
                     <ion-label class="name">mm</ion-label>
                     <ion-label class="data">{{p.dimensions}}</ion-label>
                   </ion-item>
-                  <ion-item>
+                  <ion-item *ngIf="p.conveyor_width != undefined ">
                     <ion-label class="name">Ancho Banda</ion-label>
                     <ion-label class="data">{{p.conveyor_width}}</ion-label>
                   </ion-item>
-                  <ion-item>
+                  <ion-item *ngIf="p.conveyor_length != undefined ">
                     <ion-label class="name">Largo Banda</ion-label>
                     <ion-label class="data">{{p.conveyor_length}}</ion-label>
                   </ion-item>
-                  <ion-item>
+                  <ion-item *ngIf="p.conveyor_entry != undefined ">
                     <ion-label class="name">h Boca Entrada</ion-label>
                     <ion-label class="data">{{p.conveyor_entry}}</ion-label>
                   </ion-item>
-                  <ion-item>
+                  <ion-item *ngIf="p.volume != undefined ">>
                     <ion-label class="name">m&#179;</ion-label>
                     <ion-label class="data">{{p.volume}}</ion-label>
                   </ion-item>
-                  <ion-item>
+                  <ion-item *ngIf="p.weight != undefined ">>
                     <ion-label class="name">Kg</ion-label>
                     <ion-label class="data">{{p.weight}}</ion-label>
                   </ion-item>
-                  <ion-item>
+                  <ion-item *ngIf="p.power != undefined ">>
                     <ion-label class="name">kW</ion-label>
                     <ion-label class="data">{{p.power}}</ion-label>
                   </ion-item>
-                  <ion-item>
+                  <ion-item *ngIf="p.voltage != undefined ">>
                     <ion-label class="name">V*</ion-label>
                     <ion-label class="data">{{p.voltage}}</ion-label>
                   </ion-item>
-                  <ion-item>
+                  <ion-item *ngIf="p.frequency != undefined ">>
                     <ion-label class="name">Hz</ion-label>
                     <ion-label class="data">{{p.frequency}}</ion-label>
                   </ion-item>
-                  <ion-item>
+                  <ion-item *ngIf="p.price != undefined ">>
                     <ion-label class="name">PVP</ion-label>
                     <ion-label class="data">{{p.price}}</ion-label>
                   </ion-item>
-                  <ion-item class="nameDetails">
+                  <ion-item *ngIf="p.details != undefined ">
                     <ion-label class="name">Observaciones</ion-label>
                     <ion-label class="data">{{p.details}}</ion-label>
                   </ion-item>
+                  <ion-item  class="nameDetails item-stable" (click)="toggleDetails(p)" [ngClass]="{active: p.showExtras}" >
                     <ion-label class="name">Extras</ion-label>
-                    <div>
+                    <ion-icon   name="ios-arrow-down" md="md-arrow-down"></ion-icon>
+                    <ion-icon   name="ios-arrow-up" md="md-arrow-up"></ion-icon>
+                  </ion-item>
+                    <div class="divExtras"  menuClose class="item-accordion"  [hidden]="p.showExtras" *ngIf="p.extras != undefined ">
+                        <ion-label class="extras-title">Extras disponibles</ion-label>
                       <ion-list *ngFor="let e of p.extras ; let idx2 = index;" >
-                        <ion-item>
-                              <ion-label class="name">{{e.label}}</ion-label>
-                              <ion-label class="data">{{e.extras[0].reference}}</ion-label>
-                              <ion-label class="data">{{e.extras[0].dimensions}}</ion-label>
-                              <ion-label class="data">{{e.extras[0].price}}</ion-label>
-                        </ion-item>
+                                <ion-item><ion-label class="name">{{e.label}}</ion-label>  </ion-item>
+                                <ion-item *ngIf="e.extras[0].reference != undefined "><ion-label class="data">{{e.extras[0].reference}}</ion-label>  </ion-item>
+                                <ion-item *ngIf="e.extras[0].dimensions != undefined "><ion-label class="data">{{e.extras[0].dimensions}}</ion-label>  </ion-item>
+                                <ion-item *ngIf="e.extras[0].price != undefined "><ion-label class="data">{{e.extras[0].price}}</ion-label>  </ion-item>
+
                       </ion-list>
                     </div>
 

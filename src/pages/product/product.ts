@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Platform } from 'ionic-angular';
-import {Http, Response} from '@angular/http';
+import {Http} from '@angular/http';
 import { LoadingController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { ContactPage } from '../contact/contact';
@@ -48,6 +48,7 @@ export class ProductPage {
    extra_id : string;
    extra_reference : string;
    extra_price:string;
+   extra_dimensions:string;
   constructor(public navCtrl: NavController, private http: Http, public params: NavParams, public loadingCtrl: LoadingController, public platform: Platform) {
     this.products = this.productShow;
     this.aux = this.products[0].extras;
@@ -72,7 +73,7 @@ export class ProductPage {
     addextras(aux){
       for(var i=0; i<aux.length; i++) {
         let t = aux[i];
-        this.productextra.push({extra_id :t.extras.id, extra_reference :t.extras.reference, extra_price :t.extras.price });
+        this.productextra.push({extra_id :t.extras.id, extra_reference :t.extras.reference,  extra_dimensions :t.extras.dimensions, extra_price :t.extras.price });
       }
     }
 

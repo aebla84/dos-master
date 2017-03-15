@@ -1,14 +1,8 @@
-<ion-header>
-  <ion-navbar class="navbarDosilet" hideBackButton="true">
-    <button ion-button menuToggle>
-     <ion-icon name="menu"></ion-icon>
-   </button>
-    <div (click)="openHome()" class="div-logo-header">
-      <img style="width:90px; height:auto;" src="assets/img/logo.png" />
-    </div>
-  </ion-navbar>
-</ion-header>
+
 <ion-content padding>
+  <ion-navbar class="subnavbar">
+    <ion-title>Ofertas</ion-title>
+  </ion-navbar>
   <div class="dms-block-description">
 
   						<h1>{{parent_name}}</h1>
@@ -83,11 +77,9 @@
                     <ion-label class="name">Extras </ion-label>
                     <div >
                       <ion-list *ngFor="let e of products[0].extras ; let idx = index;" >
-                        <ion-item>
-                              <ion-label >{{e.name}}</ion-label>
-                              <ion-label >{{productextra[idx].extra_reference}}</ion-label>
-                              <ion-label >{{productextra[idx].extra_price}}</ion-label>
-                        </ion-item>
+                        <ion-item><ion-label  class="name">{{e.name}}</ion-label></ion-item>
+                        <ion-item><ion-label class="data">{{productextra[idx].extra_reference}}</ion-label></ion-item>
+                        <ion-item><ion-label class="data">{{productextra[idx].extra_price}}</ion-label>  </ion-item>
                       </ion-list>
                     </div>
                 </ion-list>

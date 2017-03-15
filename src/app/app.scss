@@ -47,8 +47,16 @@ ion-label.label.label-md {
   background-repeat:no-repeat;
   background-size: cover;
   background-position: right;
+  padding-top: 50px;
 }
 
+ion-content.content.content-md
+{
+  padding-top: 50px;
+}
+ion-app.md [padding], ion-app.md [padding] .scroll-content{
+    padding-top: 70px;
+}
 
 //nav bar
 .navbarDosilet {
@@ -106,4 +114,13 @@ ion-label.label.label-md {
   background:none !important;
   color:white !important;
   box-shadow: none !important;
+}
+
+ion-item.item-accordion.item.item-block.item-md {
+    background: #c90e2b;
+}
+
+//subnavar
+´.subnavbar{
+  
 }

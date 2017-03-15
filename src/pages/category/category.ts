@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Platform } from 'ionic-angular';
-import {Http, Response} from '@angular/http';
+import {Http} from '@angular/http';
 import { LoadingController } from 'ionic-angular';
-import { HomePage } from '../home/home';
-import { ContactPage } from '../contact/contact';
+// import { HomePage } from '../home/home';
+// import { ContactPage } from '../contact/contact';
 import { Globals } from '../../providers/globals';
 
 declare var cordova: any;
@@ -77,8 +77,30 @@ export class CategoryPage {
     this.description = (this.categories["description"] != null) ? this.categories["description"] : "";
     this.products =  (this.categories["products"] != null) ? this.categories["products"] : "";
 
-    console.log(this.products);
-    console.log(this.products[0].extras);
-    console.log(this.products[0].extras[0]);
+  console.log("nea");
+    for(var i=0;i<this.products.length; i++)
+    {
+      console.log(this.products[i].extras);
+      let t = this.products[i].extras;
+      for(var j=0;j<t.length; j++)
+      {
+          console.log(t[j].extras);
+          let t2 = t[j].extras;
+          for(var k=0;k<t2.length; k++)
+          {
+              console.log(t2[k].dimensions);
+          }
+      }
+
+
+    }
+  }
+
+  toggleDetails(p) {
+    if (p.showExtras) {
+      p.showExtras = false;
+    } else {
+      p.showExtras = true;
+    }
   }
 }

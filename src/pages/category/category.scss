@@ -3,20 +3,30 @@ page-category {
      //display: inline-block;
        padding: 5px 10px;
        margin-bottom: 10px;
-       background-color: #EB0628;
-       color: #fff;
+       background-color: black;
+       color: white;
        text-transform: uppercase;
        font-size: x-large;
+       text-align: center;
+       padding-top: 70px;
    }
    h2{
      font-size: 1.6em;
      margin-bottom: 5px;
+     background-color: black;
+     color: white;
+     text-align: center;
+    padding : 0px !important;
    }
     h3 {
        font-size: 1.4em;
        color: #EB0628;
        //font-family: "sans-serif";
        margin-bottom: 20px;
+       background-color: black;
+       color: white;
+       text-align: center;
+          padding : 0px !important;
    }
    .desc {
    //  font-family: "sans-serif";//"avenir-light";
@@ -259,4 +269,40 @@ page-category {
     .formBtn:hover {
       color: white;
     }
+}
+
+
+ion-app.md [padding], ion-app.md [padding] .scroll-content{
+  padding: 0px !important;
+}
+
+.divExtras{
+  background-color: #302D2E;
+}
+.item-accordion {
+    background: #302D2E;
+}
+
+ion-list.item-accordion.list.list-md{
+      border-bottom: 1px solid #dedede;
+}
+.list-md .item-block .item-inner{
+    border-bottom: 0px solid #302D2E;
+}
+
+.dms-template-product .products-list .list-column{
+    border-bottom: 0px solid #302D2E;
+}
+
+.extras-title {
+    color: inherit;
+    font-size: 1.2em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    padding-left: 20px;
+}
+
+ion-list.list.list-md {
+    border-top: 1px solid #000000;
 }
