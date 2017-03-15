@@ -34,11 +34,38 @@ span.tab-button-text {
     color: white;
 }
 //sidemenu
+.item{
+  background-color: transparent;
+}
+
 .item-md{
   background:black;
+  opacity: 0.9;
 }
+
 ion-label.label.label-md {
     text-align: initial;
+}
+
+/*ion-label.label.label-md:hover{
+    text-align: initial;
+    color: #EB0628;
+}*/
+
+.item-stable{
+  text-transform: uppercase;
+  margin-right: 80%;
+}
+
+.item-accordion{
+  background: #EB0628 !important;
+  opacity: 0.95;
+  padding-left: 10%;
+  ion-icon{
+    color: white !important;
+    padding-right: 2%;
+    font-size: 1.2em;
+  }
 }
 
 //content of all pages
