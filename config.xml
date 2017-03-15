@@ -12,7 +12,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <access origin="tel:*" launch-external="yes"/>
+    <access launch-external="yes" origin="tel:*" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -78,7 +78,7 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
-    <preference name="AutoHideSplashScreen" value="false"/>
+    <preference name="AutoHideSplashScreen" value="false" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreenDuration" value="300" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
@@ -97,4 +97,5 @@
     <plugin name="phonegap-plugin-push" spec="~1.9.2">
         <variable name="SENDER_ID" value="522225482273" />
     </plugin>
+    <plugin name="cordova-sqlite-storage" spec="~2.0.2" />
 </widget>

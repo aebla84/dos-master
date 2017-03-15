@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Globals } from '../../providers/globals';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-settings',
@@ -10,22 +11,40 @@ import { Globals } from '../../providers/globals';
 export class SettingsPage {
   status: string;
   description: string;
+  storage: any;
+  notification: Boolean;
+  // firstTime: Boolean;
 
   constructor(public globals: Globals, public navCtrl: NavController, public navParams: NavParams) {
+    this.storage = new Storage();
+
+// He comentado la manera que estaba intentando hacer que cuando instalas por primera vez la App, el valor de las notificaciones
+// sea true.
+
+    this.storage.ready().then(() => {
+      // this.storage.get('firstTime').then((val) => {
+      //   this.firstTime = val;
+      //   console.log('First Time: ', val);
+      // })
+
+      // if(!this.firstTime){
+        this.storage.set('notification', 'true');
+        this.storage.get('notification').then((val) => {
+          this.notification = val;
+          console.log('Notifications are: ', val);
+        })
+      // }
+    });
+
     this.checkStatus();
   }
 
-  checkStatus(){
-    console.log(this.globals.notification);
-    if (this.globals.notification == undefined || this.globals.notification == true) {
-      //this.globals.registerNotifications();
-      this.globals.notification = true;
+  checkStatus() {
+    if (this.notification) {
       this.status = "ACTIVADO";
       this.description = "Recibirá todas las notificaciones de las promociones.";
     }
     else {
-      //this.globals.unregisterNotifications();
-      this.globals.notification = false;
       this.status = "DESACTIVADAS";
       this.description = "No recibirá ninguna notificación de las promociones.";
     }
@@ -33,16 +52,16 @@ export class SettingsPage {
 
   toggleNotification(e) {
     if (e.checked) {
-      //this.globals.registerNotifications();
-      this.globals.notification = true;
-      this.status = "ACTIVADO";
-      this.description = "Recibirá todas las notificaciones de las promociones.";
+      this.globals.registerNotifications();
+      this.storage.set('notification', 'true');
+      // this.storage.set('firstTime', 'true');
+      this.checkStatus();
     }
     else {
-      //this.globals.unregisterNotifications();
-      this.globals.notification = false;
-      this.status = "DESACTIVADAS";
-      this.description = "No recibirá ninguna notificación de las promociones.";
+      this.globals.unregisterNotifications();
+      this.storage.set('notification', 'false');
+      // this.storage.set('firstTime', 'true');
+      this.checkStatus();
     }
   }
 }

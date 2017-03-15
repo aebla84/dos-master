@@ -4,7 +4,6 @@
     <h4>{{ description }}</h4>
   </div>
   <div class="notification-toggle">
-    {{notification}}
-    <ion-toggle [(ngModel)]="globals.notification" (ionChange)="globals.toggleNotification($event)"></ion-toggle>
+    <ion-toggle [(ngModel)]="notification" (ionChange)="toggleNotification($event)" checked="notification"></ion-toggle>
   </div>
 </ion-content>
