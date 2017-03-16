@@ -3,7 +3,7 @@ import {Http, Response} from "@angular/http";
 import 'rxjs/add/operator/map';
 import { Push, PushToken } from '@ionic/cloud-angular';
 import { Toast } from 'ionic-native';
-import {Component} from '@angular/core';
+//import {Component} from '@angular/core';
 import { Platform } from 'ionic-angular';
 declare var window: any;
 
@@ -102,7 +102,8 @@ export class Globals {
      });
    //document.getElementById("contactForm").reset();
    this.platform.ready().then(() => {
-     window.plugins.toast.show("Tu mensaje ha sido enviado. Gracias.", "short", "center");
+     Toast.show("Tu mensaje ha sido enviado. Gracias.", "short", "center");
+     //window.plugins.toast.show("Tu mensaje ha sido enviado. Gracias.", "short", "center");
    });
  }
 }

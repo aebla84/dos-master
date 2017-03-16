@@ -224,7 +224,7 @@ page-category {
    cursor: pointer;
  }
  .swiper-wrapper{
-   height:400px !important;
+   height:150px !important;
  }
 .swiper-pagination-bullet-active{
     background:#EB0628 !important;
@@ -311,4 +311,23 @@ ion-icon.icon.icon-md.ion-ios-arrow-up.item-icon, ion-icon.icon.icon-md.ion-ios-
  font-size: x-large;
  text-align: center;
 
+}
+
+h4.product-title {
+    background-color: #EB0628;
+    color: white;
+    bottom : 0px;
+    width: 200px;
+    margin: 0 auto;
+    font-size: 1.7rem;
+}
+
+.divImage {
+  height: 100%;
+  width: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: white;
+  margin: 0 auto;
 }

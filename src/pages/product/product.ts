@@ -51,9 +51,13 @@ export class ProductPage {
    extra_dimensions:string;
   constructor(public navCtrl: NavController, private http: Http, public params: NavParams, public loadingCtrl: LoadingController, public platform: Platform) {
     this.products = this.productShow;
-    this.aux = this.products[0].extras;
-    this.addextras(this.aux);
-    this.products[0].extras.extras = this.productextra;
+    console.log(this.products[0].description);
+
+    //this.aux = this.products[0].extras;
+    //this.addextras(this.aux);
+    //this.products[0].extras.extras = this.productextra;
+
+    console.log(this.products);
   }
 
   ionViewDidLoad() {

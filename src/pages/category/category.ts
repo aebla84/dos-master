@@ -5,7 +5,7 @@ import { LoadingController } from 'ionic-angular';
 // import { HomePage } from '../home/home';
 // import { ContactPage } from '../contact/contact';
 import { Globals } from '../../providers/globals';
-import { Subcategory } from '../../model/subcategory';
+//import { Subcategory } from '../../model/subcategory';
 import { Product } from '../../model/product';
 
 declare var cordova: any;
@@ -59,6 +59,7 @@ export class CategoryPage {
 
   categories = [];
   subcategory = [];
+  product_name : string;
 
   constructor(public navCtrl: NavController, public globals: Globals, private http: Http, public params: NavParams, public loadingCtrl: LoadingController, public platform: Platform) {
 
@@ -105,8 +106,18 @@ export class CategoryPage {
                && data[i].image.sizes!= "null"
                && data[i].image.sizes!= "undefined"
               && data[i].image.sizes.medium != "undefined") ? data[i].image.sizes.medium : "";
-        this.products.push(new Product(data[i], this.image));
+        this.product_name  = data[i].product['post_title'];
+        this.products.push(new Product(data[i], this.image, this.product_name,data[i].description));
+
+
+
       }
+
+      // foreach(let prod of this.products)
+      // {
+      //
+      // }
+      //
      });
    }
 }

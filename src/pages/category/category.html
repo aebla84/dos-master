@@ -10,12 +10,12 @@
 <ion-content padding>
   <div class="dms-block-description">
 
+
               <div class="sliders">
                 <ion-slides pager="true">
-                  <ion-slide zoom="true" *ngFor="let p of products" class="background-contain" [ngStyle]="{'background-image': 'url(' + p.image + ')'}" >
-                    <div class="product-name">
-                      {{p.name}}
-                    </div>
+                  <ion-slide zoom="true" *ngFor="let p of products" class="background-btnImage background-contain btnImage"  >
+                    <div class="divImage"  [ngStyle]="{'min-height': '120px','background-image': 'url(' + p.image + ')'}"></div>
+                    <h4 class="product-title">{{p.name}}</h4>
                   </ion-slide>
                 </ion-slides>
               </div>
