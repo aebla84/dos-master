@@ -5,6 +5,8 @@ import { LoadingController } from 'ionic-angular';
 // import { HomePage } from '../home/home';
 // import { ContactPage } from '../contact/contact';
 import { Globals } from '../../providers/globals';
+import { Subcategory } from '../../model/subcategory';
+import { Product } from '../../model/product';
 
 declare var cordova: any;
 declare var window: any;
@@ -56,10 +58,15 @@ export class CategoryPage {
   subextras = [];
 
   categories = [];
+  subcategory = [];
 
   constructor(public navCtrl: NavController, public globals: Globals, private http: Http, public params: NavParams, public loadingCtrl: LoadingController, public platform: Platform) {
 
-
+    this.loader = this.loadingCtrl.create({
+           spinner: 'bubbles',
+          content: "Cargando..."
+  });
+    this.loader.present();
     this.info = "Características técnicas y PVP";
     this.fTitle = "Solicitar presupuesto";
     this.idCategory = params.get("idCategory");
@@ -67,6 +74,7 @@ export class CategoryPage {
     console.log( this.categories);
 
     this.setObjects();
+    this.getProductByCategory();
 
   }
 
@@ -75,32 +83,30 @@ export class CategoryPage {
     this.name = (this.categories["name"] != null) ? this.categories["name"] : "";
     this.subtitle = (this.categories["subtitle"] != null) ? this.categories["subtitle"] : "";
     this.description = (this.categories["description"] != null) ? this.categories["description"] : "";
-    this.products =  (this.categories["products"] != null) ? this.categories["products"] : "";
-
-  console.log("nea");
-    for(var i=0;i<this.products.length; i++)
-    {
-      console.log(this.products[i].extras);
-      let t = this.products[i].extras;
-      for(var j=0;j<t.length; j++)
-      {
-          console.log(t[j].extras);
-          let t2 = t[j].extras;
-          for(var k=0;k<t2.length; k++)
-          {
-              console.log(t2[k].dimensions);
-          }
-      }
-
+    //this.products =  (this.categories["products"] != null) ? this.categories["products"] : "";
 
     }
-  }
 
   toggleDetails(p) {
-    if (p.showExtras) {
+    if (p.showExtras && p.count_extras > 0 ) {
       p.showExtras = false;
     } else {
       p.showExtras = true;
     }
   }
+
+  getProductByCategory(){
+      this.globals.getProductByCategory(this.idCategory).subscribe(data => {
+      this.loader.dismiss();
+      for (var i = 0; i < data.length; i++) {
+
+        this.image = (data[i].image != false    && data[i].image != null
+              && data[i].image.sizes!= null
+               && data[i].image.sizes!= "null"
+               && data[i].image.sizes!= "undefined"
+              && data[i].image.sizes.medium != "undefined") ? data[i].image.sizes.medium : "";
+        this.products.push(new Product(data[i], this.image));
+      }
+     });
+   }
 }

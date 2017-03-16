@@ -4,62 +4,105 @@ import 'rxjs/add/operator/map';
 import { Push, PushToken } from '@ionic/cloud-angular';
 import { Toast } from 'ionic-native';
 import {Component} from '@angular/core';
+import { Platform } from 'ionic-angular';
+declare var window: any;
 
 @Injectable()
 export class Globals {
-  notification: Boolean;
-  constructor(public push: Push, private http: Http) {
-    this.http = http;
-  }
+  subject: string;
+   name: string;
+   company: string;
+   mailfrom: string;
+   phone: string;
+   message: string;
+   loading: boolean;
+   url: string;
+   notification: Boolean;
 
-  // GET de Categorías: Categorías y Productos.
-  getCatalog(): any {
-    return this.http.get('http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/get_taxonomy_alldata')
-      .map(res => res.json());
-  }
+   constructor(public push: Push, private http: Http, private platform: Platform) {
+   this.http = http;
+   this.platform = platform;
+ }
 
-  // GET de Ofertas.
+ // GET de Categorías: Categorías y Productos.
+ getCatalog(): any {
+   return this.http.get('http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/get_taxonomy_alldata')
+     .map(res => res.json());
+ }
 
-  getHighlights(): any {
-    return this.http.get('http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/get_products_highlight?idcategory=10')
-      .map(res => res.json())
-  }
+ // GET de Ofertas.
 
-  // GET Taxonomy Data de Product
+ getHighlights(): any {
+   return this.http.get('http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/get_products_highlight?idcategory=10')
+     .map(res => res.json())
+ }
 
-  getTaxonomyDataByCategory(idCategory) {
-    return this.http.get('http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/get_taxonomy_data_bycategory?idcategory=' + idCategory)
-      .map(res => res.json())
-  }
+ // GET Taxonomy Data de Product
 
-  // GET Product By Taxonomy
+ getTaxonomyDataByCategory(idCategory) {
+   return this.http.get('http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/get_taxonomy_data_bycategory?idcategory=' + idCategory)
+     .map(res => res.json())
+ }
 
-  getProductByCategory(idCategory) {
-    return this.http.get('http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/get_products_bycategory?idcategory=' + idCategory)
-      .map(res => res.json())
-  }
+ // GET Product By Taxonomy
 
-  // POST del Token de los dispositivos que abren la App.
-  postDevicetoken(deviceToken): void {
-    this.http.post('', deviceToken)
-      .subscribe((res: Response) => {
-        console.log(deviceToken);
-        deviceToken = res.json();
-      });
-  }
+ getProductByCategory(idCategory) {
+   return this.http.get('http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/get_products_bycategory?idcategory=' + idCategory)
+     .map(res => res.json())
+ }
 
-  //Activar notificaciones.
-  registerNotifications() {
-    this.push.register().then((t: PushToken) => {
-      return this.push.saveToken(t);
-    }).then((t: PushToken) => {
-      console.log('Token saved:', t.token);
-      this.postDevicetoken(t.token);
-    });
-  }
+ // POST del Token de los dispositivos que abren la App.
+ postDevicetoken(deviceToken): void {
+   this.http.post('', deviceToken)
+     .subscribe((res: Response) => {
+       console.log(deviceToken);
+       deviceToken = res.json();
+     });
+ }
 
-  //Desactivar notificaciones.
-  unregisterNotifications() {
-    this.push.unregister();
-  }
+ //Activar notificaciones.
+ registerNotifications() {
+   this.push.register().then((t: PushToken) => {
+     return this.push.saveToken(t);
+   }).then((t: PushToken) => {
+     console.log('Token saved:', t.token);
+     this.postDevicetoken(t.token);
+   });
+ }
+
+ //Desactivar notificaciones.
+ unregisterNotifications() {
+   this.push.unregister();
+ }
+
+ //Enviar MAIL de contacto
+ send(): any {
+   this.subject = this.subject;
+   this.name = this.subject;
+   this.company = this.company;
+   this.message = this.message;
+   this.phone = this.phone;
+   this.mailfrom = this.mailfrom;
+   this.url = 'http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/sendmail';
+   var data = new FormData();
+   data.append('subject', 'Nuevo mensaje de ' + this.subject);
+   data.append('message', this.message);
+   data.append('mailto', 'jbono@deideasmarketing.com');
+   data.append('mailfrom', this.mailfrom);
+   data.append('phone', this.phone);
+   data.append('name', this.name);
+   if(this.company != "undefined"){
+     data.append('company', this.company);
+   }
+   this.loading = true;
+   this.http.post(this.url, data)
+     .subscribe((res: Response) => {
+       data = res.json();
+       this.loading = false;
+     });
+   //document.getElementById("contactForm").reset();
+   this.platform.ready().then(() => {
+     window.plugins.toast.show("Tu mensaje ha sido enviado. Gracias.", "short", "center");
+   });
+ }
 }

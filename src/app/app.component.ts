@@ -66,14 +66,13 @@ export class MyApp {
   }
 
   openProduct(id, name) {
-    console.log(this.subcategory);
-    console.log(id);
+
     this.subCategories = this.subcategory.find(cat => cat.term_id === id);
-    console.log(this.subCategories);
+
     this.nav.push(CategoryPage, {
       idCategory: id,
       nameCategory: name,
-      categories:this.subCategories
+      categories :   this.subCategories 
     });
   }
 
@@ -93,7 +92,7 @@ export class MyApp {
 
         Object.keys(data).forEach(obj => {
           if (data[obj].parent != 0) {
-            this.subcategory.push(new Subcategory(data[obj]));
+            this.subcategory.push(new Subcategory("appComponentPage", data[obj]));
           }
           else {
             this.category.push(new Category(data[obj]));

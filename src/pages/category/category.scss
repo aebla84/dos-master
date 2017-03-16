@@ -1,32 +1,27 @@
 page-category {
+  h1,h2,h3{
+    margin-bottom: 0px;
+    background-color: black;
+    color: white;
+    padding : 5px !important;
+     text-align: center;
+  }
+
   h1{
      //display: inline-block;
        padding: 5px 10px;
-       margin-bottom: 10px;
-       background-color: black;
-       color: white;
+       padding-top: 70px;
        text-transform: uppercase;
        font-size: x-large;
-       text-align: center;
-       padding-top: 70px;
    }
    h2{
      font-size: 1.6em;
-     margin-bottom: 5px;
-     background-color: black;
-     color: white;
      text-align: center;
-    padding : 0px !important;
    }
     h3 {
        font-size: 1.4em;
        color: #EB0628;
        //font-family: "sans-serif";
-       margin-bottom: 20px;
-       background-color: black;
-       color: white;
-       text-align: center;
-          padding : 0px !important;
    }
    .desc {
    //  font-family: "sans-serif";//"avenir-light";
@@ -60,11 +55,9 @@ page-category {
      background: white;
      opacity: 0.8;
    }
-
    .item{
      background-color: transparent;
    }
-
    .colorHover{
      margin: 0px;
      padding-top: 0px;
@@ -78,29 +71,24 @@ page-category {
         border: none;
       }
    }
-
    .name {
      text-align: left;
      color: #EB0628;
    }
-
    .nameDetails{
      text-align: left;
      color: #EB0628;
      border-bottom: 1px solid black;
    }
-
    .data{
      text-align: right !important;
      color: black;
    }
-
    .dataType{
      text-align: right !important;
      color: black;
      text-transform: uppercase;
    }
-
    //Form product
    .formProductDiv{
      font-weight: 400;
@@ -111,32 +99,32 @@ page-category {
      line-height: 1.6em;
      background: black;
      opacity: 0.8;
-
+      margin-bottom: 100px;
      h2{
        font-size: 1.6em;
        margin-bottom: 10px;
        text-align: center;
     }
-
     ion-item{
       color: white;
     }
-
     ion-input{
       background-color: #242528;
       margin-top: 1%;
     }
-
+    ion-textarea {
+      background-color: #242528;
+      min-height:150px;
+      margin-top: 1%;
+    }
     button{
       margin-top: 2%;
     }
-
     div.item-inner{
       box-shadow: none !important;
       border-bottom-color: none !important;
     }
   }
-
    .sliders{
      //width: 480px;
      //height: 460px;
@@ -145,7 +133,6 @@ page-category {
      //width: 478px;
      //height: 460px;
    }
-
  .background-cover{
    background-size: cover;
    background-position: center;
@@ -153,16 +140,14 @@ page-category {
    display: block;
    padding-top: 26%;
  }
-
  .background-contain{
   //background-size: contain;
   //background-position: center;
      background-repeat: no-repeat;
      background-position: center;
   //padding-top: 26%;
-         //padding-bottom: 5%;
+  //padding-bottom: 5%;
  }
-
  .product-reference {
    position: absolute;
    left: 0;
@@ -244,7 +229,6 @@ page-category {
 .swiper-pagination-bullet-active{
     background:#EB0628 !important;
  }
-
     .formBtn {
       border-radius: 0;
       font-size: 18px;
@@ -254,24 +238,19 @@ page-category {
       padding: 5%;
       margin-bottom:15px;
     }
-
     .formBtn:focus,
     .formBtn:visited {
       color: white !important;
       outline: 0 !important;
     }
-
     .formBtn:active {
       transition: 0.8;
       background-color: #f92041 !important;
     }
-
     .formBtn:hover {
       color: white;
     }
 }
-
-
 ion-app.md [padding], ion-app.md [padding] .scroll-content{
   padding: 0px !important;
 }
@@ -282,18 +261,15 @@ ion-app.md [padding], ion-app.md [padding] .scroll-content{
 .item-accordion {
     background: #302D2E;
 }
-
 ion-list.item-accordion.list.list-md{
       border-bottom: 1px solid #dedede;
 }
 .list-md .item-block .item-inner{
     border-bottom: 0px solid #302D2E;
 }
-
 .dms-template-product .products-list .list-column{
     border-bottom: 0px solid #302D2E;
 }
-
 .extras-title {
     color: inherit;
     font-size: 1.2em;
@@ -302,7 +278,37 @@ ion-list.item-accordion.list.list-md{
     text-transform: uppercase;
     padding-left: 20px;
 }
-
 ion-list.list.list-md {
     border-top: 1px solid #000000;
+}
+
+ion-icon.icon.icon-md.ion-ios-arrow-up.item-icon, ion-icon.icon.icon-md.ion-ios-arrow-down.item-icon{
+  float:right;
+}
+
+.nameDetails ion-label.label.label-md {
+    color: red;
+}
+.nameDetails ion-label.label.label-md:hover{
+    color: white;
+}
+
+.page-title, .page-title .toolbar-title.toolbar-title-md{
+ padding: 5px 10px;
+ //margin-bottom: 10px;
+ background-color: black;
+ color: #c90e2b;
+ text-transform: uppercase;
+ font-size: x-large;
+ text-align: center;
+ padding-top: 35px;//70px;35px
+}
+
+.page-subtitle{
+ padding: 5px 10px;
+ background-color: black;
+ color: white;
+ font-size: x-large;
+ text-align: center;
+
 }

@@ -1,10 +1,13 @@
+
+<ion-header>
+ <ion-navbar color="blacktitle" hideBackButton>
+   <ion-title class="page-title">{{parent_name}}</ion-title>
+      <ion-title class="page-subtitle">{{this.name}}</ion-title>
+         <ion-title class="page-subtitle">{{subtitle}}</ion-title>
+ </ion-navbar>
+</ion-header>
+
 <ion-content padding>
-  <!-- <ion-navbar class="subnavbar">
-    <ion-title>{{parent_name}}</ion-title>
-  </ion-navbar> -->
-  <h1>{{parent_name}}</h1>
-  <h2>{{this.name}}</h2>
-  <h3>{{subtitle}}</h3>
   <div class="dms-block-description">
 
               <div class="sliders">
@@ -74,18 +77,18 @@
                     <ion-label class="data">{{p.details}}</ion-label>
                   </ion-item>
                   <ion-item  class="nameDetails item-stable" (click)="toggleDetails(p)" [ngClass]="{active: p.showExtras}" >
-                    <ion-label class="name">Extras</ion-label>
-                    <ion-icon   name="ios-arrow-down" md="md-arrow-down"></ion-icon>
-                    <ion-icon   name="ios-arrow-up" md="md-arrow-up"></ion-icon>
+                    Extras
+                    <ion-icon   name="ios-arrow-down"  [ngClass]="{active: p.showExtras}"  [hidden]="!p.showExtras" *ngIf="p.count_extras > 0"></ion-icon>
+                    <ion-icon   name="ios-arrow-up"  [hidden]="p.showExtras" *ngIf="p.count_extras > 0"></ion-icon>
+                    <ion-icon   name="ios-minus-empty"  *ngIf="p.count_extras === 0"></ion-icon>
                   </ion-item>
-                    <div class="divExtras"  menuClose class="item-accordion"  [hidden]="p.showExtras" *ngIf="p.extras != undefined ">
+                    <div class="divExtras"  menuClose class="item-accordion"  [hidden]="p.showExtras" *ngIf="p.count_extras > 0">
                         <ion-label class="extras-title">Extras disponibles</ion-label>
                       <ion-list *ngFor="let e of p.extras ; let idx2 = index;" >
                                 <ion-item><ion-label class="name">{{e.label}}</ion-label>  </ion-item>
                                 <ion-item *ngIf="e.extras[0].reference != undefined "><ion-label class="data">{{e.extras[0].reference}}</ion-label>  </ion-item>
                                 <ion-item *ngIf="e.extras[0].dimensions != undefined "><ion-label class="data">{{e.extras[0].dimensions}}</ion-label>  </ion-item>
                                 <ion-item *ngIf="e.extras[0].price != undefined "><ion-label class="data">{{e.extras[0].price}}</ion-label>  </ion-item>
-
                       </ion-list>
                     </div>
 
@@ -93,21 +96,21 @@
                 </div>
                 <div class="formProductDiv">
                   <h2>{{fTitle}}</h2>
-                  <form (ngSubmit)="send()">
+                  <form (ngSubmit)="globals.send()">
                     <ion-item>
-                      <ion-input type="text" [(ngModel)]="fName" name="fName" placeholder="Nombre"></ion-input>
+                      <ion-input type="text" [(ngModel)]="globals.subject" name="subject" placeholder="Nombre" required></ion-input>
                     </ion-item>
                     <ion-item>
-                      <ion-input type="text" [(ngModel)]="fCompany" name="fCompany" placeholder="Empresa"></ion-input>
+                      <ion-input type="text" [(ngModel)]="globals.company" name="company" placeholder="Empresa" required></ion-input>
                     </ion-item>
                     <ion-item>
-                      <ion-input type="phone" [(ngModel)]="fPhone" name="fPhone" placeholder="Teléfono"></ion-input>
+                      <ion-input type="tel" [(ngModel)]="globals.phone" name="phone" placeholder="Teléfono" required></ion-input>
                     </ion-item>
                     <ion-item>
-                      <ion-input type="email" [(ngModel)]="fMailfrom" name="fMailfrom" placeholder="Email"></ion-input>
+                      <ion-input type="email" [(ngModel)]="globals.mailfrom" name="mailfrom" placeholder="Email" required></ion-input>
                     </ion-item>
                     <ion-item>
-                      <ion-input type="text" [(ngModel)]="fMessage" name="fMessage" placeholder="Mensaje"></ion-input>
+                      <ion-textarea [(ngModel)]="globals.message" name="message" placeholder="Mensaje" required></ion-textarea>
                     </ion-item>
                     <button ion-button type="submit" block>Enviar</button>
                   </form>

@@ -21,11 +21,11 @@ export class Product {
   voltage: string;
   extras: Array<Extra>
   showExtras: Boolean;
-
+  image : string;
 
   constructor(data: { extras: Array<Extra> } & { idproduct: number } & { reference: string } & { type: string } & { dimensions: string } & { conveyor_width: string } & { conveyor_length: string } &
     { conveyor_entry: string } & { volume: string } & { weight: string } & { power: string } &
-    { voltage: string } & { frequency: string } & { price: string } & { details: string } & { count_extras: number }) {
+    { voltage: string } & { frequency: string } & { price: string } & { details: string } & { count_extras: number } , image : string) {
     this.idproduct = data.idproduct;
     this.reference = data.reference;
     this.type = data.type;
@@ -43,8 +43,10 @@ export class Product {
     this.count_extras = data.count_extras;
     this.showExtras = true;
     this.extras = [];
+    this.image = image;
 
     if (data.count_extras > 0) {
+
       let extra = data.extras;
       Object.keys(extra).forEach(ext => {
           this.extras.push(new Extra(extra[ext]));
