@@ -1,35 +1,93 @@
 page-highlight {
+//<<<<<<< HEAD
   ion-list {
     align-content: center;
   }
   ion-list.list.list-md {
+// =======
+//
+//   .toolbar-background-md{
+//     background: black;
+//
+//   }
+//
+//   .toolbar-title-md{
+//     color: white;
+//     text-align: center;
+//   }
+//
+//   ion-list {
+//     align-content: center;
+//   }
+//
+//   ion-list.list.list-md{
+// >>>>>>> 6a741db07672aefc1f3ce625d58334211e8b2623
     text-align: center;
+    border: 0px;
+    margin-top: 10%;
   }
   ion-img {
     min-width: 300px;
     min-height: 300px;
+    padding: 3%;
   }
+//<<<<<<< HEAD
   .single-product {
     width: 100%;
     margin-right: 0;
   }
   .divImage {
+// =======
+//
+//   .single-product{
+//     width: 100%;
+//     margin-right: 0;
+//   }
+//
+//   .divImage{
+// >>>>>>> 6a741db07672aefc1f3ce625d58334211e8b2623
     height: 100%;
     width: 200px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    background-color: white;
   }
   .btnImage {
     border: 1px solid #EB0628;
-    margin-right: 30px;
-    margin-bottom: 30px;
+    //border-bottom: 30px solid #EB0628;
+    //margin-right: 30px;
+    //margin-bottom: 30px;
     cursor: pointer;
     background-color: #EB0628;
+    padding: 0px;
   }
+
+  h4.product-title{
+    background-color: #EB0628;
+    color: white;
+  }
+
+  .single-product:hover{
+
+    h4.product-title{
+      background-color: white;
+      color: #EB0628
+    }
+
+    .btnImage{
+      border-bottom: 1px solid #EB0628;
+      background-color: white;
+    }
+
+    .divImage{
+      border-bottom: 1px solid #EB0628;
+    }
+  }
+
   .dms-template-products .products-container .single-product {
     width: calc( 100% / 3 - 20px);
-    border: 1px solid #EB0628;
+    //border: 1px solid #EB0628;
     margin-right: 30px;
     margin-bottom: 30px;
     cursor: pointer;
@@ -47,7 +105,7 @@ page-highlight {
   .dms-template-products .products-container .single-product .product-title {
     //padding: 20px;
     color: #fff;
-    border-top: 1px solid #EB0628;
+    //border-top: 1px solid #EB0628;
     text-align: center;
     font-size: 1em;
     line-height: 1.2em;
