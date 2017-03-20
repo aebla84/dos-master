@@ -44,20 +44,36 @@ export class ProductPage {
 
    aux =[];
    productextra = [];
+   productextra2 = [];
 
    extra_id : string;
    extra_reference : string;
    extra_price:string;
    extra_dimensions:string;
+   extra_name : string;
+
+   info : string;
   constructor(public navCtrl: NavController, private http: Http, public params: NavParams, public loadingCtrl: LoadingController, public platform: Platform) {
+
+    //Constants
+    this.info = "Características técnicas y PVP";
+
+
     this.products = this.productShow;
-    console.log(this.products[0].description);
+    //console.log("beaprod");
+    //console.log(this.products[0].extras);
 
-    //this.aux = this.products[0].extras;
-    //this.addextras(this.aux);
+    this.aux = this.products[0].extras;
+    console.log("aux");
+    console.log(this.aux);
+    this.addextras(this.aux);
+
+
     //this.products[0].extras.extras = this.productextra;
-
+    //console.log(this.products[0].extras);
+    console.log( this.productextra);
     console.log(this.products);
+
   }
 
   ionViewDidLoad() {
@@ -76,9 +92,26 @@ export class ProductPage {
 
     addextras(aux){
       for(var i=0; i<aux.length; i++) {
-        let t = aux[i];
-        this.productextra.push({extra_id :t.extras.id, extra_reference :t.extras.reference,  extra_dimensions :t.extras.dimensions, extra_price :t.extras.price });
+        let t = aux[i].extras;
+        console.log("ttt");
+        console.log(t);
+
+        for(var j=0; j<t.length; j++) {
+          let ext2 = t[j];
+          this.productextra.push({extra_name : aux[i].label, extra_id :ext2.id, extra_reference :ext2.reference,  extra_dimensions :ext2.dimensions, extra_price :ext2.price });
+        }
       }
+
+
+
+      // let name = this.productextra[0].extra_name;
+      // this.productextra.forEach(element => {
+      //         if (element.extra_name == name) {
+      //               this.productextra2.push({extra_name : element.extra_name ,  })
+      //             }
+      //         });
+      //         return this.commentspart;
+      // this.productextra2.push
     }
 
 

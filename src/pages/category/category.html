@@ -11,109 +11,109 @@
   <div class="dms-block-description">
 
 
-              <div class="sliders">
-                <ion-slides pager="true">
-                  <ion-slide zoom="true" *ngFor="let p of products" class="background-btnImage background-contain btnImage"  >
-                    <div class="divImage"  [ngStyle]="{'min-height': '120px','background-image': 'url(' + p.image + ')'}"></div>
-                    <h4 class="product-title">{{p.name}}</h4>
-                  </ion-slide>
-                </ion-slides>
-              </div>
-              <div class="desc" [innerHtml]="description"></div>
-              <div class="desc2">
-                <h4>{{info}}</h4>
-                <ion-list *ngFor="let p of products" class="colorHover">
- 				               <!-- <ion-list-header>Características Técnicas y PVP</ion-list-header> -->
-                  <ion-item *ngIf="p.reference != undefined ">
-                    <ion-label class="name">Referencia</ion-label>
-                    <ion-label class="data">{{p.reference}}</ion-label>
-                  </ion-item>
-                  <ion-item *ngIf="p.type != undefined ">
-                    <ion-label class="name">Eléc/Gas</ion-label>
-                    <ion-label class="dataType">{{p.type}}</ion-label>
-                  </ion-item>
-                  <ion-item *ngIf="p.dimensions != undefined ">
-                    <ion-label class="name">mm</ion-label>
-                    <ion-label class="data">{{p.dimensions}}</ion-label>
-                  </ion-item>
-                  <ion-item *ngIf="p.conveyor_width != undefined ">
-                    <ion-label class="name">Ancho Banda</ion-label>
-                    <ion-label class="data">{{p.conveyor_width}}</ion-label>
-                  </ion-item>
-                  <ion-item *ngIf="p.conveyor_length != undefined ">
-                    <ion-label class="name">Largo Banda</ion-label>
-                    <ion-label class="data">{{p.conveyor_length}}</ion-label>
-                  </ion-item>
-                  <ion-item *ngIf="p.conveyor_entry != undefined ">
-                    <ion-label class="name">h Boca Entrada</ion-label>
-                    <ion-label class="data">{{p.conveyor_entry}}</ion-label>
-                  </ion-item>
-                  <ion-item *ngIf="p.volume != undefined ">>
-                    <ion-label class="name">m&#179;</ion-label>
-                    <ion-label class="data">{{p.volume}}</ion-label>
-                  </ion-item>
-                  <ion-item *ngIf="p.weight != undefined ">>
-                    <ion-label class="name">Kg</ion-label>
-                    <ion-label class="data">{{p.weight}}</ion-label>
-                  </ion-item>
-                  <ion-item *ngIf="p.power != undefined ">>
-                    <ion-label class="name">kW</ion-label>
-                    <ion-label class="data">{{p.power}}</ion-label>
-                  </ion-item>
-                  <ion-item *ngIf="p.voltage != undefined ">>
-                    <ion-label class="name">V*</ion-label>
-                    <ion-label class="data">{{p.voltage}}</ion-label>
-                  </ion-item>
-                  <ion-item *ngIf="p.frequency != undefined ">>
-                    <ion-label class="name">Hz</ion-label>
-                    <ion-label class="data">{{p.frequency}}</ion-label>
-                  </ion-item>
-                  <ion-item *ngIf="p.price != undefined ">>
-                    <ion-label class="name">PVP</ion-label>
-                    <ion-label class="data">{{p.price}}</ion-label>
-                  </ion-item>
-                  <ion-item *ngIf="p.details != undefined ">
-                    <ion-label class="name">Observaciones</ion-label>
-                    <ion-label class="data">{{p.details}}</ion-label>
-                  </ion-item>
-                  <ion-item  class="nameDetails item-stable" (click)="toggleDetails(p)" [ngClass]="{active: p.showExtras}" >
-                    Extras
-                    <ion-icon   name="ios-arrow-down"  [ngClass]="{active: p.showExtras}"  [hidden]="!p.showExtras" *ngIf="p.count_extras > 0"></ion-icon>
-                    <ion-icon   name="ios-arrow-up"  [hidden]="p.showExtras" *ngIf="p.count_extras > 0"></ion-icon>
-                    <ion-icon   name="ios-minus-empty"  *ngIf="p.count_extras === 0"></ion-icon>
-                  </ion-item>
-                    <div class="divExtras"  menuClose class="item-accordion"  [hidden]="p.showExtras" *ngIf="p.count_extras > 0">
-                        <ion-label class="extras-title">Extras disponibles</ion-label>
-                      <ion-list *ngFor="let e of p.extras ; let idx2 = index;" >
-                                <ion-item><ion-label class="name">{{e.label}}</ion-label>  </ion-item>
-                                <ion-item *ngIf="e.extras[0].reference != undefined "><ion-label class="data">{{e.extras[0].reference}}</ion-label>  </ion-item>
-                                <ion-item *ngIf="e.extras[0].dimensions != undefined "><ion-label class="data">{{e.extras[0].dimensions}}</ion-label>  </ion-item>
-                                <ion-item *ngIf="e.extras[0].price != undefined "><ion-label class="data">{{e.extras[0].price}}</ion-label>  </ion-item>
-                      </ion-list>
-                    </div>
+            <div class="sliders">
+              <ion-slides pager="true">
+                <ion-slide zoom="true" *ngFor="let p of products" class="background-btnImage background-contain btnImage"  >
+                  <div class="divImage"  [ngStyle]="{'min-height': '120px','background-image': 'url(' + p.image + ')'}"></div>
+                  <h4 class="product-title">{{p.name}}</h4>
+                </ion-slide>
+              </ion-slides>
+            </div>
+            <div class="desc" [innerHtml]="description"></div>
+            <div class="desc2">
+              <h4>{{info}}</h4>
+              <ion-list *ngFor="let p of products" class="colorHover">
+				               <!-- <ion-list-header>Características Técnicas y PVP</ion-list-header> -->
+                <ion-item *ngIf="p.reference != undefined ">
+                  <ion-label class="name">Referencia</ion-label>
+                  <ion-label class="data">{{p.reference}}</ion-label>
+                </ion-item>
+                <ion-item *ngIf="p.type != undefined ">
+                  <ion-label class="name">Eléc/Gas</ion-label>
+                  <ion-label class="dataType">{{p.type}}</ion-label>
+                </ion-item>
+                <ion-item *ngIf="p.dimensions != undefined ">
+                  <ion-label class="name">mm</ion-label>
+                  <ion-label class="data">{{p.dimensions}}</ion-label>
+                </ion-item>
+                <ion-item *ngIf="p.conveyor_width != undefined ">
+                  <ion-label class="name">Ancho Banda</ion-label>
+                  <ion-label class="data">{{p.conveyor_width}}</ion-label>
+                </ion-item>
+                <ion-item *ngIf="p.conveyor_length != undefined ">
+                  <ion-label class="name">Largo Banda</ion-label>
+                  <ion-label class="data">{{p.conveyor_length}}</ion-label>
+                </ion-item>
+                <ion-item *ngIf="p.conveyor_entry != undefined ">
+                  <ion-label class="name">h Boca Entrada</ion-label>
+                  <ion-label class="data">{{p.conveyor_entry}}</ion-label>
+                </ion-item>
+                <ion-item *ngIf="p.volume != undefined ">>
+                  <ion-label class="name">m&#179;</ion-label>
+                  <ion-label class="data">{{p.volume}}</ion-label>
+                </ion-item>
+                <ion-item *ngIf="p.weight != undefined ">>
+                  <ion-label class="name">Kg</ion-label>
+                  <ion-label class="data">{{p.weight}}</ion-label>
+                </ion-item>
+                <ion-item *ngIf="p.power != undefined ">>
+                  <ion-label class="name">kW</ion-label>
+                  <ion-label class="data">{{p.power}}</ion-label>
+                </ion-item>
+                <ion-item *ngIf="p.voltage != undefined ">>
+                  <ion-label class="name">V*</ion-label>
+                  <ion-label class="data">{{p.voltage}}</ion-label>
+                </ion-item>
+                <ion-item *ngIf="p.frequency != undefined ">>
+                  <ion-label class="name">Hz</ion-label>
+                  <ion-label class="data">{{p.frequency}}</ion-label>
+                </ion-item>
+                <ion-item *ngIf="p.price != undefined ">>
+                  <ion-label class="name">PVP</ion-label>
+                  <ion-label class="data">{{p.price}}</ion-label>
+                </ion-item>
+                <ion-item *ngIf="p.details != undefined ">
+                  <ion-label class="name">Observaciones</ion-label>
+                  <ion-label class="data">{{p.details}}</ion-label>
+                </ion-item>
+                <ion-item  class="nameDetails item-stable" (click)="toggleDetails(p)" [ngClass]="{active: p.showExtras}" >
+                  Extras
+                  <ion-icon   name="ios-arrow-down"  [ngClass]="{active: p.showExtras}"  [hidden]="!p.showExtras" *ngIf="p.count_extras > 0"></ion-icon>
+                  <ion-icon   name="ios-arrow-up"  [hidden]="p.showExtras" *ngIf="p.count_extras > 0"></ion-icon>
+                  <ion-icon   name="ios-minus-empty"  *ngIf="p.count_extras === 0"></ion-icon>
+                </ion-item>
+                  <div class="divExtras"  menuClose class="item-accordion"  [hidden]="p.showExtras" *ngIf="p.count_extras > 0">
+                      <ion-label class="extras-title">Extras disponibles</ion-label>
+                    <ion-list *ngFor="let e of p.extras ; let idx2 = index;" >
+                              <ion-item><ion-label class="name">{{e.label}}</ion-label>  </ion-item>
+                              <ion-item *ngIf="e.extras[0].reference != undefined "><ion-label class="data">{{e.extras[0].reference}}</ion-label>  </ion-item>
+                              <ion-item *ngIf="e.extras[0].dimensions != undefined "><ion-label class="data">{{e.extras[0].dimensions}}</ion-label>  </ion-item>
+                              <ion-item *ngIf="e.extras[0].price != undefined "><ion-label class="data">{{e.extras[0].price}}</ion-label>  </ion-item>
+                    </ion-list>
+                  </div>
 
-                </ion-list>
-                </div>
-                <div class="formProductDiv">
-                  <h2>{{fTitle}}</h2>
-                  <form (ngSubmit)="globals.send()">
-                    <ion-item>
-                      <ion-input type="text" [(ngModel)]="globals.subject" name="subject" placeholder="Nombre" required></ion-input>
-                    </ion-item>
-                    <ion-item>
-                      <ion-input type="text" [(ngModel)]="globals.company" name="company" placeholder="Empresa" required></ion-input>
-                    </ion-item>
-                    <ion-item>
-                      <ion-input type="tel" [(ngModel)]="globals.phone" name="phone" placeholder="Teléfono" required></ion-input>
-                    </ion-item>
-                    <ion-item>
-                      <ion-input type="email" [(ngModel)]="globals.mailfrom" name="mailfrom" placeholder="Email" required></ion-input>
-                    </ion-item>
-                    <ion-item>
-                      <ion-textarea [(ngModel)]="globals.message" name="message" placeholder="Mensaje" required></ion-textarea>
-                    </ion-item>
-                    <button ion-button type="submit" block>Enviar</button>
-                  </form>
-                </div>
+              </ion-list>
+              </div>
+              <div class="formProductDiv">
+                <h2>{{fTitle}}</h2>
+                <form (ngSubmit)="globals.send()">
+                  <ion-item>
+                    <ion-input type="text" [(ngModel)]="globals.subject" name="subject" placeholder="Nombre" required></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-input type="text" [(ngModel)]="globals.company" name="company" placeholder="Empresa" required></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-input type="tel" [(ngModel)]="globals.phone" name="phone" placeholder="Teléfono" required></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-input type="email" [(ngModel)]="globals.mailfrom" name="mailfrom" placeholder="Email" required></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-textarea [(ngModel)]="globals.message" name="message" placeholder="Mensaje" required></ion-textarea>
+                  </ion-item>
+                  <button ion-button type="submit" block>Enviar</button>
+                </form>
+              </div>
   </div>
 </ion-content>

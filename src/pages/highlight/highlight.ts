@@ -65,16 +65,11 @@ export class HighlightPage {
           && data[i].image.sizes != "undefined"
           && data[i].image.sizes.medium != "undefined") ? data[i].image.sizes.medium : "";
 
-        // this.products.push({
-        //   id: data[i].idproduct,
-        //   image: this.image,
-        //   name: data[i].product['post_title'],
-        //   description: data[i].description, reference: data[i].reference,
-        //   type: data[i].type, dimensions: data[i].dimensions, conveyor_width: data[i].conveyor_width, conveyor_length: data[i].conveyor_length,
-        //   conveyor_entry: data[i].conveyor_entry, volume: data[i].volume, weight: data[i].weight, power: data[i].power, voltage: data[i].voltage,
-        //   frequency: data[i].frequency, price: data[i].price, details: data[i].details, extras: data[i].extras
-        // });
         this.product_name  = data[i].product['post_title'];
+
+        console.log("extras");
+        console.log(data[i].extras);
+        console.log(data[i].description);
         this.products.push(new Product(data[i], this.image, this.product_name, data[i].description));
 
 
@@ -89,10 +84,19 @@ export class HighlightPage {
   }
 
   openProduct(idselected) {
-    console.log();
-    this.navCtrl.push(ProductPage, {
-      product: this.products.filter((item => { return (item.idproduct == idselected); }))
-    });
+    console.log(idselected);
+    let prod = [];
+    prod = this.products.filter((item => { return (item.idproduct == idselected); }));
+    if(prod.length > 0)
+    {
+      this.navCtrl.push(ProductPage, {
+        product:prod
+      });
+        console.log(prod);
+    }
+    else {
+      alert("No se ha seleccionado ningún producto.");
+    }
   }
 
 }
