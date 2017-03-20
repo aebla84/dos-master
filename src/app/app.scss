@@ -45,6 +45,7 @@ span.tab-button-text {
 
 ion-label.label.label-md {
     text-align: initial;
+    margin: 0px;
 }
 
 /*ion-label.label.label-md:hover{
@@ -58,11 +59,11 @@ ion-label.label.label-md {
 }
 
 .item-accordion{
-  background: #EB0628 !important;
+  background: #EB0628 ;
   opacity: 0.95;
   padding-left: 10%;
   ion-icon{
-    color: white !important;
+    color: white ;
     padding-right: 2%;
     font-size: 1.2em;
   }

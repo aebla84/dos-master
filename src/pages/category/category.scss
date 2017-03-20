@@ -69,6 +69,10 @@ page-category {
       .name, .data, .dataType, .nameDetails{
         color: white;
         border: none;
+          .name {
+            color: white;
+            border: none;
+          }
       }
    }
    .name {
@@ -77,8 +81,8 @@ page-category {
    }
    .nameDetails{
      text-align: left;
-     color: #EB0628;
-     border-bottom: 1px solid black;
+     //color: #EB0628;
+     border-bottom: 1px solid white;
    }
    .data{
      text-align: right !important;
@@ -257,9 +261,11 @@ ion-app.md [padding], ion-app.md [padding] .scroll-content{
 
 .divExtras{
   background-color: #302D2E;
+  padding-top: 15px;
 }
-.item-accordion {
+.colorHover .item-accordion {
     background: #302D2E;
+    padding-top: 15px;
 }
 ion-list.item-accordion.list.list-md{
       border-bottom: 1px solid #dedede;
@@ -271,27 +277,29 @@ ion-list.item-accordion.list.list-md{
     border-bottom: 0px solid #302D2E;
 }
 .extras-title {
-    color: inherit;
+    color: white;
     font-size: 1.2em;
     margin-top: 20px;
     margin-bottom: 10px;
     text-transform: uppercase;
     padding-left: 20px;
+    color: white;
 }
 ion-list.list.list-md {
-    border-top: 1px solid #000000;
+    border-top: 1px solid white;
+    margin: 0px !important;
 }
 
 ion-icon.icon.icon-md.ion-ios-arrow-up.item-icon, ion-icon.icon.icon-md.ion-ios-arrow-down.item-icon{
   float:right;
 }
 
-.nameDetails ion-label.label.label-md {
-    color: red;
-}
-.nameDetails ion-label.label.label-md:hover{
-    color: white;
-}
+// .nameDetails ion-label.label.label-md {
+//     color: red;
+// }
+// .nameDetails ion-label.label.label-md:hover{
+//     color: white;
+// }
 
 .page-title, .page-title .toolbar-title.toolbar-title-md{
  padding: 5px 10px;
@@ -330,4 +338,12 @@ h4.product-title {
   background-size: contain;
   background-color: white;
   margin: 0 auto;
+}
+
+ion-label.extras-title.label.label-md {
+    color: white;
+}
+
+.extra_data ion-label.label.label-md {
+    text-align: -webkit-right;
 }
