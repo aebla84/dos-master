@@ -109,15 +109,7 @@ export class CategoryPage {
         this.product_name  = data[i].product['post_title'];
         this.products.push(new Product(data[i], this.image, this.product_name,data[i].description));
 
-
-
       }
-
-      // foreach(let prod of this.products)
-      // {
-      //
-      // }
-      //
      });
    }
 }

@@ -9,8 +9,6 @@
 
 <ion-content padding>
   <div class="dms-block-description">
-
-
             <div class="sliders">
               <ion-slides pager="true">
                 <ion-slide zoom="true" *ngFor="let p of products" class="background-btnImage background-contain btnImage"  >
@@ -82,13 +80,18 @@
                   <ion-icon   name="ios-arrow-up"  [hidden]="p.showExtras" *ngIf="p.count_extras > 0"></ion-icon>
                   <ion-icon   name="ios-minus-empty"  *ngIf="p.count_extras === 0"></ion-icon>
                 </ion-item>
+
                   <div class="divExtras"  menuClose class="item-accordion"  [hidden]="p.showExtras" *ngIf="p.count_extras > 0">
                       <ion-label class="extras-title">Extras disponibles</ion-label>
-                    <ion-list *ngFor="let e of p.extras ; let idx2 = index;" >
-                              <ion-item><ion-label class="name">{{e.label}}</ion-label>  </ion-item>
-                              <ion-item *ngIf="e.extras[0].reference != undefined "><ion-label class="data">{{e.extras[0].reference}}</ion-label>  </ion-item>
-                              <ion-item *ngIf="e.extras[0].dimensions != undefined "><ion-label class="data">{{e.extras[0].dimensions}}</ion-label>  </ion-item>
-                              <ion-item *ngIf="e.extras[0].price != undefined "><ion-label class="data">{{e.extras[0].price}}</ion-label>  </ion-item>
+                    <ion-list *ngFor="let extra of p.extras " >
+                              <ion-item><ion-label class="name">{{extra.label}}</ion-label>  </ion-item>
+                              <ion-item>
+                                <ion-list *ngFor="let subextra of extra.extras" >
+                                    <ion-item  *ngIf="subextra.reference != undefined " class="data" >{{subextra.reference}}  </ion-item>
+                                    <ion-item *ngIf="subextra.dimensions != undefined "  class="data"> {{subextra.dimensions}} </ion-item>
+                                    <ion-item *ngIf="subextra.price != undefined "  class="data">{{subextra.price}}  </ion-item>
+                                </ion-list>
+                              </ion-item>
                     </ion-list>
                   </div>
 
