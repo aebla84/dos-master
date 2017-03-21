@@ -18,12 +18,14 @@
 <ion-content padding>
   <div class="dms-block-description">
     <div class="sliders">
-      <ion-slides pager="true">
+      <ion-slides  #Slides   (ionSlideDidChange)="slideChanged(Slides)">
         <ion-slide zoom="true" *ngFor="let p of products" class="background-btnImage background-contain btnImage">
           <div class="divImage" [ngStyle]="{'min-height': '120px','background-image': 'url(' + p.image + ')'}"></div>
           <h4 class="product-title">{{p.name}}</h4>
         </ion-slide>
       </ion-slides>
+       <ion-icon name="arrow-dropright"  [hidden] ="lastSlide"></ion-icon>
+      <ion-icon name="arrow-dropleft"  [hidden] ="firstSlide"></ion-icon>
     </div>
     <div class="desc" [innerHtml]="description"></div>
     <div class="desc2">
@@ -84,9 +86,9 @@
         </ion-item>
         <ion-item class="nameDetails item-stable" (click)="toggleDetails(p)" [ngClass]="{active: p.showExtras}">
           <ion-label class="name">Extras</ion-label>
-          <ion-icon name="ios-arrow-down" [ngClass]="{active: p.showExtras}" [hidden]="!p.showExtras" *ngIf="p.count_extras > 0"></ion-icon>
-          <ion-icon name="ios-arrow-up" [hidden]="p.showExtras" *ngIf="p.count_extras > 0"></ion-icon>
-          <ion-icon name="ios-minus-empty" *ngIf="p.count_extras === 0"></ion-icon>
+          <ion-icon name="arrow-down" primary item-right [ngClass]="{active: p.showExtras}" [hidden]="!p.showExtras" *ngIf="p.count_extras > 0"></ion-icon>
+          <ion-icon name="arrow-up" item-right [hidden]="p.showExtras" *ngIf="p.count_extras > 0"></ion-icon>
+          <ion-icon name="remove" item-right *ngIf="p.count_extras === 0"></ion-icon>
         </ion-item>
         <div class="divExtras" menuClose class="item-accordion" [hidden]="p.showExtras" *ngIf="p.count_extras > 0">
           <ion-label class="extras-title">Extras disponibles</ion-label>

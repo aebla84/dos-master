@@ -54,6 +54,8 @@ export class CategoryPage {
   loading: boolean;
   loader: any;
   idCategory: string;
+  lastSlide :boolean;
+  firstSlide :boolean;
 
   extras = [];
   subextras = [];
@@ -61,6 +63,8 @@ export class CategoryPage {
   categories = [];
   subcategory = [];
   product_name: string;
+
+
 
   constructor(public navCtrl: NavController, public globals: Globals, private http: Http, public params: NavParams, public loadingCtrl: LoadingController, public platform: Platform) {
 
@@ -77,6 +81,9 @@ export class CategoryPage {
 
     this.setObjects();
     this.getProductByCategory();
+
+    this.lastSlide = false;
+    this.firstSlide = true;
 
   }
 
@@ -119,4 +126,10 @@ export class CategoryPage {
   goSettings() {
     this.navCtrl.setRoot(SettingsPage);
   }
+
+  slideChanged(Slides) {
+    this.firstSlide = Slides.isBeginning();
+    this.lastSlide = Slides.isEnd();
+   }
+
 }

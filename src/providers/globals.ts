@@ -19,10 +19,13 @@ export class Globals {
   loading: boolean;
   url: string;
   notification: Boolean;
+  data : {};
 
   constructor(public push: Push, private http: Http, private platform: Platform, private alertCtrl: AlertController) {
     this.http = http;
     this.platform = platform;
+    this.data = {};
+
   }
 
   // GET de Categorías: Categorías y Productos.
@@ -114,13 +117,17 @@ export class Globals {
   // Guardar el Device Token en el servidor.
 
   saveToken(token): any {
-    console.log("ENTRA");
-    alert(token);
+      var link = 'http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/save_devices_into_ddbb';
+      var data = new FormData();
+      data.append('registration_id', token);
+      this.http.post(link, data)
+         .subscribe(data2 => {
+           alert(data2.json().message);
+        }, error => {
+            console.log("Oooops!");
+              alert(error);
+        });
 
-    this.http.post("http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/save_devices_into_ddbb?registration_id=", token)
-      .subscribe((res: Response) => {
-        token = res.json();
-        alert(res.json());
-      });
+
   }
 }

@@ -393,3 +393,12 @@ ion-label.extras-title.label.label {
 .extra_data ion-label.label.label {
   text-align: -webkit-right;
 }
+
+ion-icon.icon.icon-md.ion-md-arrow-down.item-icon, ion-icon.icon.icon-md.ion-md-arrow-up.item-icon,ion-icon.icon.icon-md.ion-md-remove.item-icon
+{
+  color: #302D2E;
+}
+ion-icon.icon.icon-md.ion-md-arrow-down.item-icon.active.red:hover , ion-icon.icon.icon-md.ion-md-arrow-up.item-icon.active.red:hover
+{
+  color: white;
+}

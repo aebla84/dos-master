@@ -17,13 +17,27 @@
 <ion-content padding>
   <div class="dms-block-description">
     <div class="sliders">
-      <ion-slides pager="true">
+      <ion-slides >
         <ion-slide zoom="true" *ngFor="let p of products" class="background-btnImage background-contain btnImage">
           <div class="divImage" [ngStyle]="{'min-height': '120px','background-image': 'url(' + p.image + ')'}"></div>
           <h4 class="product-title">{{p.name}}</h4>
         </ion-slide>
       </ion-slides>
     </div>
+    <!-- <div class="sliders">
+      <ion-slides >
+        <ion-slide zoom="true" *ngFor="let p of products" class="background-btnImage background-contain btnImage">
+          <ion-card  >
+            <img src="{{p.image}}" />
+            <ion-card-content style="background-color:#EB0628; text-align:center !important;">
+              <ion-card-title style="color:white !important;">
+                {{p.name}}
+              </ion-card-title>
+            </ion-card-content>
+          </ion-card>
+      </ion-slide>
+    </ion-slides>
+    </div> -->
     <div class="desc" [innerHtml]="products[0].description"></div>
     <div class="desc2">
       <h4>{{info}}</h4>
@@ -93,9 +107,9 @@
               <ion-list *ngFor="let subextra of extra.extras" class="lstExtras">
                 <ion-item *ngIf="subextra.reference != undefined " class="extra_data">{{subextra.reference}} </ion-item>
                 <ion-item *ngIf="subextra.dimensions != undefined " class="extra_data"> {{subextra.dimensions}} </ion-item>
-                <ion-item *ngIf="(subextra.price != undefined)  &&  (subextra.price != default) &&  (subextra.price !=ask)  " class="extra_data">{{subextra.price}} € </ion-item>
-                <ion-item *ngIf="subextra.price == default" class="extra_data"> De serie </ion-item>
-                <ion-item *ngIf="subextra.price == ask" class="extra_data"> Consultar </ion-item>
+                <ion-item *ngIf="(subextra.price != 'undefined')  &&  (subextra.price != 'default') &&  (subextra.price !='ask')  " class="extra_data">{{subextra.price}} €</ion-item>
+                <ion-item *ngIf="subextra.price == 'default'" class="extra_data"> De serie </ion-item>
+                <ion-item *ngIf="subextra.price == 'ask'" class="extra_data"> Consultar </ion-item>
               </ion-list>
             </ion-item>
           </ion-list>
