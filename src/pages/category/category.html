@@ -98,9 +98,9 @@
               <ion-list *ngFor="let subextra of extra.extras" class="lstExtras">
                 <ion-item *ngIf="subextra.reference != undefined " class="extra_data">{{subextra.reference}} </ion-item>
                 <ion-item *ngIf="subextra.dimensions != undefined " class="extra_data"> {{subextra.dimensions}} </ion-item>
-                <ion-item *ngIf="(subextra.price != undefined)  &&  (subextra.price != default) &&  (subextra.price !=ask)  " class="extra_data">{{subextra.price}} €</ion-item>
-                <ion-item *ngIf="subextra.price == default" class="extra_data"> De serie </ion-item>
-                <ion-item *ngIf="subextra.price == ask" class="extra_data"> Consultar </ion-item>
+                <ion-item *ngIf="(subextra.price != 'undefined')  &&  (subextra.price != 'default') &&  (subextra.price !='ask')  " class="extra_data">{{subextra.price}} €</ion-item>
+                <ion-item *ngIf="subextra.price == 'default'" class="extra_data"> De serie </ion-item>
+                <ion-item *ngIf="subextra.price == 'ask'" class="extra_data"> Consultar </ion-item>
               </ion-list>
             </ion-item>
           </ion-list>

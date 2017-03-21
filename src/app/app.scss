@@ -95,13 +95,16 @@ ion-content.content.content {
 ion-app [padding],
 ion-app [padding] .scroll-content {
   padding-top: 70px;
+  margin-bottom: 60px;
 }
 //nav bar
 
 .navbarDosilet {
   text-align: center;
 }
-
+.navbarDosilet img{
+  margin-left: -60px;
+}
 .logo-navbar {
   width: 90px;
   height: auto;

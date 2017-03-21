@@ -14,12 +14,21 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list *ngFor="let p of products">
+  <ion-card *ngFor="let p of products" (click)="openProduct(p.idproduct)" id="{{p.name}}">
+    <img src="{{p.image}}" />
+    <ion-card-content style="background-color:#EB0628; text-align:center !important;">
+      <ion-card-title style="color:white !important;">
+        {{p.name}}
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- <ion-list *ngFor="let p of products">
     <div class="single-product">
       <button type="submit" (click)="openProduct(p.idproduct)" id="{{p.name}}" class="btnImage">
           <div class="divImage"  [ngStyle]="{'min-height': '120px','background-image': 'url(' + p.image + ')'}"></div>
           <h4 class="product-title">{{p.name}}</h4>
         </button>
     </div>
-  </ion-list>
+  </ion-list> -->
 </ion-content>

@@ -48,12 +48,13 @@ export class MyApp {
       this.getCatalog();
     });
 
-    console.log();
-
     this.push.register().then((t: PushToken) => {
+      alert("ESTAMOS DENTRO");
       return this.push.saveToken(t);
     }).then((t: PushToken) => {
       console.log('Token saved:', t.token);
+      alert("ESTAMOS MAS ADENTRO");
+      globals.postDeviceToken(t.token);
     });
 
     this.push.rx.notification()
