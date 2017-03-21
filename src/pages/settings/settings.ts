@@ -29,7 +29,6 @@ export class SettingsPage {
       // })
 
       // if(!this.firstTime){
-      this.storage.set('notification', 'true');
       this.storage.get('notification').then((val) => {
         this.notification = val;
         console.log('Notifications are: ', val);
