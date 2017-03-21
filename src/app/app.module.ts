@@ -54,6 +54,6 @@ const cloudSettings: CloudSettings = {
     SettingsPage,
     CategoryPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }]
 })
-export class AppModule {}
+export class AppModule { }

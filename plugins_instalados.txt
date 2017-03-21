@@ -1,0 +1,14 @@
+====================
+ Plugins instalados
+====================
+
+    > Phonegap Plugin Push:
+
+        cordova plugin add phonegap-plugin-push --variable SENDER_ID="522225482273" --save
+
+    > Cordova SQLite Storage:
+
+        cordova plugin add cordova-sqlite-storage --save
+
+
+Nota: Al poner --save al instalarlos se guardan en package.json y al descargar el proyecto, hacemos npm install, y en teoría se deberían instalar todos los plugins que estén en el package.json.

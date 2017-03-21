@@ -24,35 +24,35 @@ export class ProductPage {
   subtitle: string;
   description: HTMLElement;
   image: string;
-  productShow =  this.params.get('product');
-  test2:string;
+  productShow = this.params.get('product');
+  test2: string;
 
-  reference : string;
-  type :string;
-  dimensions : string;
-  conveyor_width :string;
-  conveyor_length : string;
-  conveyor_entry :string;
-  volume : string;
-  weight :string;
-  power : string;
-  voltage : string;
-  frequency :string;
-  price : string;
-  details : string;
+  reference: string;
+  type: string;
+  dimensions: string;
+  conveyor_width: string;
+  conveyor_length: string;
+  conveyor_entry: string;
+  volume: string;
+  weight: string;
+  power: string;
+  voltage: string;
+  frequency: string;
+  price: string;
+  details: string;
   extras = [];
 
-   aux =[];
-   productextra = [];
-   productextra2 = [];
+  aux = [];
+  productextra = [];
+  productextra2 = [];
 
-   extra_id : string;
-   extra_reference : string;
-   extra_price:string;
-   extra_dimensions:string;
-   extra_name : string;
+  extra_id: string;
+  extra_reference: string;
+  extra_price: string;
+  extra_dimensions: string;
+  extra_name: string;
 
-   info : string;
+  info: string;
   constructor(public navCtrl: NavController, private http: Http, public params: NavParams, public loadingCtrl: LoadingController, public platform: Platform) {
 
     //Constants
@@ -64,17 +64,13 @@ export class ProductPage {
     console.log('ionViewDidLoad Product2Page');
   }
 
-    openHome() {
-      this.navCtrl.setRoot(HomePage);
-    }
-    goBack() {
-      this.navCtrl.pop();
-    }
-    goContact() {
-      this.navCtrl.push(ContactPage);
-    }
-
-
-
-
+  openHome() {
+    this.navCtrl.setRoot(HomePage);
+  }
+  goBack() {
+    this.navCtrl.pop();
+  }
+  goContact() {
+    this.navCtrl.push(ContactPage);
+  }
 }

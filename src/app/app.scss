@@ -16,150 +16,177 @@
   font-family: "Avenir-Roman";
   src: url("../assets/fonts/avenir-roman.ttf") format("truetype");
 }
+
 .tabbar.show-tabbar {
   background: #EB0628;
 }
+
 span.tab-button-text {
-    color: white;
+  color: white;
 }
 //footer
-.footer .toolbar-background.toolbar-background-md {
+
+.footer .toolbar-background.toolbar-background {
   background: #EB0628;
   vertical-align: middle;
   align-content: center;
 }
-.btnfooter{
-    width: 49%;
-    background: #EB0628;
-    color: white;
+
+.btnfooter {
+  width: 49%;
+  background: #EB0628;
+  color: white;
 }
 //sidemenu
-.item{
+
+.item {
   background-color: transparent;
 }
 
-.item-md{
-  background:black;
+.item {
+  background: black;
   opacity: 0.9;
 }
 
 ion-label.label.label-md {
-    text-align: initial;
-    margin: 0px;
+  text-align: initial;
+  margin: 0;
 }
-
 /*ion-label.label.label-md:hover{
     text-align: initial;
     color: #EB0628;
 }*/
+// .item-stable {
+//   text-transform: uppercase;
+//   margin-right: 80%;
+// }
 
-.item-stable{
+.item-stable {
   text-transform: uppercase;
   margin-right: 80%;
 }
 
-.item-accordion{
-  background: #EB0628 ;
+.item-accordion {
+  background: #EB0628;
   opacity: 0.95;
   padding-left: 10%;
-  ion-icon{
-    color: white ;
+
+  ion-icon {
+    color: white;
     padding-right: 2%;
     font-size: 1.2em;
   }
 }
-
 //content of all pages
-.ion-page > ion-content{
+
+.ion-page > ion-content {
   background-image: url('../assets/background/DosiletApp_bg.jpg');
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: right;
   padding-top: 50px;
 }
 
-ion-content.content.content-md
-{
+ion-content.content.content {
   padding-top: 50px;
-}
-ion-app.md [padding], ion-app.md [padding] .scroll-content{
-    padding-top: 70px;
+  z-index: 2;
 }
 
+ion-app [padding],
+ion-app [padding] .scroll-content {
+  padding-top: 70px;
+}
 //nav bar
+
 .navbarDosilet {
   text-align: center;
 }
-.logo-navbar{
-  width:90px; height:auto;
+
+.logo-navbar {
+  width: 90px;
+  height: auto;
 }
-.logo-navbar:hover{
-  cursor:pointer
+
+.logo-navbar:hover {
+  cursor: pointer;
 }
 //tabs bar
-.tabs{
+
+.tabs {
   background-color: #0F1013;
-  bottom:0;
-  left:0;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  height:60px;
+  height: 60px;
   text-align: center;
 }
 
-.tabs .tab{
+.tabs .tab {
   text-transform: capitalize !important;
   background: none !important;
   border: none !important;
   box-shadow: none !important;
-  font-size:14px;
-  position:relative;
+  font-size: 14px;
+  position: relative;
   display: inline-block;
-  width:20%;
-  height:100%;
-  padding:14px;
+  width: 20%;
+  height: 100%;
+  padding: 14px;
   background: none;
 }
+
 .tab-icon {
-  height:22px;
-  width:auto;
-  margin-bottom:5px;
+  height: 22px;
+  width: auto;
+  margin-bottom: 5px;
 }
 
-.menu-toggle-button{
-  color:white;
+.menu-toggle-button {
+  color: white;
 }
-.settings-button{
-  position:absolute;
-  right:0;
-  background:none;
-  box-shadow:none;
-  font-size:20px;
+
+.settings-button {
+  position: absolute;
+  right: 0;
+  background: none;
+  box-shadow: none;
+  font-size: 20px;
 }
-.menu-toggle-button:hover{
-  color:white !important;
+
+.menu-toggle-button:hover {
+  color: white !important;
 }
-.settings-button:hover{
-  background:none !important;
-  color:white !important;
+
+.settings-button:hover {
+  background: none !important;
+  color: white !important;
   box-shadow: none !important;
 }
 
-ion-item.item-accordion.item.item-block.item-md {
-    background: #c90e2b;
+ion-item.item-accordion.item.item-block.item {
+  background: #c90e2b;
 }
-
 //subnavar
-´.subnavbar{
 
-}
+´.subnavbar {}
 
-.page-title{
-  padding: 5px 10px;
-  margin-bottom: 10px;
+.subtitle {
+  padding: 5px 0;
   background-color: black;
-  color: white;
   text-transform: uppercase;
   font-size: x-large;
   text-align: center;
-  padding-top: 70px;
+}
+
+.subtitle h5 {
+  color: white !important;
+  font-weight: 100 !important;
+}
+
+.platform-ios .settings-button {
+  top: 13px !important;
+}
+
+.main-title:hover {
+  color: #c90e2b !important;
 }

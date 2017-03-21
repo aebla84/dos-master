@@ -12,15 +12,6 @@ page-settings {
     margin-right: 50%;
   }
 
-  .toggle-icon .toggle-checked,
-  .toggle-md .toggle-checked .toggle-inner {
-    background-color: #32db64;
-  }
-
-  div {
-    display: inherit;
-  }
-
   .information {
     text-align: center;
   }
@@ -29,14 +20,15 @@ page-settings {
     color: white !important;
   }
 
-  .info-toggle{
-    margin-top:180px;
-    text-align:center;
+  .info-toggle {
+    width: 100%;
+    text-align: center;
+    margin-top: 15%;
   }
+
   .notification-toggle {
-      position: fixed;
-      top: 300px;
-      margin-left: 50%;
-      margin-right: 50%;
+    position: fixed;
+    margin-left: 47%;
+    margin-right: 53%;
   }
 }

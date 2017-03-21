@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, MenuController } from 'ionic-angular';
+import { HomePage } from '../home/home';
 import { Globals } from '../../providers/globals';
 import { Storage } from '@ionic/storage';
 
@@ -15,11 +16,11 @@ export class SettingsPage {
   notification: Boolean;
   // firstTime: Boolean;
 
-  constructor(public globals: Globals, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public globals: Globals, public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController) {
     this.storage = new Storage();
 
-// He comentado la manera que estaba intentando hacer que cuando instalas por primera vez la App, el valor de las notificaciones
-// sea true.
+    // He comentado la manera que estaba intentando hacer que cuando instalas por primera vez la App, el valor de las notificaciones
+    // sea true.
 
     this.storage.ready().then(() => {
       // this.storage.get('firstTime').then((val) => {
@@ -28,11 +29,11 @@ export class SettingsPage {
       // })
 
       // if(!this.firstTime){
-        this.storage.set('notification', 'true');
-        this.storage.get('notification').then((val) => {
-          this.notification = val;
-          console.log('Notifications are: ', val);
-        })
+      this.storage.set('notification', 'true');
+      this.storage.get('notification').then((val) => {
+        this.notification = val;
+        console.log('Notifications are: ', val);
+      })
       // }
     });
 
@@ -63,5 +64,17 @@ export class SettingsPage {
       // this.storage.set('firstTime', 'true');
       this.checkStatus();
     }
+  }
+  openHome() {
+    this.navCtrl.setRoot(HomePage);
+  }
+  goBack() {
+    this.navCtrl.pop();
+  }
+  goSettings() {
+    this.navCtrl.push(SettingsPage);
+  }
+  closeMenu() {
+    this.menuCtrl.close();
   }
 }

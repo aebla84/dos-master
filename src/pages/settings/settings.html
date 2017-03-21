@@ -1,9 +1,21 @@
+<ion-header>
+  <ion-navbar color="primary" class="navbarDosilet">
+    <button class="menu-toggle-button" ion-button menuToggle>
+<ion-icon name="menu"></ion-icon>
+</button>
+    <img (click)="openHome()" class="logo-navbar" src="assets/img/dosilet_logo_white.png" />
+    <button class="settings-button" ion-button (click)="goSettings()">
+<ion-icon name="settings"></ion-icon>
+</button>
+  </ion-navbar>
+</ion-header>
+
 <ion-content padding>
   <div class="info-toggle">
     <h1>{{ status }}</h1>
     <h4>{{ description }}</h4>
-  </div>
-  <div class="notification-toggle">
-    <ion-toggle [(ngModel)]="notification" (ionChange)="toggleNotification($event)" checked="notification"></ion-toggle>
+    <div class="notification-toggle">
+      <ion-toggle color="togglechecked" [(ngModel)]="notification" (ionChange)="toggleNotification($event)" checked="notification"></ion-toggle>
+    </div>
   </div>
 </ion-content>

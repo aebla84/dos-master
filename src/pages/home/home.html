@@ -1,9 +1,21 @@
+<ion-header>
+  <ion-navbar color="primary" class="navbarDosilet">
+    <button class="menu-toggle-button" ion-button menuToggle>
+<ion-icon name="menu"></ion-icon>
+</button>
+    <img (click)="openHome()" class="logo-navbar" src="assets/img/dosilet_logo_white.png" />
+    <button class="settings-button" ion-button (click)="goSettings()">
+<ion-icon name="settings"></ion-icon>
+</button>
+  </ion-navbar>
+</ion-header>
+
 <ion-content padding>
 
   <div class="title_home">
     <h1>BIENVENID@</h1>
     <h4> Encuentra todos nuestros</h4>
-      <h4>productos en tu app</h4>
-        <h4> de canal favorita.</h4>
+    <h4>productos en tu app</h4>
+    <h4> de canal favorita.</h4>
   </div>
 </ion-content>

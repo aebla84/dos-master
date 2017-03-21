@@ -1,51 +1,56 @@
 page-highlight {
-//<<<<<<< HEAD
+  //<<<<<<< HEAD
+
   ion-list {
     align-content: center;
   }
-  ion-list.list.list-md {
-// =======
-//
-//   .toolbar-background-md{
-//     background: black;
-//
-//   }
-//
-//   .toolbar-title-md{
-//     color: white;
-//     text-align: center;
-//   }
-//
-//   ion-list {
-//     align-content: center;
-//   }
-//
-//   ion-list.list.list-md{
-// >>>>>>> 6a741db07672aefc1f3ce625d58334211e8b2623
+
+  ion-list.list.list {
+    // =======
+    //
+    //   .toolbar-background-md{
+    //     background: black;
+    //
+    //   }
+    //
+    //   .toolbar-title-md{
+    //     color: white;
+    //     text-align: center;
+    //   }
+    //
+    //   ion-list {
+    //     align-content: center;
+    //   }
+    //
+    //   ion-list.list.list-md{
+    // >>>>>>> 6a741db07672aefc1f3ce625d58334211e8b2623
     text-align: center;
-    border: 0px;
+    border: 0;
     margin-top: 10%;
   }
+
   ion-img {
     min-width: 300px;
     min-height: 300px;
     padding: 3%;
   }
-//<<<<<<< HEAD
+  //<<<<<<< HEAD
+
   .single-product {
     width: 100%;
     margin-right: 0;
   }
+
   .divImage {
-// =======
-//
-//   .single-product{
-//     width: 100%;
-//     margin-right: 0;
-//   }
-//
-//   .divImage{
-// >>>>>>> 6a741db07672aefc1f3ce625d58334211e8b2623
+    // =======
+    //
+    //   .single-product{
+    //     width: 100%;
+    //     margin-right: 0;
+    //   }
+    //
+    //   .divImage{
+    // >>>>>>> 6a741db07672aefc1f3ce625d58334211e8b2623
     height: 100%;
     width: 200px;
     background-repeat: no-repeat;
@@ -53,6 +58,7 @@ page-highlight {
     background-size: contain;
     background-color: white;
   }
+
   .btnImage {
     border: 1px solid #EB0628;
     //border-bottom: 30px solid #EB0628;
@@ -60,27 +66,26 @@ page-highlight {
     //margin-bottom: 30px;
     cursor: pointer;
     background-color: #EB0628;
-    padding: 0px;
+    padding: 0;
   }
 
-  h4.product-title{
+  h4.product-title {
     background-color: #EB0628;
     color: white;
   }
 
-  .single-product:hover{
-
-    h4.product-title{
+  .single-product:hover {
+    h4.product-title {
       background-color: white;
-      color: #EB0628
+      color: #EB0628;
     }
 
-    .btnImage{
+    .btnImage {
       border-bottom: 1px solid #EB0628;
       background-color: white;
     }
 
-    .divImage{
+    .divImage {
       border-bottom: 1px solid #EB0628;
     }
   }
@@ -102,6 +107,7 @@ page-highlight {
       margin-right: 0;
     }
   }
+
   .dms-template-products .products-container .single-product .product-title {
     //padding: 20px;
     color: #fff;

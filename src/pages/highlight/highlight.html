@@ -1,24 +1,25 @@
 <ion-header>
-  <ion-navbar class="navbarDosilet" hideBackButton="true">
-    <button ion-button menuToggle>
-     <ion-icon name="menu"></ion-icon>
-   </button>
-    <div (click)="openHome()" class="div-logo-header">
-      <img style="width:90px; height:auto;" src="assets/img/logo.png" />
-    </div>
+  <ion-navbar color="primary" class="navbarDosilet">
+    <button class="menu-toggle-button" ion-button menuToggle>
+<ion-icon name="menu"></ion-icon>
+</button>
+    <img (click)="openHome()" class="logo-navbar" src="assets/img/dosilet_logo_white.png" />
+    <button class="settings-button" ion-button (click)="goSettings()">
+<ion-icon name="settings"></ion-icon>
+</button>
   </ion-navbar>
-  <ion-navbar class="subnavbar">
-    <ion-title>Ofertas</ion-title>
-  </ion-navbar>
+  <div class="subtitle">
+    <h5>Ofertas</h5>
+  </div>
 </ion-header>
 
 <ion-content padding>
-    <ion-list *ngFor="let p of products">
-      <div class="single-product">
-        <button type="submit" (click)="openProduct(p.idproduct)" id="{{p.name}}" class="btnImage">
+  <ion-list *ngFor="let p of products">
+    <div class="single-product">
+      <button type="submit" (click)="openProduct(p.idproduct)" id="{{p.name}}" class="btnImage">
           <div class="divImage"  [ngStyle]="{'min-height': '120px','background-image': 'url(' + p.image + ')'}"></div>
           <h4 class="product-title">{{p.name}}</h4>
         </button>
-      </div>
-    </ion-list>
+    </div>
+  </ion-list>
 </ion-content>

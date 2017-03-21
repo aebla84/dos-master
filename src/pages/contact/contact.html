@@ -1,7 +1,16 @@
 <ion-header>
-  <ion-navbar color="blacktitle" hideBackButton>
-    <ion-title class="page-title">Contacto</ion-title>
+  <ion-navbar color="primary" class="navbarDosilet">
+    <button class="menu-toggle-button" ion-button menuToggle>
+<ion-icon name="menu"></ion-icon>
+</button>
+    <img (click)="openHome()" class="logo-navbar" src="assets/img/dosilet_logo_white.png" />
+    <button class="settings-button" ion-button (click)="goSettings()">
+<ion-icon name="settings"></ion-icon>
+</button>
   </ion-navbar>
+  <div class="subtitle">
+    <h5>Contacto</h5>
+  </div>
 </ion-header>
 
 <ion-content>

@@ -17,8 +17,8 @@ export class Category {
   showDetails: Boolean;
   subcategories: Array<Subcategory>
 
-  constructor(data: {count_products: number } & {description: string } & { name: string } & { parent: number } & { parent_name: string } & { slug: string } & { subtitle: string } & { term_id: number }
-    & {products: Array<Product>} & {showDetails: Boolean} ) {
+  constructor(data: { count_products: number } & { description: string } & { name: string  } & { parent: number } & {  parent_name: string } & { slug: string } & {  subtitle: string } & {  term_id: number }
+    & { products: Array<Product> } & { showDetails: Boolean }) {
 
     this.count_products = data.count_products;
     this.description = data.description;

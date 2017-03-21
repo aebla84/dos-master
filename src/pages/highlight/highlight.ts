@@ -2,8 +2,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {Http} from '@angular/http';
+import { HomePage } from '../home/home';
+import { SettingsPage } from '../settings/settings';
 import { ProductPage } from '../product/product';
-import { Globals } from '../../providers/globals';
+import { Globals } from '../../providers/globals';
 import { LoadingController } from 'ionic-angular';
 import { Product } from '../../model/product';
 
@@ -43,7 +45,7 @@ export class HighlightPage {
   loader: any;
   categories = [];
   subcategory = [];
-  product_name : string;
+  product_name: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, public globals: Globals, public loadingCtrl: LoadingController) {
     this.loader = this.loadingCtrl.create({
@@ -65,7 +67,7 @@ export class HighlightPage {
           && data[i].image.sizes != "undefined"
           && data[i].image.sizes.medium != "undefined") ? data[i].image.sizes.medium : "";
 
-        this.product_name  = data[i].product['post_title'];
+        this.product_name = data[i].product['post_title'];
 
         console.log("extras");
         console.log(data[i].extras);
@@ -87,16 +89,20 @@ export class HighlightPage {
     console.log(idselected);
     let prod = [];
     prod = this.products.filter((item => { return (item.idproduct == idselected); }));
-    if(prod.length > 0)
-    {
+    if (prod.length > 0) {
       this.navCtrl.push(ProductPage, {
-        product:prod
+        product: prod
       });
-        console.log(prod);
+      console.log(prod);
     }
     else {
       alert("No se ha seleccionado ningún producto.");
     }
   }
-
+  openHome() {
+    this.navCtrl.setRoot(HomePage);
+  }
+  goSettings() {
+    this.navCtrl.setRoot(SettingsPage);
+  }
 }

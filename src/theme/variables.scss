@@ -1,8 +1,7 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
 $font-path: "../assets/fonts";
-@import "ionic.globals";
-// Shared Variables
+@import "ionic.globals"; // Shared Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
 // the Sass variables found in Ionic's source scss files.
@@ -16,8 +15,7 @@ $font-path: "../assets/fonts";
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 //$colors: ( primary: #c90e2b, secondary: #333131, danger: #f53d3d, light: #f4f4f4, dark: #222 );
-$colors: ( primary: #c90e2b , secondary: #333131 , danger: #f53d3d , light: #f4f4f4 , dark: #222, blacktitle: #000000 );
-// App iOS Variables
+$colors: ( primary: #c90e2b , secondary: #333131 , danger: #f53d3d , light: #f4f4f4 , dark: #222, blacktitle: #000000, togglechecked: #32db64 ); // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
 // App Material Design Variables
@@ -32,17 +30,14 @@ $colors: ( primary: #c90e2b , secondary: #333131 , danger: #f53d3d , light: #f4f
 // then be future customized. This import comes last
 // so that the above variables are used and Ionic's
 // default are overridden.
-@import "ionic.theme.default";
-// Ionicons
+@import "ionic.theme.default"; // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:
 // http://ionicframework.com/docs/v2/ionicons/
-@import "ionicons";
-// Fonts
+@import "ionicons"; // Fonts
 // --------------------------------------------------
 @import "roboto";
 @import "noto-sans";
-
 $font-family-md-base: "Avenir-Roman";
 $font-family-ios-base: "Avenir-Roman";
 $font-family-wp-base: "Avenir-Roman";

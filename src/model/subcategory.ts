@@ -13,8 +13,8 @@ export class Subcategory {
   term_id: number;
   products: Array<Product>
 
-  constructor(origin : string , data: {count_products: number } & {description: string } & { name: string } & { parent: number } & { parent_name: string } & { slug: string } & { subtitle: string } & { term_id: number }
-    & {products: Array<Product>} ) {
+  constructor(origin: string, data: { count_products: number } & { description: string } & { name: string  } & { parent: number } & {  parent_name: string } & { slug: string } & {  subtitle: string } & {  term_id: number }
+    & { products: Array<Product> }) {
 
     this.count_products = data.count_products;
     this.description = data.description;
@@ -31,7 +31,7 @@ export class Subcategory {
 
       let product = data.products;
       Object.keys(product).forEach(prod => {
-          //this.products.push(new Product(product[prod], ));
+        //this.products.push(new Product(product[prod], ));
       });
     }
   }

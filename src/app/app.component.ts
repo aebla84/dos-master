@@ -6,7 +6,6 @@ import 'rxjs/add/operator/map';
 import { HomePage } from '../pages/home/home';
 import { Push, PushToken } from '@ionic/cloud-angular';
 import { CategoryPage } from '../pages/category/category';
-import { SettingsPage } from '../pages/settings/settings';
 import { HighlightPage } from '../pages/highlight/highlight';
 import { ContactPage } from '../pages/contact/contact';
 import { Subcategory } from '../model/subcategory';
@@ -45,7 +44,7 @@ export class MyApp {
       Splashscreen.show();
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
+      StatusBar.hide();
       this.getCatalog();
     });
 
@@ -72,7 +71,7 @@ export class MyApp {
     this.nav.push(CategoryPage, {
       idCategory: id,
       nameCategory: name,
-      categories :   this.subCategories 
+      categories: this.subCategories
     });
   }
 
@@ -140,12 +139,8 @@ export class MyApp {
     });
     alert.present();
   }
-
   openHome() {
     this.nav.setRoot(HomePage);
-  }
-  goBack() {
-    this.nav.pop();
   }
   goContact() {
     this.nav.push(ContactPage);
@@ -155,11 +150,5 @@ export class MyApp {
   };
   goHighlight() {
     this.nav.setRoot(HighlightPage);
-  }
-  goSettings() {
-    this.nav.push(SettingsPage);
-  }
-  closeMenu() {
-    this.menuCtrl.close();
   }
 }

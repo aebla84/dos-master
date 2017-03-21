@@ -7,7 +7,7 @@ export class Extra {
   label: string;
   extras: Array<Subextra>;
 
-  constructor(data: {extras: Array<Subextra>} & { label: string }) {
+  constructor(data: { extras: Array<Subextra> } & { label: string }) {
     this.label = data.label;
     this.extras = [];
 
