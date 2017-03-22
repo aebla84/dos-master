@@ -49,15 +49,11 @@ export class MyApp {
       this.getCatalog();
     });
 
-    console.log();
-
     this.push.register().then((t: PushToken) => {
       return this.push.saveToken(t);
     }).then((t: PushToken) => {
       console.log('Token saved:', t.token);
     });
-
-  
 
     this.push.rx.notification()
       .subscribe((msg) => {
@@ -68,19 +64,23 @@ export class MyApp {
   }
 
   openProduct(id, name) {
-
     this.subCategories = this.subcategory.find(cat => cat.term_id === id);
 
     this.nav.push(CategoryPage, {
       idCategory: id,
       nameCategory: name,
-      categories :    this.subCategories
+      categories: this.subCategories
     });
   }
 
   toggleDetails(c) {
     if (c.showDetails) {
       c.showDetails = false;
+      for(var i = 0; i < this.category.length; i++){
+        if(this.category[i].term_id != c.term_id){
+          this.category[i].showDetails = true;
+        }
+      }
     } else {
       c.showDetails = true;
     }
@@ -143,6 +143,11 @@ export class MyApp {
     alert.present();
   }
 
+  resetMenu(){
+    for(var i = 0; i < this.category.length; i++){
+        this.category[i].showDetails = true;
+    }
+  }
   openHome() {
     this.nav.setRoot(HomePage);
   }
@@ -152,16 +157,10 @@ export class MyApp {
   goContact() {
     this.nav.push(ContactPage);
   }
-  openMenu() {
-    this.menuCtrl.open();
-  };
   goHighlight() {
     this.nav.setRoot(HighlightPage);
   }
   goSettings() {
     this.nav.push(SettingsPage);
-  }
-  closeMenu() {
-    this.menuCtrl.close();
   }
 }

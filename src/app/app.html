@@ -1,4 +1,4 @@
-<ion-menu style="margin-bottom:60px !important;" [content]="content">
+<ion-menu (ionClose)="resetMenu()" style="margin-bottom:60px !important;" [content]="content">
   <ion-content style="background-color:black;">
     <ion-list>
       <div *ngFor="let c of category">

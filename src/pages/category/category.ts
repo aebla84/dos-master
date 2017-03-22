@@ -41,7 +41,7 @@ export class CategoryPage {
   pFrequency: string;
   pPrice: string;
   pDetails: string;
-
+  arrayImgs = [];
   //Form product
   fTitle: string;
   fSubject: string;
@@ -54,8 +54,8 @@ export class CategoryPage {
   loading: boolean;
   loader: any;
   idCategory: string;
-  lastSlide :boolean;
-  firstSlide :boolean;
+  lastSlide: boolean;
+  firstSlide: boolean;
 
   extras = [];
   subextras = [];
@@ -116,7 +116,9 @@ export class CategoryPage {
           && data[i].image.sizes.medium != "undefined") ? data[i].image.sizes.medium : "";
         this.product_name = data[i].product['post_title'];
         this.products.push(new Product(data[i], this.image, this.product_name, data[i].description));
-
+        if(this.image != ""){
+          this.arrayImgs.push({name: this.product_name, image: this.image});
+        }
       }
     });
   }
@@ -130,6 +132,6 @@ export class CategoryPage {
   slideChanged(Slides) {
     this.firstSlide = Slides.isBeginning();
     this.lastSlide = Slides.isEnd();
-   }
+  }
 
 }

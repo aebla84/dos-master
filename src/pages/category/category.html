@@ -19,9 +19,9 @@
   <div class="dms-block-description">
     <div class="sliders">
       <ion-slides  #Slides   (ionSlideDidChange)="slideChanged(Slides)">
-        <ion-slide zoom="true" *ngFor="let p of products" class="background-btnImage background-contain btnImage">
-          <div class="divImage" [ngStyle]="{'min-height': '120px','background-image': 'url(' + p.image + ')'}"></div>
-          <h4 class="product-title">{{p.name}}</h4>
+        <ion-slide zoom="true" *ngFor="let i of arrayImgs" class="background-btnImage background-contain btnImage">
+          <div class="divImage" [ngStyle]="{'min-height': '120px','background-image': 'url(' + i.image + ')'}"></div>
+          <h4 class="product-title">{{i.name}}</h4>
         </ion-slide>
       </ion-slides>
        <ion-icon name="arrow-dropright"  [hidden] ="lastSlide"></ion-icon>
