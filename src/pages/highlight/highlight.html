@@ -8,10 +8,13 @@
 <ion-icon name="settings"></ion-icon>
 </button>
   </ion-navbar>
-  <div class="subtitle">
-    <h5>Ofertas</h5>
-  </div>
+  <ion-navbar color="blacktitle" hideBackButton>
+    <ion-title class="page-title">Ofertas</ion-title>
+  </ion-navbar>
 </ion-header>
+
+
+
 
 <ion-content padding>
   <ion-card *ngFor="let p of products" (click)="openProduct(p.idproduct)" id="{{p.name}}">
