@@ -19,7 +19,7 @@ export class Globals {
   loading: boolean;
   url: string;
   notification: Boolean;
-  data : {};
+  data: {};
 
   constructor(public push: Push, private http: Http, private platform: Platform, private alertCtrl: AlertController) {
     this.http = http;
@@ -57,13 +57,11 @@ export class Globals {
 
   // POST del Token de los dispositivos que abren la App.
   postDeviceToken(deviceToken): void {
-    alert(deviceToken);
     this.http.post('', deviceToken)
       .subscribe((res: Response) => {
         this.saveToken(deviceToken);
         console.log(deviceToken);
         deviceToken = res.json();
-        alert(deviceToken);
       });
   }
 
@@ -117,17 +115,13 @@ export class Globals {
   // Guardar el Device Token en el servidor.
 
   saveToken(token): any {
-      var link = 'http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/save_devices_into_ddbb';
-      var data = new FormData();
-      data.append('registration_id', token);
-      this.http.post(link, data)
-         .subscribe(data2 => {
-           alert(data2.json().message);
-        }, error => {
-            console.log("Oooops!");
-              alert(error);
-        });
-
-
+    var link = 'http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/save_devices_into_ddbb';
+    var data = new FormData();
+    data.append('registration_id', token);
+    this.http.post(link, data)
+      .subscribe(data2 => {
+      }, error => {
+        console.log("Oooops!");
+      });
   }
 }
