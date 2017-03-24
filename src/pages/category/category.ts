@@ -110,6 +110,7 @@ export class CategoryPage {
       this.dataLength = data.length;
       this.loader.dismiss();
 
+      // Si hay menos de 3 productos para mostrar o hay 3 o más
       if(data.length < 3){
         this.counter = data.length;
       } else {
