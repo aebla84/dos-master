@@ -50,7 +50,7 @@ export class Globals {
 
   // GET Product By Taxonomy
 
-  getProductByCategory(idCategory) {
+  getProductByCategory(idCategory): any {
     return this.http.get('http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/get_products_bycategory?idcategory=' + idCategory)
       .map(res => res.json())
   }

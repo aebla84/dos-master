@@ -138,7 +138,10 @@ page-category {
       min-height: 150px;
       margin-top: 1%;
     }
-
+    textarea{
+      min-height:150px !important;
+      max-height:150px !important;
+    }
     button {
       margin-top: 2%;
     }

@@ -64,6 +64,8 @@ export class CategoryPage {
   subcategory = [];
   product_name: string;
 
+  dataLength: any;
+  counter = 3;
 
 
   constructor(public navCtrl: NavController, public globals: Globals, private http: Http, public params: NavParams, public loadingCtrl: LoadingController, public platform: Platform) {
@@ -84,7 +86,6 @@ export class CategoryPage {
 
     this.lastSlide = false;
     this.firstSlide = true;
-
   }
 
   setObjects() {
@@ -106,9 +107,16 @@ export class CategoryPage {
 
   getProductByCategory() {
     this.globals.getProductByCategory(this.idCategory).subscribe(data => {
+      this.dataLength = data.length;
       this.loader.dismiss();
-      for (var i = 0; i < data.length; i++) {
 
+      if(data.length < 3){
+        this.counter = data.length;
+      } else {
+        this.counter = 3;
+      }
+
+      for (var i = 0; i < this.counter; i++) {
         this.image = (data[i].image != false && data[i].image != null
           && data[i].image.sizes != null
           && data[i].image.sizes != "null"
@@ -122,16 +130,43 @@ export class CategoryPage {
       }
     });
   }
+  doInfinite(infiniteScroll) {
+  console.log('Begin async operation');
+
+  setTimeout(() => {
+    this.globals.getProductByCategory(this.idCategory).subscribe(data => {
+      this.loader.dismiss();
+      if(this.counter == data.length){
+        return false;
+      }
+      for (var i = this.counter; i < this.counter+3; i++) {
+
+        this.image = (data[i].image != false && data[i].image != null
+          && data[i].image.sizes != null
+          && data[i].image.sizes != "null"
+          && data[i].image.sizes != "undefined"
+          && data[i].image.sizes.medium != "undefined") ? data[i].image.sizes.medium : "";
+        this.product_name = data[i].product['post_title'];
+        this.products.push(new Product(data[i], this.image, this.product_name, data[i].description));
+        if(this.image != ""){
+          this.arrayImgs.push({name: this.product_name, image: this.image});
+        }
+      }
+      this.counter = this.counter+3;
+    });
+
+    console.log('Async operation has ended');
+    infiniteScroll.complete();
+  }, 500);
+}
   openHome() {
     this.navCtrl.setRoot(HomePage);
   }
   goSettings() {
     this.navCtrl.setRoot(SettingsPage);
   }
-
   slideChanged(Slides) {
     this.firstSlide = Slides.isBeginning();
     this.lastSlide = Slides.isEnd();
   }
-
 }

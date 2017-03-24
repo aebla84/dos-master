@@ -7,7 +7,6 @@ import { SettingsPage } from '../settings/settings';
 import { ProductPage } from '../product/product';
 import { Globals } from '../../providers/globals';
 import { LoadingController } from 'ionic-angular';
-import { Product } from '../../model/product';
 
 @Component({
   selector: 'page-highlight',
@@ -72,7 +71,7 @@ export class HighlightPage {
         console.log("extras");
         console.log(data[i].extras);
         console.log(data[i].description);
-        this.products.push(new Product(data[i], this.image, this.product_name, data[i].description));
+        // this.products.push(new Product(data[i], this.image, this.product_name, data[i].description));
 
 
       }

@@ -18,14 +18,19 @@
 <ion-content padding>
   <div class="dms-block-description">
     <div class="sliders">
-      <ion-slides  #Slides   (ionSlideDidChange)="slideChanged(Slides)">
+      <ion-slides #Slides (ionSlideDidChange)="slideChanged(Slides)">
         <ion-slide zoom="true" *ngFor="let i of arrayImgs" class="background-btnImage background-contain btnImage">
+
           <div class="divImage" [ngStyle]="{'min-height': '120px','background-image': 'url(' + i.image + ')'}"></div>
-          <h4 class="product-title">{{i.name}}</h4>
+          <h4 class="product-title slider">
+            <ion-icon name="arrow-dropleft"  [hidden] ="firstSlide"></ion-icon>
+              {{i.name}}
+            <ion-icon name="arrow-dropright"  [hidden] ="lastSlide"></ion-icon>
+          </h4>
         </ion-slide>
       </ion-slides>
-       <ion-icon name="arrow-dropright"  [hidden] ="lastSlide"></ion-icon>
-      <ion-icon name="arrow-dropleft"  [hidden] ="firstSlide"></ion-icon>
+      <ion-icon name="arrow-dropright" [hidden]="lastSlide"></ion-icon>
+      <ion-icon name="arrow-dropleft" [hidden]="firstSlide"></ion-icon>
     </div>
     <div class="desc" [innerHtml]="description"></div>
     <div class="desc2">
@@ -110,7 +115,11 @@
 
       </ion-list>
     </div>
-    <div class="formProductDiv">
+    <ion-infinite-scroll *ngIf="counter != dataLength" (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando más productos...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <!-- <div class="formProductDiv">
       <h2>{{fTitle}}</h2>
       <form (ngSubmit)="globals.send()">
         <ion-item>
@@ -130,6 +139,6 @@
         </ion-item>
         <button ion-button type="submit" block>Enviar</button>
       </form>
-    </div>
+    </div> -->
   </div>
 </ion-content>
