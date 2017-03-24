@@ -7,6 +7,7 @@ import { SettingsPage } from '../settings/settings';
 import { ProductPage } from '../product/product';
 import { Globals } from '../../providers/globals';
 import { LoadingController } from 'ionic-angular';
+import { Product } from '../../model/product';
 
 @Component({
   selector: 'page-highlight',
@@ -64,7 +65,7 @@ export class HighlightPage {
           && data[i].image.sizes != null
           && data[i].image.sizes != "null"
           && data[i].image.sizes != "undefined"
-          && data[i].image.sizes.medium != "undefined") ? data[i].image.sizes.medium : "";
+          && data[i].image.sizes.medium != "undefined") ? data[i].image.sizes.medium : "assets/img/notImage3.png";
 
         this.product_name = data[i].product['post_title'];
 
@@ -72,6 +73,7 @@ export class HighlightPage {
         console.log(data[i].extras);
         console.log(data[i].description);
         // this.products.push(new Product(data[i], this.image, this.product_name, data[i].description));
+        this.products.push(new Product(data[i], this.image, this.product_name, data[i].description));
 
 
       }
