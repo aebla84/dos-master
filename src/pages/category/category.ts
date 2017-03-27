@@ -4,7 +4,7 @@ import {Http} from '@angular/http';
 import { LoadingController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { SettingsPage } from '../settings/settings';
-// import { ContactPage } from '../contact/contact';
+import { ContactPage } from '../contact/contact';
 import { Globals } from '../../providers/globals';
 //import { Subcategory } from '../../model/subcategory';
 import { Product } from '../../model/product';
@@ -54,6 +54,7 @@ export class CategoryPage {
   loading: boolean;
   loader: any;
   idCategory: string;
+  isCat: boolean;
   lastSlide: boolean;
   firstSlide: boolean;
 
@@ -79,6 +80,8 @@ export class CategoryPage {
     this.fTitle = "Solicitar presupuesto";
     this.idCategory = params.get("idCategory");
     this.categories = params.get("categories");
+    this.isCat = params.get("isCategory");
+    console.log(this.isCat);
     console.log(this.categories);
 
     this.setObjects();
@@ -89,12 +92,13 @@ export class CategoryPage {
   }
 
   setObjects() {
-    this.parent_name = (this.categories["parent_name"] != null) ? this.categories["parent_name"] : "";
-    this.name = (this.categories["name"] != null) ? this.categories["name"] : "";
-    this.subtitle = (this.categories["subtitle"] != null) ? this.categories["subtitle"] : "";
-    this.description = (this.categories["description"] != null) ? this.categories["description"] : "";
-    //this.products =  (this.categories["products"] != null) ? this.categories["products"] : "";
-
+    if(!this.isCat){
+      this.parent_name = (this.categories["parent_name"] != null) ? this.categories["parent_name"] : "";
+      this.name = (this.categories["name"] != null) ? this.categories["name"] : "";
+      this.subtitle = (this.categories["subtitle"] != null) ? this.categories["subtitle"] : "";
+      this.description = (this.categories["description"] != null) ? this.categories["description"] : "";
+      //this.products =  (this.categories["products"] != null) ? this.categories["products"] : "";
+    } 
   }
 
   toggleDetails(p) {
@@ -160,6 +164,10 @@ export class CategoryPage {
     infiniteScroll.complete();
   }, 500);
 }
+
+  pedirPresupuesto(){
+    this.navCtrl.push(ContactPage);
+  }
   openHome() {
     this.navCtrl.setRoot(HomePage);
   }

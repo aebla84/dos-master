@@ -73,7 +73,13 @@ export class MyApp {
       categories: this.subCategories
     });
   }
-
+  openProductCategory(id, name, isCat){
+    this.nav.push(CategoryPage, {
+      idCategory: id,
+      nameCategory: name,
+      isCategory: isCat
+    })
+  }
   toggleDetails(c) {
     if (c.showDetails) {
       c.showDetails = false;

@@ -2,10 +2,17 @@
   <ion-content style="background-color:black;">
     <ion-list>
       <div *ngFor="let c of category">
-        <ion-item class="item-stable" (click)="toggleDetails(c)" [ngClass]="{active: c.showDetails}" no-lines>
+        <ion-item *ngIf="c.subcategories.length > 0" class="item-stable" (click)="toggleDetails(c)" [ngClass]="{active: c.showDetails}" no-lines>
+          <ion-icon *ngIf="!c.showDetails" color="danger" name="ios-arrow-down"></ion-icon>
+          <ion-icon *ngIf="c.showDetails" color="danger" name="ios-arrow-forward"></ion-icon>
+          <label class="main-title">{{c.name}}</label>
+        </ion-item>
+
+        <ion-item *ngIf="c.subcategories.length == 0" class="item-stable" no-lines (click)="openProductCategory(c.term_id,c.name,true)">
           <ion-icon color="danger" name="ios-arrow-forward"></ion-icon>
           <label class="main-title">{{c.name}}</label>
         </ion-item>
+
         <ion-item *ngFor="let sc of c.subcategories" class="item-accordion" menuClose [hidden]="c.showDetails" (click)="openProduct(sc.term_id,sc.name)">
           <ion-icon name="ios-arrow-forward"></ion-icon>
           {{sc.name}}
