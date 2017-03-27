@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
+import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { Http } from "@angular/http";
 import { HomePage } from '../home/home';
 import { Globals } from '../../providers/globals'
@@ -11,7 +11,12 @@ import { SettingsPage } from '../settings/settings';
   templateUrl: 'contact.html'
 })
 export class ContactPage {
-  constructor(public navCtrl: NavController, private http: Http, public globals: Globals, public menuCtrl: MenuController) { }
+  nameCategory: string;
+
+  constructor(public navCtrl: NavController, public params: NavParams, private http: Http, public globals: Globals, public menuCtrl: MenuController) {
+    this.nameCategory = params.get("nameCategory");
+    console.log(this.nameCategory);
+  }
   openHome() {
     this.navCtrl.setRoot(HomePage);
   }

@@ -8,7 +8,7 @@
           <label class="main-title">{{c.name}}</label>
         </ion-item>
 
-        <ion-item *ngIf="c.subcategories.length == 0" class="item-stable" no-lines (click)="openProductCategory(c.term_id,c.name,true)">
+        <ion-item *ngIf="c.subcategories.length == 0" class="item-stable" menuClose (click)="openProductCategory(c.term_id,c.name,true)">
           <ion-icon color="danger" name="ios-arrow-forward"></ion-icon>
           <label class="main-title">{{c.name}}</label>
         </ion-item>

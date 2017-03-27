@@ -13,6 +13,7 @@ export class Globals {
   subject: string;
   name: string;
   company: string;
+  category: string;
   mailfrom: string;
   phone: string;
   message: string;
@@ -81,16 +82,22 @@ export class Globals {
   }
 
   //Enviar MAIL de contacto
-  send(): any {
+  send(nameCategory): any {
     this.subject = this.subject;
     this.name = this.subject;
+    this.category = nameCategory;
     this.company = this.company;
     this.message = this.message;
     this.phone = this.phone;
     this.mailfrom = this.mailfrom;
     this.url = 'http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/sendmail';
     var data = new FormData();
-    data.append('subject', 'Nuevo mensaje de ' + this.subject);
+    console.log("Categoría: " + this.category);
+    if (this.category != undefined) {
+      data.append('subject', 'Nuevo mensaje de ' + this.subject + ' sobre ' + this.category);
+    } else {
+      data.append('subject', 'Nuevo mensaje de ' + this.subject);
+    }
     data.append('message', this.message);
     data.append('mailto', 'jbono@deideasmarketing.com');
     data.append('mailfrom', this.mailfrom);

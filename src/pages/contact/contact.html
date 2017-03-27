@@ -17,7 +17,11 @@
   <script src="cordova.js"></script>
 
   <div class="formProductDiv">
-    <form (ngSubmit)="globals.send()">
+    <form (ngSubmit)="globals.send(nameCategory)">
+      <ion-item *ngIf="nameCategory">
+        <ion-input type="text" placeholder="{{nameCategory}}" [(ngModel)]="globals.category" name="category" disabled="true">
+        </ion-input>
+      </ion-item>
       <ion-item>
         <ion-input type="text" [(ngModel)]="globals.subject" name="subject" placeholder="Nombre" required></ion-input>
       </ion-item>
