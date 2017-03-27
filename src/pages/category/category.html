@@ -10,7 +10,7 @@
   </ion-navbar>
   <ion-navbar color="blacktitle" hideBackButton>
     <ion-title class="page-title">{{parent_name}}</ion-title>
-    <ion-title class="page-subtitle">{{this.name}}</ion-title>
+    <ion-title class="page-subtitle">{{name}}</ion-title>
     <ion-title class="page-subtitle">{{subtitle}}</ion-title>
   </ion-navbar>
 </ion-header>
@@ -21,7 +21,7 @@
       <ion-slides #Slides (ionSlideDidChange)="slideChanged(Slides)">
         <ion-slide zoom="true" *ngFor="let i of arrayImgs" class="background-btnImage background-contain btnImage">
 
-          <div class="divImage" [ngStyle]="{'min-height': '120px','background-image': 'url(' + i.image + ')'}"></div>
+          <div class="divImage" id="prova" [ngStyle]="{'min-height': '120px','background-image': 'url(' + i.image + ')'}"></div>
           <h4 class="product-title slider">
             <ion-icon name="arrow-dropleft"  [hidden] ="firstSlide"></ion-icon>
               {{i.name}}
@@ -119,33 +119,17 @@
       <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando más productos...">
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
-    <!-- <div class="formProductDiv">
-      <h2>{{fTitle}}</h2>
-      <form (ngSubmit)="globals.send()">
-        <ion-item>
-          <ion-input type="text" [(ngModel)]="globals.subject" name="subject" placeholder="Nombre" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input type="text" [(ngModel)]="globals.company" name="company" placeholder="Empresa" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input type="tel" [(ngModel)]="globals.phone" name="phone" placeholder="Teléfono" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input type="email" [(ngModel)]="globals.mailfrom" name="mailfrom" placeholder="Email" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-textarea [(ngModel)]="globals.message" name="message" placeholder="Mensaje" required></ion-textarea>
-        </ion-item>
-        <button ion-button type="submit" block>Enviar</button>
-      </form>
-    </div> -->
+
   </div>
   <ion-fab>
-    <div>
-    <button ion-fab color="primary" (click)="pedirPresupuesto(nameCategory)">
-      <ion-icon name="mail"></ion-icon>
-    </button>
-  </div>
-  </ion-fab>
+     <div>
+       <a href="#prova">
+         <button ion-fab color="primary">
+         <ion-icon name="arrow-up"></ion-icon>
+       </button></a>
+     <button ion-fab color="primary" (click)="pedirPresupuesto(nameCategory)">
+       <ion-icon name="mail"></ion-icon>
+     </button>
+   </div>
+   </ion-fab>
 </ion-content>

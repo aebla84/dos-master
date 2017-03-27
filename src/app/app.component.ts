@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, MenuController } from 'ionic-angular';
+import { Nav, Platform, MenuController,LoadingController,AlertController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -12,7 +12,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { Subcategory } from '../model/subcategory';
 import { Category } from '../model/category';
 import { Globals } from '../providers/globals';
-import { AlertController } from 'ionic-angular';
+
 
 declare var window;
 
@@ -38,11 +38,18 @@ export class MyApp {
   pages: Array<{ id: any, title: string, component: any, parent: any, subcategories: Array<{}> }>;
   categoriesUrl: string;
   isCat: boolean;
-
-  constructor(platform: Platform, private http: Http, public push: Push, public menuCtrl: MenuController, public globals: Globals, private alertCtrl: AlertController) {
+  loader :any
+  constructor(platform: Platform, private http: Http, public push: Push, public menuCtrl: MenuController, public globals: Globals, private alertCtrl: AlertController, public loadingCtrl: LoadingController) {
 
     platform.ready().then(() => {
-      Splashscreen.show();
+      Splashscreen.hide();
+
+      this.loader = this.loadingCtrl.create({
+        spinner: 'bubbles',
+        content: "Cargando categorias..."
+      });
+      this.loader.present();
+
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
@@ -74,9 +81,11 @@ export class MyApp {
     });
   }
   openProductCategory(id, name, isCat){
+    this.categories = this.category.find(cat => cat.term_id === id);
     this.nav.push(CategoryPage, {
       idCategory: id,
       nameCategory: name,
+      categories: this.categories,
       isCategory: isCat
     })
   }
@@ -119,11 +128,10 @@ export class MyApp {
             }
           }
         }
-        Splashscreen.hide();
-        console.log(this.category);
       },
       err => { console.log(err) }
     );
+          this.loader.dismiss();
   }
 
   confirmCall(number) {

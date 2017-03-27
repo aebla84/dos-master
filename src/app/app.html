@@ -1,6 +1,7 @@
 <ion-menu (ionClose)="resetMenu()" style="margin-bottom:60px !important;" [content]="content">
   <ion-content style="background-color:black;">
     <ion-list>
+      <ion-title class="title_sidmenu">CATEGORIAS</ion-title>
       <div *ngFor="let c of category">
         <ion-item *ngIf="c.subcategories.length > 0" class="item-stable" (click)="toggleDetails(c)" [ngClass]="{active: c.showDetails}" no-lines>
           <ion-icon *ngIf="!c.showDetails" color="danger" name="ios-arrow-down"></ion-icon>

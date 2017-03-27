@@ -65,6 +65,7 @@ export class CategoryPage {
   subcategory = [];
   product_name: string;
 
+  dataResults  : any;
   dataLength: any;
   counter = 3;
   divider = 0;
@@ -93,13 +94,12 @@ export class CategoryPage {
   }
 
   setObjects() {
-    if (!this.isCat) {
+
       this.parent_name = (this.categories["parent_name"] != null) ? this.categories["parent_name"] : "";
       this.name = (this.categories["name"] != null) ? this.categories["name"] : "";
       this.subtitle = (this.categories["subtitle"] != null) ? this.categories["subtitle"] : "";
       this.description = (this.categories["description"] != null) ? this.categories["description"] : "";
-      //this.products =  (this.categories["products"] != null) ? this.categories["products"] : "";
-    }
+
   }
 
   toggleDetails(p) {
@@ -112,66 +112,53 @@ export class CategoryPage {
 
   getProductByCategory() {
     this.globals.getProductByCategory(this.idCategory).subscribe(data => {
+      this.dataResults = data;
       this.dataLength = data.length;
       this.loader.dismiss();
-      // Si hay menos de 3 productos para mostrar o hay 3 o más
-      if (data.length < 3) {
-        this.counter = data.length;
-      } else {
-        this.counter = 3;
-        if(data.length < 6){
-          this.divider = data.length - this.counter;
-        }
-      }
-      if(data.length % 3 === 0){
-        this.divider = 3;
-      } else {
-        if(data.length % 2 === 0){
-          this.divider = 2;
-        }
-      }
 
-
+      if (data.length < 3)
+      {
+         this.counter = data.length;
+      }
+      else
+      {
+           this.counter = 3;
+      }
       for (var i = 0; i < this.counter; i++) {
+        this.product_name = data[i].product['post_title'];
+        this.products.push(new Product(data[i], this.image, this.product_name, data[i].description));
+      }
+
+      for (var i = 0; i < data.length; i++) {
         this.image = (data[i].image != false && data[i].image != null
           && data[i].image.sizes != null
           && data[i].image.sizes != "null"
           && data[i].image.sizes != "undefined"
           && data[i].image.sizes.medium != "undefined") ? data[i].image.sizes.medium : "";
         this.product_name = data[i].product['post_title'];
-        this.products.push(new Product(data[i], this.image, this.product_name, data[i].description));
         if (this.image != "") {
           this.arrayImgs.push({ name: this.product_name, image: this.image });
         }
       }
+
     });
   }
   doInfinite(infiniteScroll) {
     console.log('Begin async operation');
 
     setTimeout(() => {
-      this.globals.getProductByCategory(this.idCategory).subscribe(data => {
-        this.loader.dismiss();
+        let  paramTo_Length  = (this.counter + 3 < this.dataLength) ? this.counter + 3 : this.dataLength;
 
-        for (var i = this.counter; i < this.counter + this.divider; i++) {
-          if (this.counter < data.length){
-            this.image = (data[i].image != false && data[i].image != null
-              && data[i].image.sizes != null
-              && data[i].image.sizes != "null"
-              && data[i].image.sizes != "undefined"
-              && data[i].image.sizes.medium != "undefined") ? data[i].image.sizes.medium : "";
-            this.product_name = data[i].product['post_title'];
-            this.products.push(new Product(data[i], this.image, this.product_name, data[i].description));
-            if (this.image != "") {
-              this.arrayImgs.push({ name: this.product_name, image: this.image });
-            }
-          }
-          console.log(this.counter + "/" + data.length);
+        for (var i = this.counter; i < paramTo_Length ; i++) {
+
+            this.product_name = this.dataResults[i].product['post_title'];
+            this.products.push(new Product(this.dataResults[i], this.image, this.product_name, this.dataResults[i].description));
+          //console.log(this.counter + "/" + this.dataResults.length);
         }
-        if (this.counter != data.length) {
-          this.counter = this.counter + this.divider;
+        if (paramTo_Length < this.dataLength) {
+          this.counter = this.counter + 3;
         }
-      });
+        else{ this.counter = this.dataLength}
 
       console.log('Async operation has ended');
       infiniteScroll.complete();
