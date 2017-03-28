@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, Platform } from 'ionic-angular';
+import { Component, ElementRef ,ViewChild} from '@angular/core';
+import { NavController, NavParams, Platform,Content } from 'ionic-angular';
 import {Http} from '@angular/http';
 import { LoadingController } from 'ionic-angular';
 import { HomePage } from '../home/home';
@@ -70,8 +70,9 @@ export class CategoryPage {
   counter = 3;
   divider = 0;
 
+  @ViewChild(Content) content: Content;
 
-  constructor(public navCtrl: NavController, public globals: Globals, private http: Http, public params: NavParams, public loadingCtrl: LoadingController, public platform: Platform) {
+  constructor(public navCtrl: NavController, public globals: Globals, private http: Http, public params: NavParams, public loadingCtrl: LoadingController, public platform: Platform,public myElement: ElementRef) {
 
     this.loader = this.loadingCtrl.create({
       spinner: 'bubbles',
@@ -91,6 +92,7 @@ export class CategoryPage {
 
     this.lastSlide = false;
     this.firstSlide = true;
+
   }
 
   setObjects() {
@@ -179,5 +181,10 @@ export class CategoryPage {
   slideChanged(Slides) {
     this.firstSlide = Slides.isBeginning();
     this.lastSlide = Slides.isEnd();
+  }
+
+
+  scrollToTop() {
+    this.content.scrollToTop();
   }
 }

@@ -1,27 +1,49 @@
 <ion-header>
   <ion-navbar color="primary" class="navbarDosilet">
     <button class="menu-toggle-button" ion-button menuToggle>
-<ion-icon name="menu"></ion-icon>
-</button>
-    <img (click)="openHome()" class="logo-navbar" src="assets/img/dosilet_logo_white.png" />
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <img (click)="openHome()" class="logo-navbar" src="assets/img/dosilet_logo_white.png" />
     <button class="settings-button" ion-button (click)="goSettings()">
-<ion-icon name="settings"></ion-icon>
-</button>
+      <ion-icon name="settings"></ion-icon>
+    </button>
   </ion-navbar>
   <ion-navbar color="blacktitle" hideBackButton>
     <ion-title class="page-title">{{parent_name}}</ion-title>
     <ion-title class="page-subtitle">{{name}}</ion-title>
-    <ion-title class="page-subtitle">{{subtitle}}</ion-title>
+    <ion-title class="page-subtitle">{{subtitle}}
+      <ion-fab class="fab_contact">
+         <div>
+         <button ion-fab color="primary" (click)="pedirPresupuesto(nameCategory)" mini>
+           <ion-icon name="mail"></ion-icon>
+         </button>
+       </div>
+       </ion-fab>
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <div class="dms-block-description">
-    <div class="sliders">
+<ion-content padding >
+  <div class="dms-block-description"  >
+    <div class="sliders" >
+      <ion-slides #Slides (ionSlideDidChange)="slideChanged(Slides)">
+        <ion-slide zoom="true" *ngFor="let i of arrayImgs">
+        <ion-card id="{{i.name}}"  class="background-btnImage background-contain btnImage">
+          <img src="{{i.image}}" />
+          <ion-card-content style="background-color:#EB0628; text-align:center !important;">
+            <ion-card-title style="color:white !important;">
+              {{i.name}}
+            </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+      </div>
+    <div class="sliders" >
       <ion-slides #Slides (ionSlideDidChange)="slideChanged(Slides)">
         <ion-slide zoom="true" *ngFor="let i of arrayImgs" class="background-btnImage background-contain btnImage">
 
-          <div class="divImage" id="prova" [ngStyle]="{'min-height': '120px','background-image': 'url(' + i.image + ')'}"></div>
+          <div class="divImage" [ngStyle]="{'min-height': '120px','background-image': 'url(' + i.image + ')'}"></div>
           <h4 class="product-title slider">
             <ion-icon name="arrow-dropleft"  [hidden] ="firstSlide"></ion-icon>
               {{i.name}}
@@ -116,20 +138,14 @@
       </ion-list>
     </div>
     <ion-infinite-scroll *ngIf="counter != dataLength" (ionInfinite)="doInfinite($event)">
-      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando más productos...">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" class="infiniteScroll" loadingText="Cargando más productos...">
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
 
   </div>
-  <ion-fab>
+  <ion-fab  class="fab_arrowup">
      <div>
-       <a href="#prova">
-         <button ion-fab color="primary">
-         <ion-icon name="arrow-up"></ion-icon>
-       </button></a>
-     <button ion-fab color="primary" (click)="pedirPresupuesto(nameCategory)">
-       <ion-icon name="mail"></ion-icon>
-     </button>
+         <button (click)="scrollToTop()"><ion-icon name="arrow-up"></ion-icon></button>
    </div>
    </ion-fab>
 </ion-content>

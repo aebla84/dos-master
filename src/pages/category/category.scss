@@ -421,9 +421,33 @@ page-category {
   h4.product-title.slider {
     font-size: small;
   }
-
   ion-fab {
     right: 40px !important;
-    bottom: 80px !important;
   }
+    ion-fab.fab_contact {
+      bottom: 0px !important;
+      right: 2px !important;
+    }
+    ion-fab.fab_arrowup {
+      bottom: 80px !important;
+    }
+
+ion-fab.fab_arrowup button.fab {
+  width: 25px;
+  height: 25px;
+  background: #EB0628;
+  color: white;
+  border-radius: 0%;
+}
+ion-fab.fab_arrowup button {
+  width: 25px;
+  height: 25px;
+  background: #EB0628;
+  color: white;
+  border-radius: 0%;
+}
+.infiniteScroll{
+  color:  #EB0628;
+}
+
 }
