@@ -31,4 +31,5 @@ export class Category {
     this.showDetails = true;
     this.subcategories = [];
   }
+  statusbarPadding: true
 }

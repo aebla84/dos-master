@@ -21,6 +21,15 @@
   background: #EB0628;
 }
 
+//nav menu
+page-home {
+    .toolbar-ios {
+        //workaround: statusbar height is too small on root view without home button
+        // -> manually set min-height on root view (verified on iOS 10)
+        min-height: 64px;
+    }
+}
+
 span.tab-button-text {
   color: white;
 }
