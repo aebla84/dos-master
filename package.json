@@ -38,13 +38,7 @@
     "cordova-plugin-statusbar",
     "cordova-plugin-device",
     "cordova-plugin-splashscreen",
-    "ionic-plugin-keyboard",
-    {
-      "variables": {
-        "SENDER_ID": "522225482273"
-      },
-      "locator": "phonegap-plugin-push"
-    }
+    "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [
     "ios",

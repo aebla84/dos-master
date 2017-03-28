@@ -349,27 +349,38 @@ page-category {
   // .nameDetails ion-label.label.label-md:hover{
   //     color: white;
   // }
+
   .page-title,
   .page-title .toolbar-title.toolbar-title {
-    //padding: 5px 10px;
-    //margin-bottom: 10px;
     background-color: black;
     color: #c90e2b;
     text-transform: uppercase;
-    font-size: x-large;
     text-align: center;
-    //padding-top: 35px;//70px;35px;
-    padding-top: 0 !important;
+    padding-top: 5px !important;
   }
 
-  /*.toolbar-title-md{
-    color: white !important;
-  }*/
+  //title category font size!!
+  @media screen and (min-width: 300px){
+    .page-title,
+    .page-title .toolbar-title.toolbar-title {
+        font-size: 20px;
+        //padding: 5px 10px;
+        //margin-bottom: 10px;
+        background-color: black;
+        color: #c90e2b;
+        text-transform: uppercase;
+        text-align: center;
+    }
+}
   .toolbar-title-md{
     color: white;
   }
+
   .toolbar-title-ios{
     color: white;
+    padding: 0 12px;
+    font-size: 2rem;
+    font-weight: 500;
   }
 
   .toolbar-title-md.page-subtitle{
@@ -379,7 +390,7 @@ page-category {
   .page-subtitle {
     padding: 5px 10px;
     background-color: black;
-    color: white !important;
+    color: white;
     font-size: x-large;
     text-align: center;
   }
