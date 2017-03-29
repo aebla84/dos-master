@@ -265,7 +265,7 @@ page-category {
   }
 
   .swiper-wrapper {
-    height: 150px !important;
+  //  height: 150px !important;
   }
 
   .swiper-pagination-bullet-active {
@@ -433,12 +433,12 @@ page-category {
     color: white;
   }
 
-  ion-icon.icon.icon-md.ion-md-arrow-dropleft {
+  ion-icon.icon.icon-md.ion-md-arrow-dropleft, ion-icon.icon.icon-ios.ion-ios-arrow-dropleft {
     float: left;
     padding-left: 5%;
   }
 
-  ion-icon.icon.icon-md.ion-md-arrow-dropright {
+  ion-icon.icon.icon-md.ion-md-arrow-dropright ,ion-icon.icon.icon-ios.ion-ios-arrow-dropright{
     float: right;
     padding-right: 5%;
   }
@@ -474,5 +474,18 @@ ion-fab.fab_arrowup button {
 .infiniteScroll{
   color:  #EB0628;
 }
+
+.card-title{
+  font-size: initial;
+}
+
+ion-icon.icon.icon-md.ion-md-mail,ion-icon.icon.icon-ios.ion-ios-mail{
+  font-size: 1.6rem;
+}
+button.fab.fab-md.fab-md-primary, button.fab.fab-ios.fab-ios-primary{
+  width: 30px;
+  height: 30px;
+}
+
 
 }

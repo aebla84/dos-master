@@ -28,32 +28,20 @@
     <div class="sliders" >
       <ion-slides #Slides (ionSlideDidChange)="slideChanged(Slides)">
         <ion-slide zoom="true" *ngFor="let i of arrayImgs">
-        <ion-card id="{{i.name}}"  class="background-btnImage background-contain btnImage">
-          <img src="{{i.image}}" />
+        <ion-card id="{{i.name}}"  class="background-btnImage background-contain btnImage" >
+          <img src="{{i.image}}" style="height:200px !important" />
           <ion-card-content style="background-color:#EB0628; text-align:center !important;">
             <ion-card-title style="color:white !important;">
+                <ion-icon name="arrow-dropleft"  [hidden] ="firstSlide"></ion-icon>
               {{i.name}}
+                  <ion-icon name="arrow-dropright"  [hidden] ="lastSlide"></ion-icon>
             </ion-card-title>
+
           </ion-card-content>
         </ion-card>
       </ion-slide>
     </ion-slides>
       </div>
-    <div class="sliders" >
-      <ion-slides #Slides (ionSlideDidChange)="slideChanged(Slides)">
-        <ion-slide zoom="true" *ngFor="let i of arrayImgs" class="background-btnImage background-contain btnImage">
-
-          <div class="divImage" [ngStyle]="{'min-height': '120px','background-image': 'url(' + i.image + ')'}"></div>
-          <h4 class="product-title slider">
-            <ion-icon name="arrow-dropleft"  [hidden] ="firstSlide"></ion-icon>
-              {{i.name}}
-            <ion-icon name="arrow-dropright"  [hidden] ="lastSlide"></ion-icon>
-          </h4>
-        </ion-slide>
-      </ion-slides>
-      <ion-icon name="arrow-dropright" [hidden]="lastSlide"></ion-icon>
-      <ion-icon name="arrow-dropleft" [hidden]="firstSlide"></ion-icon>
-    </div>
     <div class="desc" [innerHtml]="description"></div>
     <div class="desc2">
       <h4>{{info}}</h4>
