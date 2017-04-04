@@ -73,7 +73,7 @@ export class HighlightPage {
         console.log(data[i].extras);
         console.log(data[i].description);
         // this.products.push(new Product(data[i], this.image, this.product_name, data[i].description));
-        this.products.push(new Product(data[i], this.image, this.product_name, data[i].description));
+        this.products.push(new Product(data[i], this.image, this.product_name, data[i].description, true));
 
 
       }

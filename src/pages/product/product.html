@@ -1,43 +1,43 @@
 <ion-header>
   <ion-navbar color="primary" class="navbarDosilet">
     <button class="menu-toggle-button" ion-button menuToggle>
-<ion-icon name="menu"></ion-icon>
-</button>
-    <img (click)="openHome()" class="logo-navbar" src="assets/img/dosilet_logo_white.png" />
-    <button class="settings-button" ion-button (click)="goSettings()">
-<ion-icon name="settings"></ion-icon>
-</button>
-  </ion-navbar>
-  <ion-navbar color="blacktitle" hideBackButton>
-    <ion-title class="page-title">Ofertas</ion-title>
-    <ion-title class="page-subtitle">{{products[0].name}}</ion-title>
-  </ion-navbar>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <img (click)="openHome()" class="logo-navbar" src="assets/img/dosilet_logo_white.png" />
+        <button class="settings-button" ion-button (click)="goSettings()">
+    <ion-icon name="settings"></ion-icon>
+    </button>
+      </ion-navbar>
+      <div color="blacktitle">
+        <ion-title class="page-title">Ofertas</ion-title>
+        <ion-title class="page-subtitle">{{products[0].name}}
+          <ion-fab class="fab_contact">
+             <div>
+             <button ion-fab color="primary" (click)="pedirPresupuesto(nameCategory)" mini>
+               <ion-icon name="mail"></ion-icon>
+             </button>
+           </div>
+          </ion-fab>
+        </ion-title>
+        </div>
 </ion-header>
 
 <ion-content padding>
   <div class="dms-block-description">
-    <div class="sliders">
+    <div class="sliders" >
       <ion-slides >
-        <ion-slide zoom="true" *ngFor="let p of products" class="background-btnImage background-contain btnImage">
-          <div class="divImage" [ngStyle]="{'min-height': '120px','background-image': 'url(' + p.image + ')'}"></div>
-          <h4 class="product-title">{{p.name}}</h4>
-        </ion-slide>
-      </ion-slides>
-    </div>
-    <!-- <div class="sliders">
-      <ion-slides >
-        <ion-slide zoom="true" *ngFor="let p of products" class="background-btnImage background-contain btnImage">
-          <ion-card  >
-            <img src="{{p.image}}" />
-            <ion-card-content style="background-color:#EB0628; text-align:center !important;">
-              <ion-card-title style="color:white !important;">
-                {{p.name}}
-              </ion-card-title>
-            </ion-card-content>
-          </ion-card>
+        <ion-slide zoom="true" *ngFor="let p of products">
+        <ion-card id="{{p.name}}"  class="background-btnImage background-contain btnImage" >
+          <img src="{{p.image}}" style="height:200px !important" />
+          <ion-card-content style="background-color:#EB0628; text-align:center !important;">
+            <ion-card-title style="color:white !important;">
+              {{p.name}}
+            </ion-card-title>
+          </ion-card-content>
+        </ion-card>
       </ion-slide>
     </ion-slides>
-    </div> -->
+      </div>
     <div class="desc" [innerHtml]="products[0].description"></div>
     <div class="desc2">
       <h4>{{info}}</h4>
@@ -95,15 +95,17 @@
           <ion-label class="name">Observaciones</ion-label>
           <ion-label class="data">{{products[0].details}}</ion-label>
         </ion-item>
-        <!-- <ion-item> -->
-        <ion-label class="name">Extras </ion-label>
+        <ion-item class="nameDetails item-stable"  [ngClass]="{active :  true}">
+          <ion-label class="name">Extras</ion-label>
+          <ion-icon name="remove" item-right *ngIf="products[0].count_extras === 0"></ion-icon>
+        </ion-item>
         <div class="divExtras" *ngIf="products[0].count_extras > 0">
           <ion-label class="extras-title">Extras disponibles</ion-label>
           <ion-list *ngFor="let extra of products[0].extras ">
             <ion-item>
               <ion-label class="extra_label">{{extra.label}}</ion-label>
             </ion-item>
-            <ion-item class="itemExtra">
+            <ion-item>
               <ion-list *ngFor="let subextra of extra.extras" class="lstExtras">
                 <ion-item *ngIf="subextra.reference != undefined " class="extra_data">{{subextra.reference}} </ion-item>
                 <ion-item *ngIf="subextra.dimensions != undefined " class="extra_data"> {{subextra.dimensions}} </ion-item>

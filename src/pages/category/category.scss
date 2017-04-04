@@ -74,7 +74,8 @@ page-category {
     .data,
     .dataType,
     .name,
-    .nameDetails {
+    .nameDetails,
+    .typeProduct {
       color: white;
       border: none;
 
@@ -88,6 +89,12 @@ page-category {
   .name {
     text-align: left;
     color: #EB0628;
+  }
+  .typeProduct{
+    text-align: center !important;
+    background: #EB0628;
+    padding: 1%;
+    font-size: 1em;
   }
 
   .nameDetails {
@@ -237,6 +244,9 @@ page-category {
     width: 100%;
     height: 100%;
     position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
   }
 
   .footer {
@@ -422,12 +432,17 @@ page-category {
     text-align: -webkit-right;
   }
 
+  ion-icon.icon.icon-ios.ion-ios-arrow-down.item-icon,
+  ion-icon.icon.icon-ios.ion-ios-arrow-up.item-icon,
+  ion-icon.icon.icon-ios.ion-ios-remove.item-icon ,
   ion-icon.icon.icon-md.ion-md-arrow-down.item-icon,
   ion-icon.icon.icon-md.ion-md-arrow-up.item-icon,
   ion-icon.icon.icon-md.ion-md-remove.item-icon {
     color: #302D2E;
   }
 
+  ion-icon.icon.icon-ios.ion-ios-arrow-down.item-icon.active.red:hover,
+  ion-icon.icon.icon-ios.ion-ios-arrow-up.item-icon.active.red:hover,
   ion-icon.icon.icon-md.ion-md-arrow-down.item-icon.active.red:hover,
   ion-icon.icon.icon-md.ion-md-arrow-up.item-icon.active.red:hover {
     color: white;
@@ -487,5 +502,18 @@ button.fab.fab-md.fab-md-primary, button.fab.fab-ios.fab-ios-primary{
   height: 30px;
 }
 
+.swiper-slide img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.list-ios > .item-block:last-child {
+  border-bottom: transparent !important;
+}
 
 }

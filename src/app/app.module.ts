@@ -9,6 +9,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { HighlightPage } from '../pages/highlight/highlight';
 import { SettingsPage } from '../pages/settings/settings';
+// import { Storage } from '@ionic/storage';
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -54,6 +55,7 @@ const cloudSettings: CloudSettings = {
     SettingsPage,
     CategoryPage
   ],
-  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }]
+  // providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler },Storage]
+   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }]
 })
 export class AppModule { }

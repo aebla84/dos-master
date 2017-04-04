@@ -213,3 +213,10 @@ ion-item.item-accordion.item.item-block.item {
     padding: 5%;
     text-align: justify;
 }
+
+ion-list.listSideBar, ion-list.listSideBar.list{
+  border-top: black;
+}
+ion-list.listSideBar.list.list-md {
+    border-top: black;
+}

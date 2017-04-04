@@ -73,4 +73,10 @@ export class ProductPage {
   goContact() {
     this.navCtrl.push(ContactPage);
   }
+
+  pedirPresupuesto(nameCategory) {
+    this.navCtrl.push(ContactPage, {
+      nameCategory: this.name
+    });
+  }
 }

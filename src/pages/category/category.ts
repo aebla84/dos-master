@@ -28,28 +28,9 @@ export class CategoryPage {
   description: HTMLElement;
   image: string;
   info: string;
-  pReference: string;
-  pType: string;
-  pDimensions: string;
-  pConveyorWidth: string;
-  pConveyorLenght: string;
-  pConveyorEntry: string;
-  pVolume: string;
-  pWeight: string;
-  pPower: string;
-  pVoltage: string;
-  pFrequency: string;
-  pPrice: string;
-  pDetails: string;
+
   arrayImgs = [];
-  //Form product
-  fTitle: string;
-  fSubject: string;
-  fName: string;
-  fCompany: string;
-  fMailfrom: string;
-  fPhone: string;
-  fMessage: string;
+
   url: string;
   loading: boolean;
   loader: any;
@@ -58,6 +39,7 @@ export class CategoryPage {
   lastSlide: boolean;
   firstSlide: boolean;
 
+  fTitle:string;
   extras = [];
   subextras = [];
 
@@ -70,6 +52,10 @@ export class CategoryPage {
   counter = 3;
   divider = 0;
 
+  first_product_term :string;
+  product_term : string;
+  count_products = 0;
+  showTypeProductHeader = true;
   @ViewChild(Content) content: Content;
 
   constructor(public navCtrl: NavController, public globals: Globals, private http: Http, public params: NavParams, public loadingCtrl: LoadingController, public platform: Platform,public myElement: ElementRef) {
@@ -92,6 +78,7 @@ export class CategoryPage {
 
     this.lastSlide = false;
     this.firstSlide = true;
+
 
   }
 
@@ -118,6 +105,8 @@ export class CategoryPage {
       this.dataLength = data.length;
       this.loader.dismiss();
 
+
+
       if (data.length < 3)
       {
          this.counter = data.length;
@@ -126,9 +115,15 @@ export class CategoryPage {
       {
            this.counter = 3;
       }
+
+
       for (var i = 0; i < this.counter; i++) {
+
+        this.showTypeProductHeader =  (data[i].type_term != false && this.product_term != "" && this.product_term != data[i].type_term) ? true : false;
+        this.product_term = data[i].type_term ;
+
         this.product_name = data[i].product['post_title'];
-        this.products.push(new Product(data[i], this.image, this.product_name, data[i].description));
+        this.products.push(new Product(data[i], this.image, this.product_name, data[i].description,this.showTypeProductHeader));
       }
 
       for (var i = 0; i < data.length; i++) {
@@ -144,6 +139,7 @@ export class CategoryPage {
       }
 
     });
+    console.log(this.products);
   }
   doInfinite(infiniteScroll) {
     console.log('Begin async operation');
@@ -152,10 +148,11 @@ export class CategoryPage {
         let  paramTo_Length  = (this.counter + 3 < this.dataLength) ? this.counter + 3 : this.dataLength;
 
         for (var i = this.counter; i < paramTo_Length ; i++) {
+          this.showTypeProductHeader =  (this.dataResults[i].type_term != false && this.product_term != "" && this.product_term != this.dataResults[i].type_term) ? true : false;
+          this.product_term = this.dataResults[i].type_term ;
 
-            this.product_name = this.dataResults[i].product['post_title'];
-            this.products.push(new Product(this.dataResults[i], this.image, this.product_name, this.dataResults[i].description));
-          //console.log(this.counter + "/" + this.dataResults.length);
+          this.product_name = this.dataResults[i].product['post_title'];
+          this.products.push(new Product(this.dataResults[i], this.image, this.product_name, this.dataResults[i].description,this.showTypeProductHeader));
         }
         if (paramTo_Length < this.dataLength) {
           this.counter = this.counter + 3;

@@ -12,7 +12,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { Subcategory } from '../model/subcategory';
 import { Category } from '../model/category';
 import { Globals } from '../providers/globals';
-
+// import { Storage } from '@ionic/storage';
 
 declare var window;
 
@@ -41,14 +41,15 @@ export class MyApp {
   loader :any
   constructor(platform: Platform, private http: Http, public push: Push, public menuCtrl: MenuController, public globals: Globals, private alertCtrl: AlertController, public loadingCtrl: LoadingController) {
 
-    platform.ready().then(() => {
-      Splashscreen.hide();
 
-      this.loader = this.loadingCtrl.create({
-        spinner: 'bubbles',
-        content: "Cargando categorias..."
-      });
-      this.loader.present();
+    platform.ready().then(() => {
+      Splashscreen.show();
+
+      // this.loader = this.loadingCtrl.create({
+      //   spinner: 'bubbles',
+      //   content: "Cargando categorias..."
+      // });
+      // this.loader.present();
 
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -60,6 +61,8 @@ export class MyApp {
       globals.saveToken(t.token);
       return this.push.saveToken(t);
     }).then((t: PushToken) => {
+      alert("save then");
+      alert(t.token);
       console.log('Token saved:', t.token);
     });
 
@@ -128,10 +131,14 @@ export class MyApp {
             }
           }
         }
+        Splashscreen.hide();
+-        console.log(this.category);
       },
       err => { console.log(err) }
     );
-          this.loader.dismiss();
+          //this.loader.dismiss();
+        //  Splashscreen.hide();
+
   }
 
   confirmCall(number) {

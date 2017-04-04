@@ -14,7 +14,7 @@ export class ContactPage {
   nameCategory: string;
 
   constructor(public navCtrl: NavController, public params: NavParams, private http: Http, public globals: Globals, public menuCtrl: MenuController) {
-    this.nameCategory = params.get("nameCategory");
+    this.nameCategory = (params.get("nameCategory") != undefined) ? params.get("nameCategory") : "";
     console.log(this.nameCategory);
   }
   openHome() {

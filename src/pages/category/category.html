@@ -46,7 +46,9 @@
     <div class="desc2">
       <h4>{{info}}</h4>
       <ion-list *ngFor="let p of products" class="colorHover">
-        <!-- <ion-list-header>Características Técnicas y PVP</ion-list-header> -->
+        <ion-list-header *ngIf="p.showTypeProduct">
+          <ion-label class="typeProduct">{{p.type_term_name}}</ion-label>
+        </ion-list-header>
         <ion-item *ngIf="p.reference != undefined ">
           <ion-label class="name">Referencia</ion-label>
           <ion-label class="data">{{p.reference}}</ion-label>
