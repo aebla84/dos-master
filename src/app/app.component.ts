@@ -61,8 +61,8 @@ export class MyApp {
       globals.saveToken(t.token);
       return this.push.saveToken(t);
     }).then((t: PushToken) => {
-      alert("save then");
-      alert(t.token);
+      //alert("save then");
+      //alert(t.token);
       console.log('Token saved:', t.token);
     });
 

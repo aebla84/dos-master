@@ -5,6 +5,7 @@ import { Push, PushToken } from '@ionic/cloud-angular';
 import { Toast } from 'ionic-native';
 import { Platform } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 declare var window: any;
 
@@ -21,12 +22,20 @@ export class Globals {
   url: string;
   notification: Boolean;
   data: {};
+  storage: any;
+  tokenSave : string;
 
   constructor(public push: Push, private http: Http, private platform: Platform, private alertCtrl: AlertController) {
     this.http = http;
     this.platform = platform;
     this.data = {};
-
+    this.storage = new Storage();
+    this.storage.ready().then(() => {
+      this.storage.get('token').then((val) => {
+        this.tokenSave = val;
+        console.log('tokenSave are: ', val);
+      })
+    });
   }
 
   // GET de Categorías: Categorías y Productos.
@@ -68,10 +77,18 @@ export class Globals {
 
   //Activar notificaciones.
   registerNotifications() {
+    //alert("registerNotifications");
     this.push.register().then((t: PushToken) => {
+      //alert("then");
       return this.push.saveToken(t);
     }).then((t: PushToken) => {
+        //alert("then2");
       console.log('Token saved:', t.token);
+      this.storage.set('token', t.token);
+      this.storage.get('token').then((val) => {
+        this.tokenSave = val;
+        //alert("registerNotifications " + this.tokenSave);
+      })
       this.postDeviceToken(t.token);
     });
   }
@@ -79,6 +96,11 @@ export class Globals {
   //Desactivar notificaciones.
   unregisterNotifications() {
     this.push.unregister();
+    this.storage.get('token').then((val) => {
+      this.tokenSave = val;
+      //alert("unregisterNotifications " + this.tokenSave);
+    })
+    if(this.tokenSave != undefined &&  this.tokenSave != "") this.updateStatusDevice(this.tokenSave);
   }
 
   //Enviar MAIL de contacto
@@ -93,16 +115,17 @@ export class Globals {
     this.url = 'http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/sendmail';
     var data = new FormData();
     console.log("Categoría: " + this.category);
-    if (this.category != undefined) {
-      data.append('subject', 'Nuevo mensaje de ' + this.subject + ' sobre ' + this.category);
+    if (this.category != undefined && this.category != "") {
+      data.append('subject', 'Solicitud de información ' + this.category);
     } else {
-      data.append('subject', 'Nuevo mensaje de ' + this.subject);
+      data.append('subject', 'Solicitud de información ');
     }
     data.append('message', this.message);
-    data.append('mailto', 'jbono@deideasmarketing.com');
+    data.append('mailto', 'bnavarro@deideasmarketing.com');
     data.append('mailfrom', this.mailfrom);
     data.append('phone', this.phone);
     data.append('name', this.name);
+    data.append('category', this.category);
     if (this.company != "undefined") {
       data.append('company', this.company);
     }
@@ -127,6 +150,20 @@ export class Globals {
     data.append('registration_id', token);
     this.http.post(link, data)
       .subscribe(data2 => {
+      }, error => {
+        console.log("Oooops!");
+      });
+  }
+
+  updateStatusDevice(token): any {
+    //alert("updateStatusDevice");
+    //alert(token);
+    var link = 'http://dosilet.deideasmarketing.solutions/wp-json/wp/v2/update_status_in_ddbb';
+    var data = new FormData();
+    data.append('registration_id', token);
+    this.http.post(link, data)
+      .subscribe(data2 => {
+          //this.storage.set('notification',false);
       }, error => {
         console.log("Oooops!");
       });

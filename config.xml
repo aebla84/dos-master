@@ -49,7 +49,7 @@
   <preference name="FadeSplashScreenDuration" value="0"/>
   <preference name="SplashShowOnlyFirstTime" value="false"/>
   <preference name="SplashScreen" value="screen"/>
-  <preference name="SplashScreenDelay" value="2000"/>
+  <preference name="SplashScreenDelay" value="10"/>
   <feature name="StatusBar">
     <param name="ios-package" onload="true" value="CDVStatusBar"/>
   </feature>
