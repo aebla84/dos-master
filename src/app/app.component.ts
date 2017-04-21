@@ -68,6 +68,41 @@ export class MyApp {
 
     this.push.rx.notification()
       .subscribe((msg) => {
+        let messageTest = JSON.parse(msg.text);
+
+       let alertNotif = this.alertCtrl.create({
+         title: msg.title,
+         message: (messageTest["text"] != "") ? ( (messageTest["product"] != "") ?  messageTest["text"] +  " Product : " + messageTest["product"]: messageTest["text"] )  : "",
+         buttons: [
+           {
+             text: 'Cancelar',
+             role: 'cancel',
+             handler: () => {
+               console.log('Cancel clicked');
+             }
+           },
+           {
+             text: 'Aceptar',
+             handler: () => {
+               if(messageTest["type"] =="deal" )
+               {
+                 // para navegar a cierta página al clicar en la notificación.
+                 this.nav.push(HighlightPage);
+               }
+               else if(messageTest["type"] =="product" )
+               {
+                 this.nav.push(HighlightPage);
+               }
+               else{
+
+               }
+               console.log('Ok clicked');
+             }
+           }
+         ]
+       });
+       alertNotif.present();
+     });
         // para navegar a cierta página al clicar en la notificación.
         // this.nav.push(CatalogPage);
         alert(msg.title + ': ' + msg.text);

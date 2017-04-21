@@ -477,22 +477,6 @@ page-category {
     bottom: 80px !important;
   }
 
-  ion-fab.fab_arrowup button.fab {
-    width: 30px;
-    height: 30px;
-    background: #EB0628;
-    color: white;
-    border-radius: 0;
-  }
-
-  ion-fab.fab_arrowup button {
-    width: 25px;
-    height: 25px;
-    background: #EB0628;
-    color: white;
-    border-radius: 0;
-  }
-
   .infiniteScroll {
     color: #EB0628;
   }
@@ -504,12 +488,6 @@ page-category {
   ion-icon.icon.icon-ios.ion-ios-mail,
   ion-icon.icon.icon-md.ion-md-mail {
     font-size: 1.6rem;
-  }
-
-  button.fab.fab-ios.fab-ios-primary,
-  button.fab.fab-md.fab-md-primary {
-    width: 30px;
-    height: 30px;
   }
 
   .swiper-slide img {
@@ -526,10 +504,55 @@ page-category {
     border-bottom: transparent !important;
   }
 
-  .arrow-right, .arrow-left{
+  .arrow-left,
+  .arrow-right {
     font-size: 40px;
     margin-top: -10px;
     margin-left: 2px;
     margin-right: 2px;
+  }
+  @media screen and (max-device-width : 330px) {
+    ion-fab.fab_arrowup button.fab {
+      width: 30px;
+      height: 30px;
+      background: #EB0628;
+      color: white;
+      border-radius: 0;
+    }
+
+    ion-fab.fab_arrowup button {
+      width: 30px;
+      height: 30px;
+      background: #EB0628;
+      color: white;
+      border-radius: 0;
+    }
+    button.fab.fab-ios.fab-ios-primary,
+    button.fab.fab-md.fab-md-primary {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  @media screen and (max-device-width : 1204px) {
+    ion-fab.fab_arrowup button.fab {
+      width: 40px;
+      height: 40px;
+      background: #EB0628;
+      color: white;
+      border-radius: 0;
+    }
+
+    ion-fab.fab_arrowup button {
+      width: 40px;
+      height: 40px;
+      background: #EB0628;
+      color: white;
+      border-radius: 0;
+    }
+    button.fab.fab-ios.fab-ios-primary,
+    button.fab.fab-md.fab-md-primary {
+      width: 40px;
+      height: 40px;
+    }
   }
 }

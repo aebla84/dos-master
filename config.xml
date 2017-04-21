@@ -15,7 +15,7 @@
   <allow-intent href="geo:*"/>
   <platform name="android">
     <allow-intent href="market:*"/>
-    <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
+    <!-- <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
     <icon src="resources/android/icon/drawable-mdpi-icon.png" density="mdpi"/>
     <icon src="resources/android/icon/drawable-hdpi-icon.png" density="hdpi"/>
     <icon src="resources/android/icon/drawable-xhdpi-icon.png" density="xhdpi"/>
@@ -26,7 +26,7 @@
     <splash src="resources/android/splash/drawable-port-hdpi-screen.png" density="port-hdpi"/>
     <splash src="resources/android/splash/drawable-port-xhdpi-screen.png" density="port-xhdpi"/>
     <splash src="resources/android/splash/drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
-    <splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
+    <splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/> -->
   </platform>
   <platform name="ios">
     <allow-intent href="itms:*"/>
@@ -60,5 +60,5 @@
   <plugin name="cordova-plugin-device" spec="1.1.4"/>
   <plugin name="cordova-plugin-splashscreen" spec="~4.0.1"/>
   <plugin name="cordova-sqlite-storage" spec="~2.0.2"/>
-  <icon src="resources\android\icon\drawable-xhdpi-icon.png"/>
+  <!-- <icon src="resources/android/icon/drawable-xhdpi-icon.png"/> -->
 </widget>
