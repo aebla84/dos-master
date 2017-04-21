@@ -103,10 +103,6 @@ export class MyApp {
        });
        alertNotif.present();
      });
-        // para navegar a cierta página al clicar en la notificación.
-        // this.nav.push(CatalogPage);
-        alert(msg.title + ': ' + msg.text);
-      });
   }
 
   openProduct(id, name) {
