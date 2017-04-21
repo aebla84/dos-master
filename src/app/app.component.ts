@@ -141,10 +141,10 @@ export class MyApp {
 
   }
 
-  confirmCall(number) {
+  confirmCall(number, numbertext) {
     let alert = this.alertCtrl.create({
       title: 'Confirmar llamada',
-      message: '¿Estás seguro de llamar por teléfono a Dosilet?',
+      message: '¿Estás seguro de llamar por teléfono a Dosilet (' + numbertext + ')?',
       buttons: [
         {
           text: 'Cancelar',

@@ -32,9 +32,9 @@
           <img src="{{i.image}}" style="height:200px !important" />
           <ion-card-content style="background-color:#EB0628; text-align:center !important;">
             <ion-card-title style="color:white !important;">
-                <ion-icon name="arrow-dropleft"  [hidden] ="firstSlide"></ion-icon>
+              <ion-icon class="arrow-left" name="arrow-dropleft" (click)="prevSlide()" [hidden]="firstSlide"></ion-icon>
               {{i.name}}
-                  <ion-icon name="arrow-dropright"  [hidden] ="lastSlide"></ion-icon>
+              <ion-icon class="arrow-right" name="arrow-dropright" (click)="nextSlide()" [hidden]="lastSlide"></ion-icon>
             </ion-card-title>
 
           </ion-card-content>
@@ -135,7 +135,7 @@
   </div>
   <ion-fab class="fab_arrowup">
      <div>
-         <button (click)="scrollToTop()"><ion-icon ion-fab name="arrow-up" mini></ion-icon></button>
+         <button (click)="scrollToTop()"><ion-icon name="arrow-up"></ion-icon></button>
    </div>
    </ion-fab>
 </ion-content>

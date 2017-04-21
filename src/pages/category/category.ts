@@ -1,5 +1,5 @@
-import { Component, ElementRef ,ViewChild} from '@angular/core';
-import { NavController, NavParams, Platform,Content } from 'ionic-angular';
+import { Component, ElementRef, ViewChild} from '@angular/core';
+import { NavController, NavParams, Platform, Content } from 'ionic-angular';
 import {Http} from '@angular/http';
 import { LoadingController } from 'ionic-angular';
 import { HomePage } from '../home/home';
@@ -8,6 +8,7 @@ import { ContactPage } from '../contact/contact';
 import { Globals } from '../../providers/globals';
 //import { Subcategory } from '../../model/subcategory';
 import { Product } from '../../model/product';
+import { Slides } from 'ionic-angular';
 
 declare var cordova: any;
 declare var window: any;
@@ -18,6 +19,7 @@ declare var window: any;
   templateUrl: 'category.html'
 })
 export class CategoryPage {
+  @ViewChild(Slides) slides: Slides;
   taxonomies = [];
   products = [];
   dataTaxonomyUrl: string;
@@ -39,7 +41,7 @@ export class CategoryPage {
   lastSlide: boolean;
   firstSlide: boolean;
 
-  fTitle:string;
+  fTitle: string;
   extras = [];
   subextras = [];
 
@@ -47,18 +49,18 @@ export class CategoryPage {
   subcategory = [];
   product_name: string;
 
-  dataResults  : any;
+  dataResults: any;
   dataLength: any;
   counter = 3;
   divider = 0;
 
-  first_product_term :string;
-  product_term : string;
+  first_product_term: string;
+  product_term: string;
   count_products = 0;
   showTypeProductHeader = true;
   @ViewChild(Content) content: Content;
 
-  constructor(public navCtrl: NavController, public globals: Globals, private http: Http, public params: NavParams, public loadingCtrl: LoadingController, public platform: Platform,public myElement: ElementRef) {
+  constructor(public navCtrl: NavController, public globals: Globals, private http: Http, public params: NavParams, public loadingCtrl: LoadingController, public platform: Platform, public myElement: ElementRef) {
 
     this.loader = this.loadingCtrl.create({
       spinner: 'bubbles',
@@ -84,10 +86,10 @@ export class CategoryPage {
 
   setObjects() {
 
-      this.parent_name = (this.categories["parent_name"] != null) ? this.categories["parent_name"] : "";
-      this.name = (this.categories["name"] != null) ? this.categories["name"] : "";
-      this.subtitle = (this.categories["subtitle"] != null) ? this.categories["subtitle"] : "";
-      this.description = (this.categories["description"] != null) ? this.categories["description"] : "";
+    this.parent_name = (this.categories["parent_name"] != null) ? this.categories["parent_name"] : "";
+    this.name = (this.categories["name"] != null) ? this.categories["name"] : "";
+    this.subtitle = (this.categories["subtitle"] != null) ? this.categories["subtitle"] : "";
+    this.description = (this.categories["description"] != null) ? this.categories["description"] : "";
 
   }
 
@@ -107,23 +109,21 @@ export class CategoryPage {
 
 
 
-      if (data.length < 3)
-      {
-         this.counter = data.length;
+      if (data.length < 3) {
+        this.counter = data.length;
       }
-      else
-      {
-           this.counter = 3;
+      else {
+        this.counter = 3;
       }
 
 
       for (var i = 0; i < this.counter; i++) {
 
-        this.showTypeProductHeader =  (data[i].type_term != false && this.product_term != "" && this.product_term != data[i].type_term) ? true : false;
-        this.product_term = data[i].type_term ;
+        this.showTypeProductHeader = (data[i].type_term != false && this.product_term != "" && this.product_term != data[i].type_term) ? true : false;
+        this.product_term = data[i].type_term;
 
         this.product_name = data[i].product['post_title'];
-        this.products.push(new Product(data[i], this.image, this.product_name, data[i].description,this.showTypeProductHeader));
+        this.products.push(new Product(data[i], this.image, this.product_name, data[i].description, this.showTypeProductHeader));
       }
 
       for (var i = 0; i < data.length; i++) {
@@ -145,19 +145,19 @@ export class CategoryPage {
     console.log('Begin async operation');
 
     setTimeout(() => {
-        let  paramTo_Length  = (this.counter + 3 < this.dataLength) ? this.counter + 3 : this.dataLength;
+      let paramTo_Length = (this.counter + 3 < this.dataLength) ? this.counter + 3 : this.dataLength;
 
-        for (var i = this.counter; i < paramTo_Length ; i++) {
-          this.showTypeProductHeader =  (this.dataResults[i].type_term != false && this.product_term != "" && this.product_term != this.dataResults[i].type_term) ? true : false;
-          this.product_term = this.dataResults[i].type_term ;
+      for (var i = this.counter; i < paramTo_Length; i++) {
+        this.showTypeProductHeader = (this.dataResults[i].type_term != false && this.product_term != "" && this.product_term != this.dataResults[i].type_term) ? true : false;
+        this.product_term = this.dataResults[i].type_term;
 
-          this.product_name = this.dataResults[i].product['post_title'];
-          this.products.push(new Product(this.dataResults[i], this.image, this.product_name, this.dataResults[i].description,this.showTypeProductHeader));
-        }
-        if (paramTo_Length < this.dataLength) {
-          this.counter = this.counter + 3;
-        }
-        else{ this.counter = this.dataLength}
+        this.product_name = this.dataResults[i].product['post_title'];
+        this.products.push(new Product(this.dataResults[i], this.image, this.product_name, this.dataResults[i].description, this.showTypeProductHeader));
+      }
+      if (paramTo_Length < this.dataLength) {
+        this.counter = this.counter + 3;
+      }
+      else { this.counter = this.dataLength }
 
       console.log('Async operation has ended');
       infiniteScroll.complete();
@@ -179,9 +179,13 @@ export class CategoryPage {
     this.firstSlide = Slides.isBeginning();
     this.lastSlide = Slides.isEnd();
   }
-
-
   scrollToTop() {
     this.content.scrollToTop();
+  }
+  prevSlide() {
+    this.slides.slidePrev(500, true);
+  }
+  nextSlide() {
+    this.slides.slideNext(500, true);
   }
 }

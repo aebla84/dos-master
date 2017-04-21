@@ -41,9 +41,13 @@ const cloudSettings: CloudSettings = {
     CategoryPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
-    CloudModule.forRoot(cloudSettings)
-  ],
+     IonicModule.forRoot(MyApp,{
+       backButtonText: '',
+       backButtonIcon: 'ios-arrow-back',
+       iconMode: 'md'
+     }),
+     CloudModule.forRoot(cloudSettings)
+   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
