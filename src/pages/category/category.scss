@@ -448,16 +448,12 @@ page-category {
     color: white;
   }
 
-  ion-icon.icon.icon-ios.ion-ios-arrow-dropleft,
-  ion-icon.icon.icon-md.ion-md-arrow-dropleft {
+  .ion-md-arrow-dropleft {
     float: left;
-    padding-left: 5%;
   }
 
-  ion-icon.icon.icon-ios.ion-ios-arrow-dropright,
-  ion-icon.icon.icon-md.ion-md-arrow-dropright {
+  .ion-md-arrow-dropright {
     float: right;
-    padding-right: 5%;
   }
 
   h4.product-title.slider {
@@ -527,6 +523,7 @@ page-category {
       color: white;
       border-radius: 0;
     }
+
     button.fab.fab-ios.fab-ios-primary,
     button.fab.fab-md.fab-md-primary {
       width: 30px;
@@ -549,6 +546,7 @@ page-category {
       color: white;
       border-radius: 0;
     }
+
     button.fab.fab-ios.fab-ios-primary,
     button.fab.fab-md.fab-md-primary {
       width: 40px;

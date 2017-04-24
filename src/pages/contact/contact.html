@@ -35,8 +35,7 @@
         <ion-textarea [(ngModel)]="globals.message" name="message" placeholder="Mensaje" required></ion-textarea>
       </ion-item>
       <div class=termsConditions>
-        <ion-checkbox required="" class="item-checkbox item-checkbox-checked checkbox checkbox-ios"></ion-checkbox>
-        <ion-label>He leído y acepto los <a (click)="showAlert()" target="_blank">terminos y condiciones.</a></ion-label>
+        <ion-item class="item-checkbox"> He leído y acepto los <a (click)="showAlert()" target="_blank">terminos y condiciones.</a> </ion-item>
       </div>
       <button ion-button type="submit" block>Enviar</button>
     </form>

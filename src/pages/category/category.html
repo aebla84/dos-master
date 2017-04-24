@@ -99,7 +99,7 @@
         </ion-item>
         <ion-item *ngIf="p.details != undefined ">
           <ion-label class="name">Observaciones</ion-label>
-          <ion-label class="data">{{p.details}}</ion-label>
+          <ion-label class="data">{{p.details}} €</ion-label>
         </ion-item>
         <ion-item class="nameDetails item-stable" (click)="toggleDetails(p)" [ngClass]="{active: p.showExtras}">
           <ion-label class="name">Extras</ion-label>
