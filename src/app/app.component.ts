@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, MenuController,LoadingController,AlertController } from 'ionic-angular';
+import { Nav, Platform, MenuController, LoadingController, AlertController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -12,7 +12,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { Subcategory } from '../model/subcategory';
 import { Category } from '../model/category';
 import { Globals } from '../providers/globals';
-// import { Storage } from '@ionic/storage';
+import { Storage } from '@ionic/storage';
 
 declare var window;
 
@@ -25,6 +25,7 @@ export class MyApp {
   rootPage = HomePage;
   category = [];
   subcategory = [];
+  storage: any;
 
   //catalog
   selectedItem: string;
@@ -38,7 +39,8 @@ export class MyApp {
   pages: Array<{ id: any, title: string, component: any, parent: any, subcategories: Array<{}> }>;
   categoriesUrl: string;
   isCat: boolean;
-  loader :any
+  loader: any;
+  notfirsttime: boolean;
   constructor(platform: Platform, private http: Http, public push: Push, public menuCtrl: MenuController, public globals: Globals, private alertCtrl: AlertController, public loadingCtrl: LoadingController) {
 
 
@@ -57,52 +59,84 @@ export class MyApp {
       this.getCatalog();
     });
 
-    this.push.register().then((t: PushToken) => {
-      globals.saveToken(t.token);
-      return this.push.saveToken(t);
-    }).then((t: PushToken) => {
-      //alert("save then");
-      //alert(t.token);
-      console.log('Token saved:', t.token);
+    this.storage = new Storage();
+    this.storage.ready().then(() => {
+      this.storage.get('isfirsttime').then((val) => {
+        this.notfirsttime = val;
+        console.log('Is first time? -> ', val);
+      })
     });
+
+if(this.notfirsttime == false){
+  this.push.register().then((t: PushToken) => {
+    globals.saveToken(t.token);
+    this.notfirsttime = true;
+    this.storage.set('isfirsttime', this.notfirsttime);
+    return this.push.saveToken(t);
+  }).then((t: PushToken) => {
+    console.log('Token saved:', t.token);
+  });
+}
 
     this.push.rx.notification()
       .subscribe((msg) => {
-        let messageTest = JSON.parse(msg.text);
 
-       let alertNotif = this.alertCtrl.create({
-         title: msg.title,
-         message: (messageTest["text"] != "") ? ( (messageTest["product"] != "") ?  messageTest["text"] +  " Product : " + messageTest["product"]: messageTest["text"] )  : "",
-         buttons: [
-           {
-             text: 'Cancelar',
-             role: 'cancel',
-             handler: () => {
-               console.log('Cancel clicked');
-             }
-           },
-           {
-             text: 'Aceptar',
-             handler: () => {
-               if(messageTest["type"] =="deal" )
-               {
-                 // para navegar a cierta página al clicar en la notificación.
-                 this.nav.push(HighlightPage);
-               }
-               else if(messageTest["type"] =="product" )
-               {
-                 this.nav.push(HighlightPage);
-               }
-               else{
+        let alertNotif = this.alertCtrl.create({
+          title: msg.title,
+          message: msg.text,
+          buttons: [
+            {
+              text: 'Cancelar',
+              role: 'cancel',
+              handler: () => {
+                console.log('Cancel clicked');
+              }
+            },
+            {
+              text: 'Aceptar',
+              handler: () => {
+                console.log('Accept clicked');
+                this.nav.setRoot(HighlightPage);
+              }
+            }
+          ]
+        });
+        //let messageTest = JSON.parse(msg.text);
 
-               }
-               console.log('Ok clicked');
-             }
-           }
-         ]
-       });
-       alertNotif.present();
-     });
+        /* let alertNotif = this.alertCtrl.create({
+          title: msg.title,
+          message: (messageTest["text"] != "") ? ( (messageTest["product"] != "") ?  messageTest["text"] +  " Product : " + messageTest["product"]: messageTest["text"] )  : "",
+          buttons: [
+            {
+              text: 'Cancelar',
+              role: 'cancel',
+              handler: () => {
+                console.log('Cancel clicked');
+              }
+            },
+            {
+              text: 'Aceptar',
+              handler: () => {
+                if(messageTest["type"] =="deal" )
+                {
+                  // para navegar a cierta página al clicar en la notificación.
+                  this.nav.push(HighlightPage);
+                }
+                else if(messageTest["type"] =="product" )
+                {
+                  this.nav.push(HighlightPage);
+                }
+                else{
+
+                }
+                console.log('Ok clicked');
+              }
+            }
+          ]
+        });
+        alertNotif.present();*/
+        alertNotif.present();
+      });
   }
 
   openProduct(id, name) {
@@ -114,7 +148,7 @@ export class MyApp {
       categories: this.subCategories
     });
   }
-  openProductCategory(id, name, isCat){
+  openProductCategory(id, name, isCat) {
     this.categories = this.category.find(cat => cat.term_id === id);
     this.nav.push(CategoryPage, {
       idCategory: id,
@@ -126,8 +160,8 @@ export class MyApp {
   toggleDetails(c) {
     if (c.showDetails) {
       c.showDetails = false;
-      for(var i = 0; i < this.category.length; i++){
-        if(this.category[i].term_id != c.term_id){
+      for (var i = 0; i < this.category.length; i++) {
+        if (this.category[i].term_id != c.term_id) {
           this.category[i].showDetails = true;
         }
       }
@@ -163,12 +197,12 @@ export class MyApp {
           }
         }
         Splashscreen.hide();
--        console.log(this.category);
+        -        console.log(this.category);
       },
       err => { console.log(err) }
     );
-          //this.loader.dismiss();
-        //  Splashscreen.hide();
+    //this.loader.dismiss();
+    //  Splashscreen.hide();
 
   }
 
@@ -196,9 +230,9 @@ export class MyApp {
     alert.present();
   }
 
-  resetMenu(){
-    for(var i = 0; i < this.category.length; i++){
-        this.category[i].showDetails = true;
+  resetMenu() {
+    for (var i = 0; i < this.category.length; i++) {
+      this.category[i].showDetails = true;
     }
   }
   openHome() {
